@@ -19,6 +19,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final FocusNode _emailFocus = FocusNode();
+  final FocusNode _passwordFocus = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: height30 * 2,
                 ),
                 TextlabelWithTextfieldColumn(
+                  focusNode: _emailFocus,
                   textLabel: 'Email address:',
                   controller: _emailController,
                 ),
@@ -57,6 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: height20 * 2,
                 ),
                 TextlabelWithTextfieldColumn(
+                  focusNode: _passwordFocus,
                   textLabel: 'Password:',
                   controller: _passwordController,
                 ),

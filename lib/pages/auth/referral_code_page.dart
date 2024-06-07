@@ -16,6 +16,7 @@ class ReferralCodePage extends StatefulWidget {
 
 class _ReferralCodePageState extends State<ReferralCodePage> {
   final TextEditingController _codeController = TextEditingController();
+  final FocusNode _codeFocus = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,7 @@ class _ReferralCodePageState extends State<ReferralCodePage> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: height100 * 1.25),
               child: TextlabelWithTextfieldColumn(
+                focusNode: _codeFocus,
                 textLabel: 'Code:',
                 controller: _codeController,
               ),

@@ -18,6 +18,9 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _reEnterPasswordController =
       TextEditingController();
+  final FocusNode _passwordFocus = FocusNode();
+  final FocusNode _reEnterPasswordFocus = FocusNode();
+
   String? _passwordErrorText;
   String? _reEnterPasswordErrorText;
 
@@ -50,13 +53,13 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
       body: PrimaryPageBackground(
         child: Column(
           children: [
-            Align(
+            const Align(
               child: BackButton(),
             ),
             SizedBox(
               height: height31,
             ),
-            TitleColumn(
+            const TitleColumn(
                 title: 'Create Password',
                 description:
                     'Your password must contain 8-12\ncharacters and an upper case letter.'),
@@ -64,6 +67,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
               height: height100 * 1.39,
             ),
             TextlabelWithTextfieldColumn(
+              focusNode: _passwordFocus,
               textLabel: 'Password:',
               controller: _passwordController,
               errorText: _passwordErrorText,
@@ -72,6 +76,7 @@ class _CreatePasswordPageState extends State<CreatePasswordPage> {
               height: height31,
             ),
             TextlabelWithTextfieldColumn(
+              focusNode: _reEnterPasswordFocus,
               textLabel: 'Re-enter password:',
               controller: _reEnterPasswordController,
               errorText: _reEnterPasswordErrorText,

@@ -1,0 +1,612 @@
+[
+    {
+        "id":1,
+        "logo":"assets/images/superkiddo.png",
+        "name":"SuperKiddo!",
+        "location":"Cheras, Selangor",
+        "total_student":98,
+        "max_student":100,
+        "rating":4.8,
+        "total_people_rating":60,
+        "photo":"assets/images/kindergarten_background.png",
+        "more_photos":[
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_1.png",
+                "description":"Playground in Culture kindergarten."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_2.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_3.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_4.png",
+                "description":"Children playing at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_5.png",
+                "description":"Overall look of the kindergarten playground."
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_1.png",
+                "description":"Student’s haven in Culture Kindergarten 👼❤️"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_2.png",
+                "description":"Overall look of the classroom"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_3.png",
+                "description":null
+            }
+        ],
+        "about_me":"Culture, a dynamic kindergarten nestled in the heart of Malaysia. This vibrant learning haven seamlessly weaves play-based magic with a rich celebration of Malaysia's cultural tapestry. It was guided by dedicated educators, fosters curiosity and creativity within a secure and stimulating environment. With state-of-the-art facilities, the kindergarten provides an enriching space where young minds flourish and embrace cultural awareness. Join the journey at Culture Kinderland, where the blend of educational excellence and cultural celebration creates an inspiring environment for every child.",
+        "teacher_list":[
+            {
+                "name":"Sophia Harper Turner",
+                "role":"Principle Of Culture",
+                "image":"assets/images/teacher/principle.png"
+            },
+            {
+                "name":"James",
+                "role":"Teacher",
+                "image":"assets/images/teacher/james.png"
+            },
+            {
+                "name":"Alice",
+                "role":"Teacher",
+                "image":"assets/images/teacher/alice.png"
+            },
+            {
+                "name":"Emma",
+                "role":"Teacher",
+                "image":"assets/images/teacher/emma.png"
+            },
+            {
+                "name":"Ava",
+                "role":"Teacher",
+                "image":"assets/images/teacher/ava.png"
+            },
+            {
+                "name":"Oliver",
+                "role":"Teacher",
+                "image":"assets/images/teacher/oliver.png"
+            }
+        ],
+        "min_age":3,
+        "max_age":6,
+        "class_list":{
+            "Nursery 1":"3 years old",
+            "Nursery 2":"4 years old",
+            "Kindergarten 1":"5 years old",
+            "Kindergarten 2":"6 years old"
+
+        },
+        "phone_number":"+607 12345678",
+        "operation_hour":{
+            "Mon - Fri":"7:00 a.m. - 4:30 p.m.",
+            "Sat - Sun":"Closed"
+        },
+        "activities":[
+            "Arts & Crafts",
+            "Dramatic Play",
+            "Science Activities",
+            "Math Exploration"
+        ],
+        "service_list":[
+            "Transportation Service",
+            "Insurance Service"
+        ],
+        "fee_per_month":500,
+        "address":"No. 8, Jalan Durian, Taman Puteri, 43000 Kajang, Selangor",
+        "email":"Culturekindergarten@gmail.com",
+        "rating_per_people_rate":{
+            "5":"40",
+            "4":"10",
+            "3":"6",
+            "2":"2",
+            "1":"2"
+        },
+        "video_address":null,
+        "is_liked":false
+    },
+    {
+        "id":2,
+        "logo":"assets/images/culture.png",
+        "name":"Culture",
+        "location":"Brickfields, Kuala Lumpur",
+        "total_student":98,
+        "max_student":100,
+        "rating":4.7,
+        "total_people_rating":50,
+        "photo":"assets/images/kindergarten_background.png",
+        "more_photos":[
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_1.png",
+                "description":"Playground in Culture kindergarten."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_2.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_3.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_4.png",
+                "description":"Children playing at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_5.png",
+                "description":"Overall look of the kindergarten playground."
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_1.png",
+                "description":"Student’s haven in Culture Kindergarten 👼❤️"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_2.png",
+                "description":"Overall look of the classroom"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_3.png",
+                "description":null
+            }
+        ],
+        "about_me":"Culture, a dynamic kindergarten nestled in the heart of Malaysia. This vibrant learning haven seamlessly weaves play-based magic with a rich celebration of Malaysia's cultural tapestry. It was guided by dedicated educators, fosters curiosity and creativity within a secure and stimulating environment. With state-of-the-art facilities, the kindergarten provides an enriching space where young minds flourish and embrace cultural awareness. Join the journey at Culture Kinderland, where the blend of educational excellence and cultural celebration creates an inspiring environment for every child.",
+        "teacher_list":[
+            {
+                "name":"Sophia Harper Turner",
+                "role":"Principle Of Culture",
+                "image":"assets/images/teacher/principle.png"
+            },
+            {
+                "name":"James",
+                "role":"Teacher",
+                "image":"assets/images/teacher/james.png"
+            },
+            {
+                "name":"Alice",
+                "role":"Teacher",
+                "image":"assets/images/teacher/alice.png"
+            },
+            {
+                "name":"Emma",
+                "role":"Teacher",
+                "image":"assets/images/teacher/emma.png"
+            },
+            {
+                "name":"Ava",
+                "role":"Teacher",
+                "image":"assets/images/teacher/ava.png"
+            },
+            {
+                "name":"Oliver",
+                "role":"Teacher",
+                "image":"assets/images/teacher/oliver.png"
+            }
+        ],
+        "min_age":3,
+        "max_age":6,
+        "class_list":{
+            "Nursery 1":"3 years old",
+            "Nursery 2":"4 years old",
+            "Kindergarten 1":"5 years old",
+            "Kindergarten 2":"6 years old"
+
+        },
+        "phone_number":"+607 12345678",
+        "operation_hour":{
+            "Mon - Fri":"7:00 a.m. - 4:30 p.m.",
+            "Sat - Sun":"Closed"
+        },
+        "activities":[
+            "Arts & Crafts",
+            "Dramatic Play",
+            "Science Activities",
+            "Math Exploration"
+        ],
+        "service_list":[
+            "Transportation Service",
+            "Insurance Service"
+        ],
+        "fee_per_month":500,
+        "address":"No. 8, Jalan Durian, Taman Puteri, 43000 Kajang, Selangor",
+        "email":"Culturekindergarten@gmail.com",
+        "rating_per_people_rate":{
+            "5":"40",
+            "4":"10",
+            "3":"6",
+            "2":"2",
+            "1":"2"
+        },
+        "video_address":null,
+        "is_liked":false
+    },
+    {
+        "id":3,
+        "logo":"assets/images/kids_dream.png",
+        "name":"Kids Dream",
+        "location":"George Town, Penang",
+        "total_student":75,
+        "max_student":100,
+        "rating":4.3,
+        "total_people_rating":39,
+        "photo":"assets/images/kindergarten_background.png",
+        "more_photos":[
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_1.png",
+                "description":"Playground in Culture kindergarten."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_2.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_3.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_4.png",
+                "description":"Children playing at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_5.png",
+                "description":"Overall look of the kindergarten playground."
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_1.png",
+                "description":"Student’s haven in Culture Kindergarten 👼❤️"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_2.png",
+                "description":"Overall look of the classroom"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_3.png",
+                "description":null
+            }
+        ],
+        "about_me":"Culture, a dynamic kindergarten nestled in the heart of Malaysia. This vibrant learning haven seamlessly weaves play-based magic with a rich celebration of Malaysia's cultural tapestry. It was guided by dedicated educators, fosters curiosity and creativity within a secure and stimulating environment. With state-of-the-art facilities, the kindergarten provides an enriching space where young minds flourish and embrace cultural awareness. Join the journey at Culture Kinderland, where the blend of educational excellence and cultural celebration creates an inspiring environment for every child.",
+        "teacher_list":[
+            {
+                "name":"Sophia Harper Turner",
+                "role":"Principle Of Culture",
+                "image":"assets/images/teacher/principle.png"
+            },
+            {
+                "name":"James",
+                "role":"Teacher",
+                "image":"assets/images/teacher/james.png"
+            },
+            {
+                "name":"Alice",
+                "role":"Teacher",
+                "image":"assets/images/teacher/alice.png"
+            },
+            {
+                "name":"Emma",
+                "role":"Teacher",
+                "image":"assets/images/teacher/emma.png"
+            },
+            {
+                "name":"Ava",
+                "role":"Teacher",
+                "image":"assets/images/teacher/ava.png"
+            },
+            {
+                "name":"Oliver",
+                "role":"Teacher",
+                "image":"assets/images/teacher/oliver.png"
+            }
+        ],
+        "min_age":3,
+        "max_age":6,
+        "class_list":{
+            "Nursery 1":"3 years old",
+            "Nursery 2":"4 years old",
+            "Kindergarten 1":"5 years old",
+            "Kindergarten 2":"6 years old"
+
+        },
+        "phone_number":"+607 12345678",
+        "operation_hour":{
+            "Mon - Fri":"7:00 a.m. - 4:30 p.m.",
+            "Sat - Sun":"Closed"
+        },
+        "activities":[
+            "Arts & Crafts",
+            "Dramatic Play",
+            "Science Activities",
+            "Math Exploration"
+        ],
+        "service_list":[
+            "Transportation Service",
+            "Insurance Service"
+        ],
+        "fee_per_month":500,
+        "address":"No. 8, Jalan Durian, Taman Puteri, 43000 Kajang, Selangor",
+        "email":"Culturekindergarten@gmail.com",
+        "rating_per_people_rate":{
+            "5":"40",
+            "4":"10",
+            "3":"6",
+            "2":"2",
+            "1":"2"
+        },
+        "video_address":null,
+        "is_liked":false
+    },
+    {
+        "id":4,
+        "logo":"assets/images/kindergarten.png",
+        "name":"Kindergarten",
+        "location":"Pudu, Kuala Lumpur",
+        "total_student":70,
+        "max_student":100,
+        "rating":4.1,
+        "total_people_rating":38,
+        "photo":"assets/images/kindergarten_background.png",
+        "more_photos":[
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_1.png",
+                "description":"Playground in Culture kindergarten."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_2.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_3.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_4.png",
+                "description":"Children playing at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_5.png",
+                "description":"Overall look of the kindergarten playground."
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_1.png",
+                "description":"Student’s haven in Culture Kindergarten 👼❤️"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_2.png",
+                "description":"Overall look of the classroom"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_3.png",
+                "description":null
+            }
+        ],
+        "about_me":"Culture, a dynamic kindergarten nestled in the heart of Malaysia. This vibrant learning haven seamlessly weaves play-based magic with a rich celebration of Malaysia's cultural tapestry. It was guided by dedicated educators, fosters curiosity and creativity within a secure and stimulating environment. With state-of-the-art facilities, the kindergarten provides an enriching space where young minds flourish and embrace cultural awareness. Join the journey at Culture Kinderland, where the blend of educational excellence and cultural celebration creates an inspiring environment for every child.",
+        "teacher_list":[
+            {
+                "name":"Sophia Harper Turner",
+                "role":"Principle Of Culture",
+                "image":"assets/images/teacher/principle.png"
+            },
+            {
+                "name":"James",
+                "role":"Teacher",
+                "image":"assets/images/teacher/james.png"
+            },
+            {
+                "name":"Alice",
+                "role":"Teacher",
+                "image":"assets/images/teacher/alice.png"
+            },
+            {
+                "name":"Emma",
+                "role":"Teacher",
+                "image":"assets/images/teacher/emma.png"
+            },
+            {
+                "name":"Ava",
+                "role":"Teacher",
+                "image":"assets/images/teacher/ava.png"
+            },
+            {
+                "name":"Oliver",
+                "role":"Teacher",
+                "image":"assets/images/teacher/oliver.png"
+            }
+        ],
+        "min_age":3,
+        "max_age":6,
+        "class_list":{
+            "Nursery 1":"3 years old",
+            "Nursery 2":"4 years old",
+            "Kindergarten 1":"5 years old",
+            "Kindergarten 2":"6 years old"
+
+        },
+        "phone_number":"+607 12345678",
+        "operation_hour":{
+            "Mon - Fri":"7:00 a.m. - 4:30 p.m.",
+            "Sat - Sun":"Closed"
+        },
+        "activities":[
+            "Arts & Crafts",
+            "Dramatic Play",
+            "Science Activities",
+            "Math Exploration"
+        ],
+        "service_list":[
+            "Transportation Service",
+            "Insurance Service"
+        ],
+        "fee_per_month":500,
+        "address":"No. 8, Jalan Durian, Taman Puteri, 43000 Kajang, Selangor",
+        "email":"Culturekindergarten@gmail.com",
+        "rating_per_people_rate":{
+            "5":"40",
+            "4":"10",
+            "3":"6",
+            "2":"2",
+            "1":"2"
+        },
+        "video_address":null,
+        "is_liked":false
+    },
+    {
+        "id":5,
+        "logo":"assets/images/lifekidz.png",
+        "name":"LifeKidz",
+        "location":"Lahat, Ipoh",
+        "total_student":69,
+        "max_student":100,
+        "rating":4.0,
+        "total_people_rating":35,
+        "photo":"assets/images/kindergarten_background.png",
+        "more_photos":[
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_1.png",
+                "description":"Playground in Culture kindergarten."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_2.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_3.png",
+                "description":"Some equipments at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_4.png",
+                "description":"Children playing at the playground."
+            },
+            {
+                "type":"playground",
+                "address":"assets/images/playground/playground_5.png",
+                "description":"Overall look of the kindergarten playground."
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_1.png",
+                "description":"Student’s haven in Culture Kindergarten 👼❤️"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_2.png",
+                "description":"Overall look of the classroom"
+            },
+            {
+                "type":"classroom",
+                "address":"assets/images/classroom/classroom_3.png",
+                "description":null
+            }
+        ],
+        "about_me":"Culture, a dynamic kindergarten nestled in the heart of Malaysia. This vibrant learning haven seamlessly weaves play-based magic with a rich celebration of Malaysia's cultural tapestry. It was guided by dedicated educators, fosters curiosity and creativity within a secure and stimulating environment. With state-of-the-art facilities, the kindergarten provides an enriching space where young minds flourish and embrace cultural awareness. Join the journey at Culture Kinderland, where the blend of educational excellence and cultural celebration creates an inspiring environment for every child.",
+        "teacher_list":[
+            {
+                "name":"Sophia Harper Turner",
+                "role":"Principle Of Culture",
+                "image":"assets/images/teacher/principle.png"
+            },
+            {
+                "name":"James",
+                "role":"Teacher",
+                "image":"assets/images/teacher/james.png"
+            },
+            {
+                "name":"Alice",
+                "role":"Teacher",
+                "image":"assets/images/teacher/alice.png"
+            },
+            {
+                "name":"Emma",
+                "role":"Teacher",
+                "image":"assets/images/teacher/emma.png"
+            },
+            {
+                "name":"Ava",
+                "role":"Teacher",
+                "image":"assets/images/teacher/ava.png"
+            },
+            {
+                "name":"Oliver",
+                "role":"Teacher",
+                "image":"assets/images/teacher/oliver.png"
+            }
+        ],
+        "min_age":3,
+        "max_age":6,
+        "class_list":{
+            "Nursery 1":"3 years old",
+            "Nursery 2":"4 years old",
+            "Kindergarten 1":"5 years old",
+            "Kindergarten 2":"6 years old"
+
+        },
+        "phone_number":"+607 12345678",
+        "operation_hour":{
+            "Mon - Fri":"7:00 a.m. - 4:30 p.m.",
+            "Sat - Sun":"Closed"
+        },
+        "activities":[
+            "Arts & Crafts",
+            "Dramatic Play",
+            "Science Activities",
+            "Math Exploration"
+        ],
+        "service_list":[
+            "Transportation Service",
+            "Insurance Service"
+        ],
+        "fee_per_month":500,
+        "address":"No. 8, Jalan Durian, Taman Puteri, 43000 Kajang, Selangor",
+        "email":"Culturekindergarten@gmail.com",
+        "rating_per_people_rate":{
+            "5":"40",
+            "4":"10",
+            "3":"6",
+            "2":"2",
+            "1":"2"
+        },
+        "video_address":null,
+        "is_liked":false
+    }
+]

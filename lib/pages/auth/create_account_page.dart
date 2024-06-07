@@ -19,6 +19,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+  final FocusNode _usernameFocus = FocusNode();
+  final FocusNode _emailFocus = FocusNode();
+  final FocusNode _phoneFocus = FocusNode();
+
   String? validateText;
 
   @override
@@ -60,18 +64,21 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               height: height10 * 7.2,
             ),
             TextlabelWithTextfieldColumn(
+              focusNode: _usernameFocus,
               textLabel: 'Username:',
               controller: _usernameController,
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: height20 * 2),
               child: TextlabelWithTextfieldColumn(
+                focusNode: _emailFocus,
                 keyboardType: TextInputType.emailAddress,
                 textLabel: 'Email address:',
                 controller: _emailController,
               ),
             ),
             TextlabelWithTextfieldColumn(
+              focusNode: _phoneFocus,
               keyboardType: TextInputType.number,
               prefixText: '+60',
               prefixStyle: textMd.copyWith(

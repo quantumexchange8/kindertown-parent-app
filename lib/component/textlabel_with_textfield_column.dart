@@ -12,6 +12,9 @@ class TextlabelWithTextfieldColumn extends StatelessWidget {
   final TextStyle? prefixStyle;
   final String? prefixText;
   final String? errorText;
+  final FocusNode focusNode;
+  final TextStyle? hintStyle;
+  final Widget? prefixIcon;
   const TextlabelWithTextfieldColumn(
       {super.key,
       required this.textLabel,
@@ -20,7 +23,10 @@ class TextlabelWithTextfieldColumn extends StatelessWidget {
       this.prefixStyle,
       this.prefixText,
       this.keyboardType,
-      this.errorText});
+      this.errorText,
+      required this.focusNode,
+      this.hintStyle,
+      this.prefixIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +39,9 @@ class TextlabelWithTextfieldColumn extends StatelessWidget {
           style: textLg.copyWith(fontWeight: FontWeight.w700),
         ),
         PrimaryTextfield(
+          focusNode: focusNode,
+          hintStyle: hintStyle,
+          prefixIcon: prefixIcon,
           errorText: errorText,
           controller: controller,
           keyboardType: keyboardType,
