@@ -8,44 +8,78 @@
         "max_student":100,
         "rating":4.8,
         "total_people_rating":60,
+        "review_list":[
+            {
+                "int":1,
+                "name":"alicia0810",
+                "profile_picture":"https://randomuser.me/api/portraits/women/35.jpg",
+                "rating":4.2,
+                "title":"A cultural marvel for your kids!",
+                "body":"Culture kindergarten is definitely a fantastic choice for parents who want their children to flourish in an inspiring educational and cultural haven! 🌈✨"
+            },
+            {
+                "int":2,
+                "name":"jjjasonamazing",
+                "profile_picture":"https://randomuser.me/api/portraits/men/90.jpg",
+                "rating":4.8,
+                "title":"Enchanting education at Culture kindergarten.",
+                "body":"Dedicated educators guide our children with passion, fostering curiosity and creativity in a secure and stimulating environment. Our family is delighted to be part of this extraordinary journey."
+            },
+            {
+                "int":3,
+                "name":"mariamari_00",
+                "profile_picture":"https://randomuser.me/api/portraits/women/30.jpg",
+                "rating":4.1,
+                "title":"Culture education really beyond my expectation.",
+                "body":"This dynamic kindergarten in the heart of Malaysia effortlessly weaves together play-based magic and a rich celebration of Malaysia's diverse culture."
+            }
+        ],
         "photo":"assets/images/kindergarten_background.png",
         "more_photos":[
             {
+                "id":1,
                 "type":"playground",
                 "address":"assets/images/playground/playground_1.png",
                 "description":"Playground in Culture kindergarten."
             },
             {
+                "id":2,
                 "type":"playground",
                 "address":"assets/images/playground/playground_2.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":3,
                 "type":"playground",
                 "address":"assets/images/playground/playground_3.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":4,
                 "type":"playground",
                 "address":"assets/images/playground/playground_4.png",
                 "description":"Children playing at the playground."
             },
             {
+                "id":5,
                 "type":"playground",
                 "address":"assets/images/playground/playground_5.png",
                 "description":"Overall look of the kindergarten playground."
             },
             {
+                "id":6,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_1.png",
                 "description":"Student’s haven in Culture Kindergarten 👼❤️"
             },
             {
+                "id":7,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_2.png",
                 "description":"Overall look of the classroom"
             },
             {
+                "id":8,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_3.png",
                 "description":null
@@ -56,32 +90,32 @@
             {
                 "name":"Sophia Harper Turner",
                 "role":"Principle Of Culture",
-                "image":"assets/images/teacher/principle.png"
+                "image":"https://randomuser.me/api/portraits/women/64.jpg"
             },
             {
                 "name":"James",
                 "role":"Teacher",
-                "image":"assets/images/teacher/james.png"
+                "image":"https://randomuser.me/api/portraits/men/56.jpg"
             },
             {
                 "name":"Alice",
                 "role":"Teacher",
-                "image":"assets/images/teacher/alice.png"
+                "image":"https://randomuser.me/api/portraits/women/74.jpg"
             },
             {
                 "name":"Emma",
                 "role":"Teacher",
-                "image":"assets/images/teacher/emma.png"
+                "image":"https://randomuser.me/api/portraits/women/0.jpg"
             },
             {
                 "name":"Ava",
                 "role":"Teacher",
-                "image":"assets/images/teacher/ava.png"
+                "image":"https://randomuser.me/api/portraits/women/76.jpg"
             },
             {
                 "name":"Oliver",
                 "role":"Teacher",
-                "image":"assets/images/teacher/oliver.png"
+                "image":"https://randomuser.me/api/portraits/women/25.jpg"
             }
         ],
         "min_age":3,
@@ -118,7 +152,7 @@
             "2":"2",
             "1":"2"
         },
-        "video_address":null,
+        "video_address":"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
         "is_liked":false
     },
     {
@@ -130,44 +164,78 @@
         "max_student":100,
         "rating":4.7,
         "total_people_rating":50,
-        "photo":"assets/images/kindergarten_background.png",
-        "more_photos":[
+        "review_list":[
             {
+                "int":1,
+                "name":"alicia0810",
+                "profile_picture":"https://randomuser.me/api/portraits/women/35.jpg",
+                "rating":4.2,
+                "title":"A cultural marvel for your kids!",
+                "body":"Culture kindergarten is definitely a fantastic choice for parents who want their children to flourish in an inspiring educational and cultural haven! 🌈✨"
+            },
+            {
+                "int":2,
+                "name":"jjjasonamazing",
+                "profile_picture":"https://randomuser.me/api/portraits/men/90.jpg",
+                "rating":4.8,
+                "title":"Enchanting education at Culture kindergarten.",
+                "body":"Dedicated educators guide our children with passion, fostering curiosity and creativity in a secure and stimulating environment. Our family is delighted to be part of this extraordinary journey."
+            },
+            {
+                "int":3,
+                "name":"mariamari_00",
+                "profile_picture":"https://randomuser.me/api/portraits/women/30.jpg",
+                "rating":4.1,
+                "title":"Culture education really beyond my expectation.",
+                "body":"This dynamic kindergarten in the heart of Malaysia effortlessly weaves together play-based magic and a rich celebration of Malaysia's diverse culture."
+            }
+        ],
+        "photo":"assets/images/kindergarten_background.png",
+         "more_photos":[
+            {
+                "id":1,
                 "type":"playground",
                 "address":"assets/images/playground/playground_1.png",
                 "description":"Playground in Culture kindergarten."
             },
             {
+                "id":2,
                 "type":"playground",
                 "address":"assets/images/playground/playground_2.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":3,
                 "type":"playground",
                 "address":"assets/images/playground/playground_3.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":4,
                 "type":"playground",
                 "address":"assets/images/playground/playground_4.png",
                 "description":"Children playing at the playground."
             },
             {
+                "id":5,
                 "type":"playground",
                 "address":"assets/images/playground/playground_5.png",
                 "description":"Overall look of the kindergarten playground."
             },
             {
+                "id":6,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_1.png",
                 "description":"Student’s haven in Culture Kindergarten 👼❤️"
             },
             {
+                "id":7,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_2.png",
                 "description":"Overall look of the classroom"
             },
             {
+                "id":8,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_3.png",
                 "description":null
@@ -178,32 +246,32 @@
             {
                 "name":"Sophia Harper Turner",
                 "role":"Principle Of Culture",
-                "image":"assets/images/teacher/principle.png"
+                "image":"https://randomuser.me/api/portraits/women/64.jpg"
             },
             {
                 "name":"James",
                 "role":"Teacher",
-                "image":"assets/images/teacher/james.png"
+                "image":"https://randomuser.me/api/portraits/men/56.jpg"
             },
             {
                 "name":"Alice",
                 "role":"Teacher",
-                "image":"assets/images/teacher/alice.png"
+                "image":"https://randomuser.me/api/portraits/women/74.jpg"
             },
             {
                 "name":"Emma",
                 "role":"Teacher",
-                "image":"assets/images/teacher/emma.png"
+                "image":"https://randomuser.me/api/portraits/women/0.jpg"
             },
             {
                 "name":"Ava",
                 "role":"Teacher",
-                "image":"assets/images/teacher/ava.png"
+                "image":"https://randomuser.me/api/portraits/women/76.jpg"
             },
             {
                 "name":"Oliver",
                 "role":"Teacher",
-                "image":"assets/images/teacher/oliver.png"
+                "image":"https://randomuser.me/api/portraits/women/25.jpg"
             }
         ],
         "min_age":3,
@@ -252,44 +320,78 @@
         "max_student":100,
         "rating":4.3,
         "total_people_rating":39,
-        "photo":"assets/images/kindergarten_background.png",
-        "more_photos":[
+        "review_list":[
             {
+                "int":1,
+                "name":"alicia0810",
+                "profile_picture":"https://randomuser.me/api/portraits/women/35.jpg",
+                "rating":4.2,
+                "title":"A cultural marvel for your kids!",
+                "body":"Culture kindergarten is definitely a fantastic choice for parents who want their children to flourish in an inspiring educational and cultural haven! 🌈✨"
+            },
+            {
+                "int":2,
+                "name":"jjjasonamazing",
+                "profile_picture":"https://randomuser.me/api/portraits/men/90.jpg",
+                "rating":4.8,
+                "title":"Enchanting education at Culture kindergarten.",
+                "body":"Dedicated educators guide our children with passion, fostering curiosity and creativity in a secure and stimulating environment. Our family is delighted to be part of this extraordinary journey."
+            },
+            {
+                "int":3,
+                "name":"mariamari_00",
+                "profile_picture":"https://randomuser.me/api/portraits/women/30.jpg",
+                "rating":4.1,
+                "title":"Culture education really beyond my expectation.",
+                "body":"This dynamic kindergarten in the heart of Malaysia effortlessly weaves together play-based magic and a rich celebration of Malaysia's diverse culture."
+            }
+        ],
+        "photo":"assets/images/kindergarten_background.png",
+         "more_photos":[
+            {
+                "id":1,
                 "type":"playground",
                 "address":"assets/images/playground/playground_1.png",
                 "description":"Playground in Culture kindergarten."
             },
             {
+                "id":2,
                 "type":"playground",
                 "address":"assets/images/playground/playground_2.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":3,
                 "type":"playground",
                 "address":"assets/images/playground/playground_3.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":4,
                 "type":"playground",
                 "address":"assets/images/playground/playground_4.png",
                 "description":"Children playing at the playground."
             },
             {
+                "id":5,
                 "type":"playground",
                 "address":"assets/images/playground/playground_5.png",
                 "description":"Overall look of the kindergarten playground."
             },
             {
+                "id":6,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_1.png",
                 "description":"Student’s haven in Culture Kindergarten 👼❤️"
             },
             {
+                "id":7,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_2.png",
                 "description":"Overall look of the classroom"
             },
             {
+                "id":8,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_3.png",
                 "description":null
@@ -300,32 +402,32 @@
             {
                 "name":"Sophia Harper Turner",
                 "role":"Principle Of Culture",
-                "image":"assets/images/teacher/principle.png"
+                "image":"https://randomuser.me/api/portraits/women/64.jpg"
             },
             {
                 "name":"James",
                 "role":"Teacher",
-                "image":"assets/images/teacher/james.png"
+                "image":"https://randomuser.me/api/portraits/men/56.jpg"
             },
             {
                 "name":"Alice",
                 "role":"Teacher",
-                "image":"assets/images/teacher/alice.png"
+                "image":"https://randomuser.me/api/portraits/women/74.jpg"
             },
             {
                 "name":"Emma",
                 "role":"Teacher",
-                "image":"assets/images/teacher/emma.png"
+                "image":"https://randomuser.me/api/portraits/women/0.jpg"
             },
             {
                 "name":"Ava",
                 "role":"Teacher",
-                "image":"assets/images/teacher/ava.png"
+                "image":"https://randomuser.me/api/portraits/women/76.jpg"
             },
             {
                 "name":"Oliver",
                 "role":"Teacher",
-                "image":"assets/images/teacher/oliver.png"
+                "image":"https://randomuser.me/api/portraits/women/25.jpg"
             }
         ],
         "min_age":3,
@@ -374,44 +476,78 @@
         "max_student":100,
         "rating":4.1,
         "total_people_rating":38,
-        "photo":"assets/images/kindergarten_background.png",
-        "more_photos":[
+        "review_list":[
             {
+                "int":1,
+                "name":"alicia0810",
+                "profile_picture":"https://randomuser.me/api/portraits/women/35.jpg",
+                "rating":4.2,
+                "title":"A cultural marvel for your kids!",
+                "body":"Culture kindergarten is definitely a fantastic choice for parents who want their children to flourish in an inspiring educational and cultural haven! 🌈✨"
+            },
+            {
+                "int":2,
+                "name":"jjjasonamazing",
+                "profile_picture":"https://randomuser.me/api/portraits/men/90.jpg",
+                "rating":4.8,
+                "title":"Enchanting education at Culture kindergarten.",
+                "body":"Dedicated educators guide our children with passion, fostering curiosity and creativity in a secure and stimulating environment. Our family is delighted to be part of this extraordinary journey."
+            },
+            {
+                "int":3,
+                "name":"mariamari_00",
+                "profile_picture":"https://randomuser.me/api/portraits/women/30.jpg",
+                "rating":4.1,
+                "title":"Culture education really beyond my expectation.",
+                "body":"This dynamic kindergarten in the heart of Malaysia effortlessly weaves together play-based magic and a rich celebration of Malaysia's diverse culture."
+            }
+        ],
+        "photo":"assets/images/kindergarten_background.png",
+         "more_photos":[
+            {
+                "id":1,
                 "type":"playground",
                 "address":"assets/images/playground/playground_1.png",
                 "description":"Playground in Culture kindergarten."
             },
             {
+                "id":2,
                 "type":"playground",
                 "address":"assets/images/playground/playground_2.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":3,
                 "type":"playground",
                 "address":"assets/images/playground/playground_3.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":4,
                 "type":"playground",
                 "address":"assets/images/playground/playground_4.png",
                 "description":"Children playing at the playground."
             },
             {
+                "id":5,
                 "type":"playground",
                 "address":"assets/images/playground/playground_5.png",
                 "description":"Overall look of the kindergarten playground."
             },
             {
+                "id":6,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_1.png",
                 "description":"Student’s haven in Culture Kindergarten 👼❤️"
             },
             {
+                "id":7,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_2.png",
                 "description":"Overall look of the classroom"
             },
             {
+                "id":8,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_3.png",
                 "description":null
@@ -422,32 +558,32 @@
             {
                 "name":"Sophia Harper Turner",
                 "role":"Principle Of Culture",
-                "image":"assets/images/teacher/principle.png"
+                "image":"https://randomuser.me/api/portraits/women/64.jpg"
             },
             {
                 "name":"James",
                 "role":"Teacher",
-                "image":"assets/images/teacher/james.png"
+                "image":"https://randomuser.me/api/portraits/men/56.jpg"
             },
             {
                 "name":"Alice",
                 "role":"Teacher",
-                "image":"assets/images/teacher/alice.png"
+                "image":"https://randomuser.me/api/portraits/women/74.jpg"
             },
             {
                 "name":"Emma",
                 "role":"Teacher",
-                "image":"assets/images/teacher/emma.png"
+                "image":"https://randomuser.me/api/portraits/women/0.jpg"
             },
             {
                 "name":"Ava",
                 "role":"Teacher",
-                "image":"assets/images/teacher/ava.png"
+                "image":"https://randomuser.me/api/portraits/women/76.jpg"
             },
             {
                 "name":"Oliver",
                 "role":"Teacher",
-                "image":"assets/images/teacher/oliver.png"
+                "image":"https://randomuser.me/api/portraits/women/25.jpg"
             }
         ],
         "min_age":3,
@@ -496,44 +632,78 @@
         "max_student":100,
         "rating":4.0,
         "total_people_rating":35,
-        "photo":"assets/images/kindergarten_background.png",
-        "more_photos":[
+        "review_list":[
             {
+                "int":1,
+                "name":"alicia0810",
+                "profile_picture":"https://randomuser.me/api/portraits/women/35.jpg",
+                "rating":4.2,
+                "title":"A cultural marvel for your kids!",
+                "body":"Culture kindergarten is definitely a fantastic choice for parents who want their children to flourish in an inspiring educational and cultural haven! 🌈✨"
+            },
+            {
+                "int":2,
+                "name":"jjjasonamazing",
+                "profile_picture":"https://randomuser.me/api/portraits/men/90.jpg",
+                "rating":4.8,
+                "title":"Enchanting education at Culture kindergarten.",
+                "body":"Dedicated educators guide our children with passion, fostering curiosity and creativity in a secure and stimulating environment. Our family is delighted to be part of this extraordinary journey."
+            },
+            {
+                "int":3,
+                "name":"mariamari_00",
+                "profile_picture":"https://randomuser.me/api/portraits/women/30.jpg",
+                "rating":4.1,
+                "title":"Culture education really beyond my expectation.",
+                "body":"This dynamic kindergarten in the heart of Malaysia effortlessly weaves together play-based magic and a rich celebration of Malaysia's diverse culture."
+            }
+        ],
+        "photo":"assets/images/kindergarten_background.png",
+         "more_photos":[
+            {
+                "id":1,
                 "type":"playground",
                 "address":"assets/images/playground/playground_1.png",
                 "description":"Playground in Culture kindergarten."
             },
             {
+                "id":2,
                 "type":"playground",
                 "address":"assets/images/playground/playground_2.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":3,
                 "type":"playground",
                 "address":"assets/images/playground/playground_3.png",
                 "description":"Some equipments at the playground."
             },
             {
+                "id":4,
                 "type":"playground",
                 "address":"assets/images/playground/playground_4.png",
                 "description":"Children playing at the playground."
             },
             {
+                "id":5,
                 "type":"playground",
                 "address":"assets/images/playground/playground_5.png",
                 "description":"Overall look of the kindergarten playground."
             },
             {
+                "id":6,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_1.png",
                 "description":"Student’s haven in Culture Kindergarten 👼❤️"
             },
             {
+                "id":7,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_2.png",
                 "description":"Overall look of the classroom"
             },
             {
+                "id":8,
                 "type":"classroom",
                 "address":"assets/images/classroom/classroom_3.png",
                 "description":null
@@ -544,32 +714,32 @@
             {
                 "name":"Sophia Harper Turner",
                 "role":"Principle Of Culture",
-                "image":"assets/images/teacher/principle.png"
+                "image":"https://randomuser.me/api/portraits/women/64.jpg"
             },
             {
                 "name":"James",
                 "role":"Teacher",
-                "image":"assets/images/teacher/james.png"
+                "image":"https://randomuser.me/api/portraits/men/56.jpg"
             },
             {
                 "name":"Alice",
                 "role":"Teacher",
-                "image":"assets/images/teacher/alice.png"
+                "image":"https://randomuser.me/api/portraits/women/74.jpg"
             },
             {
                 "name":"Emma",
                 "role":"Teacher",
-                "image":"assets/images/teacher/emma.png"
+                "image":"https://randomuser.me/api/portraits/women/0.jpg"
             },
             {
                 "name":"Ava",
                 "role":"Teacher",
-                "image":"assets/images/teacher/ava.png"
+                "image":"https://randomuser.me/api/portraits/women/76.jpg"
             },
             {
                 "name":"Oliver",
                 "role":"Teacher",
-                "image":"assets/images/teacher/oliver.png"
+                "image":"https://randomuser.me/api/portraits/women/25.jpg"
             }
         ],
         "min_age":3,

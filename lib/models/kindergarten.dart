@@ -1,5 +1,9 @@
 import 'dart:convert';
 
+import 'package:kindertown_parent_app/models/photo.dart';
+import 'package:kindertown_parent_app/models/review.dart';
+import 'package:kindertown_parent_app/models/teacher.dart';
+
 List<Kindergarten> listKindergartenFromJson(String json) {
   List data = jsonDecode(json);
   return List<Kindergarten>.from(
@@ -15,11 +19,12 @@ class Kindergarten {
   int totalStudent;
   double rating;
   int totalPeopleRating;
+  List<Review> reviewList;
   String backgroundPhoto;
-  List<Map<String, dynamic>> morePhotos;
+  List<Photo> morePhotos;
   String aboutMe;
   int maxStudent;
-  List<Map<String, dynamic>> teacherList;
+  List<Teacher> teacherList;
   int minAge;
   int maxAge;
   Map<String, dynamic> classList;
@@ -41,6 +46,7 @@ class Kindergarten {
     required this.totalStudent,
     required this.rating,
     required this.totalPeopleRating,
+    required this.reviewList,
     required this.backgroundPhoto,
     required this.morePhotos,
     required this.aboutMe,
@@ -70,11 +76,12 @@ class Kindergarten {
       'total_student': totalStudent,
       'rating': rating,
       'total_people_rating': totalPeopleRating,
+      'review_list': reviewList.map((e) => e.toMap()).toList(),
       'photo': backgroundPhoto,
-      'more_photos': morePhotos,
+      'more_photos': morePhotos.map((e) => e.toMap()).toList(),
       'about_me': aboutMe,
       'max_student': maxStudent,
-      'teacher_list': teacherList,
+      'teacher_list': teacherList.map((e) => e.toMap()).toList(),
       'min_age': minAge,
       'max_age': maxAge,
       'class_list': classList,
@@ -92,6 +99,10 @@ class Kindergarten {
   }
 
   factory Kindergarten.fromMap(Map<String, dynamic> map) {
+    final List reviewList = map['review_list'];
+    final List teacherList = map['teacher_list'];
+    final List morePhotos = map['more_photos'];
+
     return Kindergarten(
       id: map['id'] as int,
       logo: map['photo'] as String,
@@ -100,11 +111,12 @@ class Kindergarten {
       totalStudent: map['total_student'] as int,
       rating: map['rating'] as double,
       totalPeopleRating: map['total_people_rating'] as int,
+      reviewList: reviewList.map((e) => Review.fromMap(e)).toList(),
       backgroundPhoto: map['photo'] as String,
-      morePhotos: map['more_photos'],
+      morePhotos: morePhotos.map((e) => Photo.fromMap(e)).toList(),
       aboutMe: map['about_me'] as String,
       maxStudent: map['max_student'] as int,
-      teacherList: map['teacher_list'],
+      teacherList: teacherList.map((e) => Teacher.fromMap(e)).toList(),
       minAge: map['min_age'] as int,
       maxAge: map['max_age'] as int,
       classList: map['class_list'],

@@ -1,8 +1,12 @@
+import 'package:collection/collection.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
+import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
+import 'package:kindertown_parent_app/models/photo.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/show_photo_page.dart';
 
 List<Map<String, dynamic>> photosList = [
   {
@@ -24,11 +28,37 @@ List<Map<String, dynamic>> photosList = [
 ];
 
 class PhotosRow extends StatelessWidget {
-  const PhotosRow({super.key});
+  final List<Photo> morePhotos;
+  const PhotosRow({super.key, required this.morePhotos});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: photosList
+          .mapIndexed((i, e) => Padding(
+                padding: EdgeInsets.only(
+                    right: isLast(i, photosList.length) ? 0 : width10),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ShowPhotoPage(
+                              morePhotos: morePhotos
+                                  .where((element) =>
+                                      element.type ==
+                                      e['name'].toString().toLowerCase())
+                                  .toList(),
+                              title: e['name']),
+                        ));
+                  },
+                  child: _photoContainer(
+                      photoAddress: e['address'], name: e['name']),
+                ),
+              ))
+          .toList(),
+    );
   }
 }
 
