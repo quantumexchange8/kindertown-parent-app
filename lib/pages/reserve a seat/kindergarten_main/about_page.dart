@@ -6,8 +6,9 @@ import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 
 class AboutPage extends StatelessWidget {
+  final String title;
   final String aboutText;
-  const AboutPage({super.key, required this.aboutText});
+  const AboutPage({super.key, required this.aboutText, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class AboutPage extends StatelessWidget {
       backgroundColor: backgroundColor,
       appBar: primaryAppbar(
           title: Text(
-        'About',
+        title,
         style: textLg.copyWith(fontWeight: FontWeight.w700),
       )),
       body: Padding(

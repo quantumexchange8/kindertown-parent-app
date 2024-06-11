@@ -1,0 +1,22 @@
+[
+    {
+        "id":1,
+        "name":"Halloween Party",
+        "description":"The Kindergarten Halloween Party was an enchanting success, filled with laughter and joy as our little ghosts and goblins celebrated the spooktacular festivities.",
+        "picture_list":[
+            "assets/images/event/event_1.png",
+            "assets/images/event/event_11.png",
+            "assets/images/event/event_12.png"
+        ]
+    },
+    {
+        "id":2,
+        "name":"Earth Day 2022",
+        "description":"Earth Day event was a vibrant celebration of environmental awareness and the importance of caring for our planet. Little eco-warriors eagerly participated in a range of hands-on activities that fostered a deep appreciation for nature. ",
+        "picture_list":[
+            "assets/images/event/event_2.png",
+            "assets/images/event/event_21.png",
+            "assets/images/event/event_22.png"
+        ]
+    }
+]

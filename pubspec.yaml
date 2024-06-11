@@ -76,8 +76,11 @@ flutter:
     - assets/images/kindergarten/
     - assets/images/playground/
     - assets/images/classroom/
+    - assets/images/event/
+    - assets/images/reservation/
     - assets/icons/
     - assets/icons/kindergarten/
+    - assets/icons/class_activities/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

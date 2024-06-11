@@ -6,8 +6,10 @@ import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/about_page.dart';
 
 class AboutKindergartenContainer extends StatelessWidget {
+  final String title;
   final String aboutText;
-  const AboutKindergartenContainer({super.key, required this.aboutText});
+  const AboutKindergartenContainer(
+      {super.key, required this.aboutText, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,8 @@ class AboutKindergartenContainer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AboutPage(aboutText: aboutText),
+                    builder: (context) =>
+                        AboutPage(title: title, aboutText: aboutText),
                   ));
             },
             child: Row(
