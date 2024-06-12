@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:kindertown_parent_app/component/back_button.dart';
 import 'package:kindertown_parent_app/component/message_dialog.dart';
 import 'package:kindertown_parent_app/component/primary_page_background.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/pages/auth/login/underlined_textbutton.dart';
+import 'package:kindertown_parent_app/pages/auth/referral_code_page.dart';
 import 'package:kindertown_parent_app/pages/auth/widgets/title_column.dart';
 import 'package:pinput/pinput.dart';
 
@@ -21,12 +23,16 @@ class VerifyPhoneNumberPage extends StatefulWidget {
 class _VerifyPhoneNumberPageState extends State<VerifyPhoneNumberPage> {
   final TextEditingController _pinController = TextEditingController();
   late Timer otpTimer;
-  int remainingTime = 500;
+  int remainingTime = 300;
 
   @override
   void initState() {
     super.initState();
-    otpTimer = Timer(const Duration(seconds: 1), () {
+    startOtpTimer();
+  }
+
+  void startOtpTimer() {
+    otpTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (remainingTime > 0) {
         setState(() {
           remainingTime--;
@@ -36,12 +42,6 @@ class _VerifyPhoneNumberPageState extends State<VerifyPhoneNumberPage> {
         Navigator.pop(context);
       }
     });
-  }
-
-  String get timerText {
-    int minutes = remainingTime ~/ 60;
-    int seconds = remainingTime % 60;
-    return '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
   }
 
   @override
@@ -60,77 +60,84 @@ class _VerifyPhoneNumberPageState extends State<VerifyPhoneNumberPage> {
             description:
                 'You’ve successfully verified your\nKinderTown account.',
             textButton: 'Alright!'),
-      );
+      ).then((value) {
+        otpTimer.cancel();
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ReferralCodePage(),
+            ));
+      });
     }
 
     void onPressedResend() {
       otpTimer.cancel();
-      remainingTime = 500;
-      otpTimer = Timer(const Duration(seconds: 1), () {
-        if (remainingTime > 0) {
-          setState(() {
-            remainingTime--;
-          });
-        } else {
-          otpTimer.cancel();
-          Navigator.pop(context);
-        }
+      setState(() {
+        remainingTime = 300;
+        startOtpTimer();
       });
     }
 
-    return Scaffold(
-      body: PrimaryPageBackground(
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: BackButton(),
-            ),
-            SizedBox(
-              height: height31,
-            ),
-            TitleColumn(
-                title: 'Verify It\'s you',
-                description:
-                    'To activate your account, please enter\nthe six digit-code we’ve sent to your\nphone number +60${widget.phoneNumber.substring(0, 2)}-xxx ${widget.phoneNumber.substring(widget.phoneNumber.length - 5, widget.phoneNumber.length)}'),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Pinput(
-                    defaultPinTheme: defaultPinTheme,
-                    focusedPinTheme: focusedPinTheme,
-                    submittedPinTheme: defaultPinTheme,
-                    controller: _pinController,
-                    length: 6,
-                    separatorBuilder: (index) {
-                      return SizedBox(
-                        width: width10 * 1.8,
-                      );
-                    },
-                    onCompleted: onCompleted,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: PrimaryPageBackground(
+          child: SafeArea(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: height30 * 2,
+                ),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: PrimaryBackButton(),
+                ),
+                TitleColumn(
+                    title: 'Verify It\'s you',
+                    description:
+                        'To activate your account, please enter\nthe six digit-code we’ve sent to your\nphone number +60${widget.phoneNumber.substring(0, 2)}-xxx ${widget.phoneNumber.substring(widget.phoneNumber.length - 5, widget.phoneNumber.length)}'),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Pinput(
+                        defaultPinTheme: defaultPinTheme,
+                        focusedPinTheme: focusedPinTheme,
+                        submittedPinTheme: defaultPinTheme,
+                        controller: _pinController,
+                        length: 6,
+                        autofocus: true,
+                        separatorBuilder: (index) {
+                          return SizedBox(
+                            width: width10 * 1.8,
+                          );
+                        },
+                        onCompleted: onCompleted,
+                      ),
+                      SizedBox(
+                        height: height10 * 5.2,
+                      ),
+                      _otpTimerText(remainingTime),
+                    ],
                   ),
-                  SizedBox(
-                    height: height10 * 5.2,
+                ),
+                Text(
+                  'Didn’t receive the code?',
+                  style: textMd.copyWith(
+                    fontWeight: FontWeight.w500,
                   ),
-                  _otpTimerText(remainingTime),
-                ],
-              ),
+                ),
+                UnderlinedTextButton(
+                    onPressed: onPressedResend,
+                    textColor: yellowPrimary,
+                    text: 'Resend'),
+                SizedBox(
+                  height: height100 * 1.33,
+                )
+              ],
             ),
-            Text(
-              'Didn’t receive the code?',
-              style: textMd.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            UnderlinedTextButton(
-                onPressed: onPressedResend,
-                textColor: yellowPrimary,
-                text: 'Resend'),
-            SizedBox(
-              height: height100 * 1.33,
-            )
-          ],
+          ),
         ),
       ),
     );
@@ -172,6 +179,7 @@ final defaultPinTheme = PinTheme(
     fontWeight: FontWeight.w700,
   ),
   decoration: BoxDecoration(
+    color: backgroundColor,
     boxShadow: const [
       BoxShadow(
         color: Color(0x3F000000),

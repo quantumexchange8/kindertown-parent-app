@@ -6,6 +6,7 @@ import 'package:kindertown_parent_app/component/textlabel_with_textfield_column.
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/helper/validator.dart';
+import 'package:kindertown_parent_app/pages/auth/verify_phone_number_page.dart';
 import 'package:kindertown_parent_app/pages/auth/widgets/title_column.dart';
 
 class CreateAccountPage extends StatefulWidget {
@@ -43,57 +44,90 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         );
         return;
       }
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                VerifyPhoneNumberPage(phoneNumber: _phoneController.text),
+          ));
     }
 
-    return Scaffold(
-      body: PrimaryPageBackground(
-        child: Column(
-          children: [
-            const Align(
-              alignment: Alignment.centerLeft,
-              child: BackButton(),
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        extendBody: true,
+        body: SingleChildScrollView(
+          clipBehavior: Clip.none,
+          padding: EdgeInsets.zero,
+          child: PrimaryPageBackground(
+            padding: EdgeInsets.symmetric(
+              horizontal: width24 / 2,
             ),
-            SizedBox(
-              height: height31,
-            ),
-            const TitleColumn(
-                title: 'Create Account',
-                description:
-                    'To continue, please create a KinderTown account.'),
-            SizedBox(
-              height: height10 * 7.2,
-            ),
-            TextlabelWithTextfieldColumn(
-              focusNode: _usernameFocus,
-              textLabel: 'Username:',
-              controller: _usernameController,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: height20 * 2),
-              child: TextlabelWithTextfieldColumn(
-                focusNode: _emailFocus,
-                keyboardType: TextInputType.emailAddress,
-                textLabel: 'Email address:',
-                controller: _emailController,
+            child: SafeArea(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: height30,
+                  ),
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: BackButton(),
+                  ),
+                  SizedBox(
+                    height: height31,
+                  ),
+                  const TitleColumn(
+                      title: 'Create Account',
+                      description:
+                          'To continue, please create a KinderTown account.'),
+                  SizedBox(
+                    height: height10 * 7.2,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width24),
+                    child: Column(
+                      children: [
+                        TextlabelWithTextfieldColumn(
+                          focusNode: _usernameFocus,
+                          textLabel: 'Username:',
+                          controller: _usernameController,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: height20 * 2),
+                          child: TextlabelWithTextfieldColumn(
+                            focusNode: _emailFocus,
+                            keyboardType: TextInputType.emailAddress,
+                            textLabel: 'Email address:',
+                            controller: _emailController,
+                          ),
+                        ),
+                        TextlabelWithTextfieldColumn(
+                          focusNode: _phoneFocus,
+                          keyboardType: TextInputType.number,
+                          prefixText: '+60',
+                          prefixStyle: textMd.copyWith(
+                              fontSize: height10 * 1.8,
+                              fontWeight: FontWeight.w800),
+                          textLabel: 'Phone number:',
+                          controller: _phoneController,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: height10 * 7,
+                  ),
+                  PrimaryTextButton(
+                      width: width100 * 2.87,
+                      isDisabled: !isValid,
+                      onPressed: onPressedContinue,
+                      buttonText: 'Continue')
+                ],
               ),
             ),
-            TextlabelWithTextfieldColumn(
-              focusNode: _phoneFocus,
-              keyboardType: TextInputType.number,
-              prefixText: '+60',
-              prefixStyle: textMd.copyWith(
-                  fontSize: height10 * 1.8, fontWeight: FontWeight.w800),
-              textLabel: 'Phone number:',
-              controller: _phoneController,
-            ),
-            SizedBox(
-              height: height10 * 7,
-            ),
-            PrimaryTextButton(
-                isDisabled: !isValid,
-                onPressed: onPressedContinue,
-                buttonText: 'Continue')
-          ],
+          ),
         ),
       ),
     );

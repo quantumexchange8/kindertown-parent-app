@@ -18,6 +18,7 @@ class KindergartenController extends GetxController {
       kindergartenList.value = listKindergartenFromJson(response);
       return true;
     } catch (e) {
+      print(e);
       return false;
     }
   }

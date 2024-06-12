@@ -19,9 +19,9 @@ class PrimaryContainer extends StatelessWidget {
         child: DottedBorder(
             padding: padding,
             borderType: BorderType.RRect,
-            strokeWidth: 2,
+            strokeWidth: 3,
             color: redPrimary,
-            dashPattern: const [2, 2],
+            dashPattern: const [6, 6],
             radius: const Radius.circular(20),
             child: child));
   }

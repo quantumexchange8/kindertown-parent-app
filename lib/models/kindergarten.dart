@@ -102,10 +102,13 @@ class Kindergarten {
     final List reviewList = map['review_list'];
     final List teacherList = map['teacher_list'];
     final List morePhotos = map['more_photos'];
+    final List activities = map['activities'];
+    final List serviceList = map['service_list'];
+    final num feePerMonth = map['fee_per_month'];
 
     return Kindergarten(
       id: map['id'] as int,
-      logo: map['photo'] as String,
+      logo: map['logo'] as String,
       name: map['name'] as String,
       location: map['location'] as String,
       totalStudent: map['total_student'] as int,
@@ -122,9 +125,9 @@ class Kindergarten {
       classList: map['class_list'],
       phoneNumber: map['phone_number'] as String,
       operationHour: map['operation_hour'],
-      activities: map['activities'],
-      serviceList: map['service_list'],
-      feePerMonth: map['fee_per_month'],
+      activities: activities.map((e) => e as String).toList(),
+      serviceList: serviceList.map((e) => e as String).toList(),
+      feePerMonth: feePerMonth.toDouble(),
       address: map['address'] as String,
       email: map['email'] as String,
       ratingPerPeopleRate: map['rating_per_people_rate'],

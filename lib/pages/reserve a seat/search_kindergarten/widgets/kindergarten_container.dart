@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
-import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/kindergarten.dart';
 
@@ -28,6 +27,7 @@ class KindergartenContainer extends StatelessWidget {
           ),
           Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 kindergarten.name,
@@ -36,8 +36,7 @@ class KindergartenContainer extends StatelessWidget {
               SizedBox(
                 height: height10,
               ),
-              _locationRow(
-                  getTownStates(kindergarten.address) ?? kindergarten.address),
+              _locationRow(kindergarten.location),
               SizedBox(
                 height: height10,
               ),
@@ -113,7 +112,7 @@ Row _ratedStarRow({required double rating, required int totalPeople}) {
   for (var i = 1; i <= 5; i++) {
     children.add(Padding(
       padding: EdgeInsets.only(right: width08 / 2),
-      child: _starIcon(rate == i),
+      child: _starIcon(i <= rate),
     ));
   }
 

@@ -60,6 +60,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      navigatorObservers: [ClearFocusOnPop()],
       home: FutureBuilder(
           future: isFirstTime(),
           builder: (context, snap) {
@@ -80,5 +81,16 @@ class MyApp extends StatelessWidget {
             }
           }),
     );
+  }
+}
+
+class ClearFocusOnPop extends NavigatorObserver {
+  @override
+  void didPop(Route route, Route? previousRoute) {
+    super.didPop(route, previousRoute);
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(Duration.zero);
+      SystemChannels.textInput.invokeMethod('TextInput.hide');
+    });
   }
 }

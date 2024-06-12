@@ -18,11 +18,11 @@ class UnderlinedTextButton extends StatelessWidget {
         text,
         textAlign: TextAlign.center,
         style: textMd.copyWith(
-          color: textColor ?? purplePrimary,
-          fontSize: height10 * 1.7,
-          fontWeight: FontWeight.w500,
-          decoration: TextDecoration.underline,
-        ),
+            color: textColor ?? purplePrimary,
+            fontSize: height10 * 1.7,
+            fontWeight: FontWeight.w500,
+            decoration: TextDecoration.underline,
+            decorationColor: textColor ?? purplePrimary),
       ),
     );
   }

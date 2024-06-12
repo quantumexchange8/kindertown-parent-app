@@ -14,6 +14,9 @@ class PrimaryTextfield extends StatelessWidget {
   final TextStyle? prefixStyle;
   final String? errorText;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final bool readOnly;
+  final bool obscureText;
   const PrimaryTextfield(
       {super.key,
       this.hintText,
@@ -24,7 +27,10 @@ class PrimaryTextfield extends StatelessWidget {
       this.errorText,
       this.prefixIcon,
       this.hintStyle,
-      required this.focusNode});
+      required this.focusNode,
+      this.suffixIcon,
+      this.readOnly = false,
+      this.obscureText = false});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +38,6 @@ class PrimaryTextfield extends StatelessWidget {
     bool isFocus = focusNode.hasFocus;
 
     return Container(
-      width: double.infinity,
-      height: height10 * 4.5,
       padding: const EdgeInsets.all(1),
       decoration: ShapeDecoration(
           color: Colors.white,
@@ -43,10 +47,10 @@ class PrimaryTextfield extends StatelessWidget {
           shadows: [
             if (isFocus)
               const BoxShadow(
-                  color: orangePrimary, blurRadius: 20, spreadRadius: 20)
+                  color: orangePrimary, blurRadius: 5, spreadRadius: 1)
           ]),
       child: Container(
-        padding: const EdgeInsets.all(1),
+        padding: const EdgeInsets.all(4),
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
             side: BorderSide(
@@ -55,8 +59,8 @@ class PrimaryTextfield extends StatelessWidget {
           ),
         ),
         child: DottedBorder(
-          padding: EdgeInsets.symmetric(
-              horizontal: width08 * 2, vertical: height08 / 2),
+          padding:
+              EdgeInsets.symmetric(horizontal: width20, vertical: height08),
           color: gotError
               ? redPrimary
               : isFocus
@@ -64,8 +68,12 @@ class PrimaryTextfield extends StatelessWidget {
                   : yellowPrimary,
           strokeWidth: 3,
           borderType: BorderType.RRect,
-          dashPattern: const [2, 2],
+          dashPattern: const [5, 5],
+          radius: const Radius.circular(25),
           child: TextField(
+            obscureText: obscureText,
+            readOnly: readOnly,
+            obscuringCharacter: '●',
             focusNode: focusNode,
             keyboardType: keyboardType,
             cursorColor: purplePrimary,
@@ -73,6 +81,9 @@ class PrimaryTextfield extends StatelessWidget {
             style: textLg.copyWith(
                 fontSize: height10 * 1.8, fontWeight: FontWeight.w500),
             decoration: InputDecoration(
+                contentPadding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+                isDense: true,
                 hintText: hintText,
                 hintStyle: hintStyle,
                 border: InputBorder.none,
@@ -82,8 +93,11 @@ class PrimaryTextfield extends StatelessWidget {
                 disabledBorder: InputBorder.none,
                 focusedErrorBorder: InputBorder.none,
                 prefixText: prefixText,
+                prefixIconConstraints: const BoxConstraints(),
                 prefixStyle: prefixStyle,
-                prefixIcon: prefixIcon),
+                prefixIcon: prefixIcon,
+                suffixIcon: suffixIcon,
+                suffixIconConstraints: const BoxConstraints()),
           ),
         ),
       ),

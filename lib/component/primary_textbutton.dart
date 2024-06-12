@@ -19,7 +19,7 @@ class PrimaryTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilledButton(
-      onPressed: onPressed,
+      onPressed: isDisabled ? null : onPressed,
       style: ButtonStyle(
           overlayColor: MaterialStatePropertyAll(
               isDisabled ? Colors.transparent : yellowSecondary),
@@ -55,6 +55,7 @@ class PrimaryTextButton extends StatelessWidget {
             color: isDisabled ? const Color(0xFFCFCFCF) : orangePrimary,
             dashPattern: const [2, 2],
             strokeWidth: 4,
+            radius: const Radius.circular(25),
             child: Center(
               child: Text(
                 buttonText,

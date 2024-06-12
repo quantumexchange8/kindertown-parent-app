@@ -5,7 +5,7 @@ class Photo {
   int id;
   String type;
   String address;
-  String description;
+  String? description;
   Photo({
     required this.id,
     required this.type,
@@ -27,7 +27,8 @@ class Photo {
       id: map['id'] as int,
       type: map['type'] as String,
       address: map['address'] as String,
-      description: map['description'] as String,
+      description:
+          map['description'] == null ? null : map['description'] as String,
     );
   }
 

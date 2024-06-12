@@ -17,7 +17,7 @@ class StepContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: width24),
+      padding: const EdgeInsets.all(3),
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -36,37 +36,51 @@ class StepContainer extends StatelessWidget {
         borderType: BorderType.RRect,
         color: redPrimary,
         strokeWidth: 3,
-        dashPattern: const [1, 1],
+        dashPattern: const [4, 4],
         radius: const Radius.circular(21),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             isTextLeft
-                ? Text(
-                    text,
-                    textAlign: TextAlign.left,
-                    style: textLg.copyWith(
-                      fontWeight: FontWeight.w900,
+                ? Padding(
+                    padding: EdgeInsets.only(left: width30),
+                    child: SizedBox(
+                      width: width100 * 1.3,
+                      child: Text(
+                        text,
+                        textAlign: TextAlign.left,
+                        style: textLg.copyWith(
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
                     ),
                   )
                 : Image.asset(
                     imageAddress,
                     height: height100 * 1.28,
-                    fit: BoxFit.fitHeight,
+                    fit: BoxFit.cover,
                   ),
-            SizedBox(
-              width: width30,
-            ),
             isTextLeft
-                ? Image.asset(
-                    imageAddress,
-                    height: height100 * 1.28,
-                    fit: BoxFit.fitHeight,
+                ? Padding(
+                    padding: EdgeInsets.only(right: width30),
+                    child: Image.asset(
+                      imageAddress,
+                      width: width100 * 1.4,
+                      height: height100 * 1.28,
+                      fit: BoxFit.cover,
+                    ),
                   )
-                : Text(
-                    text,
-                    textAlign: TextAlign.right,
-                    style: textLg.copyWith(
-                      fontWeight: FontWeight.w900,
+                : Padding(
+                    padding: EdgeInsets.only(right: width30),
+                    child: SizedBox(
+                      width: width100 * 1.4,
+                      child: Text(
+                        text,
+                        textAlign: TextAlign.right,
+                        style: textLg.copyWith(
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
                     ),
                   )
           ],

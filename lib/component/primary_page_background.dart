@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kindertown_parent_app/helper/dimensions.dart';
 
 class PrimaryPageBackground extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
@@ -13,12 +14,14 @@ class PrimaryPageBackground extends StatelessWidget {
       this.backgroundColor,
       this.border,
       this.borderRadius,
-      this.fit,
+      this.fit = BoxFit.cover,
       this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: screenWidth,
+      height: screenHeight,
       padding: padding,
       decoration: BoxDecoration(
           color: backgroundColor,

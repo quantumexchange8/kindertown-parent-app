@@ -144,7 +144,7 @@ Row _titleRow({
 
 Column _picColumn({
   required String imageAddress,
-  required String description,
+  required String? description,
 }) {
   return Column(
     children: [
@@ -171,14 +171,15 @@ Column _picColumn({
       SizedBox(
         height: height08 * 2,
       ),
-      Text(
-        description,
-        textAlign: TextAlign.center,
-        style: textMd.copyWith(
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-        ),
-      )
+      if (description != null)
+        Text(
+          description,
+          textAlign: TextAlign.center,
+          style: textMd.copyWith(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
+        )
     ],
   );
 }

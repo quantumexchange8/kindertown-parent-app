@@ -16,16 +16,17 @@ class PrimaryDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(46)),
       insetPadding: EdgeInsets.symmetric(horizontal: width10 * 5.4),
       child: Container(
-        height: height100 * 3.22,
+        padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(46),
             border: Border.all(color: const Color(0xFFD62829))),
         child: DottedBorder(
           padding: padding,
+          radius: const Radius.circular(46),
           borderType: BorderType.RRect,
           color: orangePrimary,
-          strokeWidth: 2,
-          dashPattern: const [2, 2],
+          strokeWidth: 3,
+          dashPattern: const [5, 5],
           child: child,
         ),
       ),
