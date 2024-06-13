@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/models/event.dart';
 import 'package:kindertown_parent_app/models/kindergarten.dart';
@@ -53,9 +54,9 @@ class _KindergartenPageState extends State<KindergartenPage> {
             width: screenWidth,
             fit: BoxFit.cover,
           ),
-          SafeArea(
-            child: Positioned(
-              top: height100 * 1.67,
+          Positioned(
+            top: height100 * 1.67,
+            child: SafeArea(
               child: HeaderRow(
                   kindergartenName: kindergarten.name,
                   kindergartenLocation: kindergarten.location,
@@ -64,28 +65,32 @@ class _KindergartenPageState extends State<KindergartenPage> {
                   isLiked: kindergarten.isLiked),
             ),
           ),
-          SafeArea(
-            child: Positioned(
-                top: height100 * 3,
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: width24, vertical: height15),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50)),
-                  ),
-                  child: Column(
-                    children: [
-                      TabRow(
-                          onTabTap: onTabTap,
-                          tabList: _tabList,
-                          activeIndex: activeTabIndex),
-                      tabWidgets[activeTabIndex]
-                    ],
-                  ),
-                )),
+          Positioned(
+            top: height100 * 3,
+            child: SafeArea(
+              bottom: false,
+              child: Container(
+                height: height100 * 6,
+                width: screenWidth,
+                // padding: EdgeInsets.symmetric(
+                //     horizontal: width24, vertical: height15),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50)),
+                ),
+                child: Column(
+                  children: [
+                    TabRow(
+                        onTabTap: onTabTap,
+                        tabList: _tabList,
+                        activeIndex: activeTabIndex),
+                    Flexible(child: tabWidgets[activeTabIndex])
+                  ],
+                ),
+              ),
+            ),
           )
         ],
       ),

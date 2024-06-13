@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
@@ -17,6 +18,8 @@ class PrimaryTextfield extends StatelessWidget {
   final Widget? suffixIcon;
   final bool readOnly;
   final bool obscureText;
+  final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
   const PrimaryTextfield(
       {super.key,
       this.hintText,
@@ -30,7 +33,9 @@ class PrimaryTextfield extends StatelessWidget {
       required this.focusNode,
       this.suffixIcon,
       this.readOnly = false,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.maxLength,
+      this.inputFormatters});
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +76,7 @@ class PrimaryTextfield extends StatelessWidget {
           dashPattern: const [5, 5],
           radius: const Radius.circular(25),
           child: TextField(
+            maxLength: maxLength,
             obscureText: obscureText,
             readOnly: readOnly,
             obscuringCharacter: '●',
@@ -80,6 +86,7 @@ class PrimaryTextfield extends StatelessWidget {
             controller: controller,
             style: textLg.copyWith(
                 fontSize: height10 * 1.8, fontWeight: FontWeight.w500),
+            inputFormatters: inputFormatters,
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),

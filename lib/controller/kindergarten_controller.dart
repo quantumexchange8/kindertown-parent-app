@@ -29,6 +29,7 @@ class KindergartenController extends GetxController {
           await rootBundle.loadString('assets/dummy_data/programme_list.json');
       return listProgrammeFromJson(response);
     } catch (e) {
+      print(e);
       return null;
     }
   }
@@ -39,6 +40,7 @@ class KindergartenController extends GetxController {
           await rootBundle.loadString('assets/dummy_data/event_list.json');
       return listEventFromJson(response);
     } catch (e) {
+      print(e);
       return null;
     }
   }

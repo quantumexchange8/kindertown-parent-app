@@ -23,7 +23,7 @@ class SubtitleContainer extends StatelessWidget {
               decoration: BoxDecoration(
                 image: const DecorationImage(
                     image: AssetImage(
-                        'assets/images/subtitle_background_image.png')),
+                        'assets/images/subtitle_background_container.png')),
                 borderRadius: BorderRadius.circular(100),
                 boxShadow: const [
                   BoxShadow(

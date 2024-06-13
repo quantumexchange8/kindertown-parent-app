@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kindertown_parent_app/component/primary_textfield.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
@@ -18,6 +19,8 @@ class TextlabelWithTextfieldColumn extends StatelessWidget {
   final bool readOnly;
   final bool obscureText;
   final Widget? suffixIcon;
+  final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
   const TextlabelWithTextfieldColumn({
     super.key,
     required this.textLabel,
@@ -33,6 +36,8 @@ class TextlabelWithTextfieldColumn extends StatelessWidget {
     this.readOnly = false,
     this.obscureText = false,
     this.suffixIcon,
+    this.maxLength,
+    this.inputFormatters,
   });
 
   @override
@@ -49,6 +54,8 @@ class TextlabelWithTextfieldColumn extends StatelessWidget {
           height: height24 / 4,
         ),
         PrimaryTextfield(
+          inputFormatters: inputFormatters,
+          maxLength: maxLength,
           obscureText: obscureText,
           readOnly: readOnly,
           suffixIcon: suffixIcon,

@@ -10,7 +10,7 @@ import 'package:kindertown_parent_app/helper/text_styles.dart';
 class PrimaryDropdownTextfield extends StatelessWidget {
   final FocusNode focusNode;
   final List<String> items;
-  final String selectedItem;
+  final String? selectedItem;
   final void Function(String item) onTapItem;
   const PrimaryDropdownTextfield(
       {super.key,
@@ -53,7 +53,7 @@ class PrimaryDropdownTextfield extends StatelessWidget {
 
 Widget _itemsContainer(
     {required List<String> items,
-    required String selectedItem,
+    required String? selectedItem,
     required void Function(String item) onTapItem}) {
   return Stack(
     children: [

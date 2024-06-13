@@ -1,3 +1,5 @@
+import 'dart:io';
+
 bool isLast(int currentIndex, int itemLength) {
   return (itemLength - 1) == currentIndex;
 }
@@ -15,4 +17,20 @@ String? getTownStates(String address) {
   } else {
     return null;
   }
+}
+
+String getBaseName(String filePath) {
+  // Split the path by the directory separator
+  List<String> parts = filePath.split('/');
+
+  // Return the last part of the split path
+  return parts.last;
+}
+
+Future<double> getFileSizeInMB(File file) async {
+  // Get the file size in bytes
+  int fileSizeInBytes = await file.length();
+
+  // Convert the file size to MB
+  return (fileSizeInBytes / (1024 * 1024));
 }

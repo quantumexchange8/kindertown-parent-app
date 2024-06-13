@@ -46,6 +46,9 @@ class Programme {
   }
 
   factory Programme.fromMap(Map<String, dynamic> map) {
+    Map availableBillingMode = map['available_billing_mode'];
+    List classActivities = map['class_activities'];
+
     return Programme(
       id: map['id'] as int,
       name: map['name'] as String,
@@ -55,8 +58,9 @@ class Programme {
       studentCategory: map['student_category'] as String,
       time: map['time'] as String,
       billingStartOn: map['billing_start_on'] as String,
-      availableBillingMode: map['available_billing_mode'],
-      classActivities: map['class_activities'],
+      availableBillingMode: availableBillingMode
+          .map((key, value) => MapEntry(key as String, value as num)),
+      classActivities: classActivities.map((e) => e as String).toList(),
     );
   }
 

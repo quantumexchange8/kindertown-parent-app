@@ -27,33 +27,29 @@ class ProgrammesListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void onTapLink() {}
+    List<Widget> children = [];
 
-    return Column(
-      children: [
-        ListView(
-          padding: EdgeInsets.symmetric(vertical: height30),
-          shrinkWrap: true,
-          children: programmeListConst
-              .map((e) => InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ProgrammePage(
-                                programme: programmeList.firstWhere((element) =>
-                                    element.name.toLowerCase() ==
-                                    e['name'].toLowerCase())),
-                          ));
-                    },
-                    child: _programmeContainer(
-                      iconAddress: e['icon_address'],
-                      title: e['title'],
-                    ),
-                  ))
-              .toList(),
-        ),
-        _moreInformationColumn(onTapLink: onTapLink)
-      ],
+    children.addAll(programmeListConst.map((e) => InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProgrammePage(
+                      programme: programmeList.firstWhere((element) =>
+                          element.name.toLowerCase() ==
+                          e['name'].toLowerCase())),
+                ));
+          },
+          child: _programmeContainer(
+            iconAddress: e['icon_address'],
+            title: e['title'],
+          ),
+        )));
+    children.add(_moreInformationColumn(onTapLink: onTapLink));
+
+    return ListView(
+      padding: EdgeInsets.symmetric(vertical: height30),
+      children: children,
     );
   }
 }

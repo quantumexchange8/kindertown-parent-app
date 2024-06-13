@@ -129,7 +129,7 @@ class EssentialDetailsContainer extends StatelessWidget {
           ),
           SizedBox(height: height24 / 4),
           _detailsContainer(
-            iconAddress: '$iconAddressPath/hand_money.png.png',
+            iconAddress: '$iconAddressPath/hand_money.png',
             details: Text(
               'RM${kindergarten.feePerMonth} /month',
               style: normalTextStyle,

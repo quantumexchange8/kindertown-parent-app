@@ -28,11 +28,13 @@ class Event {
   }
 
   factory Event.fromMap(Map<String, dynamic> map) {
+    List pictureList = map['picture_list'];
+
     return Event(
       id: map['id'] as int,
       name: map['name'] as String,
       description: map['description'] as String,
-      pictureList: map['picture_list'],
+      pictureList: pictureList.map((e) => e as String).toList(),
     );
   }
 

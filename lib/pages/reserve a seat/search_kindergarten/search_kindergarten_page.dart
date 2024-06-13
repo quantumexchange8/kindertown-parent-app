@@ -7,6 +7,7 @@ import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/kindergarten.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/kindergarten_page.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/search_kindergarten/widgets/kindergarten_container.dart';
 
 class SearchKindergartenPage extends StatefulWidget {
@@ -23,6 +24,27 @@ class _SearchKindergartenPageState extends State<SearchKindergartenPage> {
 
   @override
   Widget build(BuildContext context) {
+    void onTapSchool(Kindergarten school) async {
+      await kindergartenController
+          .getProgrammeList()
+          .then((programmeList) async {
+        if (programmeList != null) {
+          await kindergartenController.getEventList().then((eventList) {
+            if (eventList != null) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => KindergartenPage(
+                        kindergarten: school,
+                        programmeList: programmeList,
+                        eventList: eventList),
+                  ));
+            }
+          });
+        }
+      });
+    }
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -94,7 +116,12 @@ class _SearchKindergartenPageState extends State<SearchKindergartenPage> {
                           bottom: isLast(index, currentKindergartenList.length)
                               ? 0
                               : height20),
-                      child: KindergartenContainer(kindergarten: kindergarten),
+                      child: InkWell(
+                          onTap: () {
+                            onTapSchool(kindergarten);
+                          },
+                          child: KindergartenContainer(
+                              kindergarten: kindergarten)),
                     );
                   },
                 );
