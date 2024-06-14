@@ -46,48 +46,60 @@ class _KindergartenPageState extends State<KindergartenPage> {
     }
 
     return Scaffold(
+      extendBody: true,
       body: Stack(
+        fit: StackFit.expand,
         children: [
-          Image.asset(
-            kindergarten.backgroundPhoto,
-            height: height100 * 4.3,
-            width: screenWidth,
-            fit: BoxFit.cover,
+          Column(
+            children: [
+              Image.asset(
+                kindergarten.backgroundPhoto,
+                height: height100 * 4.3,
+                width: screenWidth,
+                fit: BoxFit.cover,
+              ),
+            ],
           ),
           Positioned(
             top: height100 * 1.67,
             child: SafeArea(
-              child: HeaderRow(
-                  kindergartenName: kindergarten.name,
-                  kindergartenLocation: kindergarten.location,
-                  totalStudent: kindergarten.totalStudent,
-                  maxStudent: kindergarten.maxStudent,
-                  isLiked: kindergarten.isLiked),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: width30),
+                child: HeaderRow(
+                    kindergartenName: kindergarten.name,
+                    kindergartenLocation: kindergarten.location,
+                    totalStudent: kindergarten.totalStudent,
+                    maxStudent: kindergarten.maxStudent,
+                    isLiked: kindergarten.isLiked),
+              ),
             ),
           ),
-          Positioned(
-            top: height100 * 3,
+          SingleChildScrollView(
             child: SafeArea(
               bottom: false,
-              child: Container(
-                height: height100 * 6,
-                width: screenWidth,
-                // padding: EdgeInsets.symmetric(
-                //     horizontal: width24, vertical: height15),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50)),
-                ),
-                child: Column(
-                  children: [
-                    TabRow(
-                        onTabTap: onTabTap,
-                        tabList: _tabList,
-                        activeIndex: activeTabIndex),
-                    Flexible(child: tabWidgets[activeTabIndex])
-                  ],
+              child: Padding(
+                padding: EdgeInsets.only(top: height100 * 3),
+                child: Container(
+                  width: screenWidth,
+                  padding: EdgeInsets.symmetric(vertical: height15),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50),
+                        topRight: Radius.circular(50)),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: width24),
+                        child: TabRow(
+                            onTabTap: onTabTap,
+                            tabList: _tabList,
+                            activeIndex: activeTabIndex),
+                      ),
+                      tabWidgets[activeTabIndex]
+                    ],
+                  ),
                 ),
               ),
             ),

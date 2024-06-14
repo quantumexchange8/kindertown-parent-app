@@ -20,8 +20,8 @@ class PeopleEyeingContainer extends StatelessWidget {
         shadows: const [
           BoxShadow(
             color: Color(0xFFDE9FEA),
-            blurRadius: 20,
-            spreadRadius: 10,
+            blurRadius: 5,
+            spreadRadius: 5,
           )
         ],
         shape: RoundedRectangleBorder(
@@ -29,6 +29,8 @@ class PeopleEyeingContainer extends StatelessWidget {
         ),
       ),
       child: DottedBorder(
+        borderType: BorderType.RRect,
+        radius: const Radius.circular(20),
         color: Colors.white,
         padding: EdgeInsets.symmetric(vertical: height24 / 4),
         strokeWidth: 2,

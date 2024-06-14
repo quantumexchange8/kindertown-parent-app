@@ -48,6 +48,8 @@ class ProgrammesListview extends StatelessWidget {
     children.add(_moreInformationColumn(onTapLink: onTapLink));
 
     return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(vertical: height30),
       children: children,
     );

@@ -23,21 +23,36 @@ class TheTeamContainer extends StatelessWidget {
         .toList();
 
     return PrimaryContainer(
-      padding:
-          EdgeInsets.fromLTRB(width10 * 2.7, height10 * 2.6, 0, height10 * 2.6),
+      padding: EdgeInsets.symmetric(
+        vertical: height10 * 2.6,
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _principleRow(teacher: principle),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: remainingTeacher
-                .mapIndexed((i, e) => Padding(
-                      padding: EdgeInsets.only(
-                          right:
-                              isLast(i, remainingTeacher.length) ? 0 : width20),
-                      child: _teacherColumn(teacher: e),
-                    ))
-                .toList(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width24),
+            child: _principleRow(teacher: principle),
+          ),
+          SizedBox(
+            height: height30,
+          ),
+          SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: width24),
+            physics: const AlwaysScrollableScrollPhysics(
+                parent: BouncingScrollPhysics()),
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: remainingTeacher
+                  .mapIndexed((i, e) => Padding(
+                        padding: EdgeInsets.only(
+                            right: isLast(i, remainingTeacher.length)
+                                ? 0
+                                : width20),
+                        child: _teacherColumn(teacher: e),
+                      ))
+                  .toList(),
+            ),
           ),
         ],
       ),
@@ -54,7 +69,7 @@ Row _principleRow({
       Container(
         width: height100 * 1.2,
         height: height100 * 1.2,
-        padding: EdgeInsets.all(height08),
+        padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             border: Border.all(color: Colors.white),
@@ -64,26 +79,30 @@ Row _principleRow({
           borderType: BorderType.Circle,
           color: yellowPrimary,
           strokeWidth: 3,
-          dashPattern: const [2, 2],
+          dashPattern: const [5, 5],
           child: Container(),
         ),
       ),
       SizedBox(width: width24 - width10),
-      Column(
-        children: [
-          Text(
-            teacher.name,
-            style: textLg.copyWith(
-              fontWeight: FontWeight.w700,
+      Expanded(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              teacher.name,
+              style: textLg.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-          Text(
-            teacher.role,
-            style: textSm.copyWith(
-              fontWeight: FontWeight.w500,
+            Text(
+              teacher.role,
+              style: textSm.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ],
   );
@@ -97,6 +116,7 @@ Column _teacherColumn({required Teacher teacher}) {
         width: height30 * 2,
         height: height30 * 2,
         decoration: BoxDecoration(
+          shape: BoxShape.circle,
           image: DecorationImage(
             image: NetworkImage(teacher.profilePicture),
             fit: BoxFit.cover,

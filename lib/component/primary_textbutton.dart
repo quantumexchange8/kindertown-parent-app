@@ -9,12 +9,16 @@ class PrimaryTextButton extends StatelessWidget {
   final double? width;
   final String buttonText;
   final bool isDisabled;
+  final Color? dotColor;
+  final Color? backgroundColor;
   const PrimaryTextButton(
       {super.key,
       this.isDisabled = false,
       required this.buttonText,
       this.width,
-      this.onPressed});
+      this.backgroundColor,
+      this.onPressed,
+      this.dotColor});
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +31,9 @@ class PrimaryTextButton extends StatelessWidget {
           fixedSize: MaterialStatePropertyAll(
               Size(width ?? width100 * 1.3, height10 * 4.5)),
           padding: const MaterialStatePropertyAll(EdgeInsets.all(1)),
-          backgroundColor: MaterialStatePropertyAll(
-              isDisabled ? const Color(0xFFE0E0E0) : yellowPrimary),
+          backgroundColor: MaterialStatePropertyAll(isDisabled
+              ? const Color(0xFFE0E0E0)
+              : backgroundColor ?? yellowPrimary),
           shape: MaterialStatePropertyAll(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25),
@@ -45,14 +50,18 @@ class PrimaryTextButton extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(1),
           decoration: ShapeDecoration(
-            color: isDisabled ? const Color(0xFFE0E0E0) : yellowPrimary,
+            color: isDisabled
+                ? const Color(0xFFE0E0E0)
+                : backgroundColor ?? yellowPrimary,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25),
             ),
           ),
           child: DottedBorder(
             borderType: BorderType.RRect,
-            color: isDisabled ? const Color(0xFFCFCFCF) : orangePrimary,
+            color: isDisabled
+                ? const Color(0xFFCFCFCF)
+                : dotColor ?? orangePrimary,
             dashPattern: const [2, 2],
             strokeWidth: 4,
             radius: const Radius.circular(25),

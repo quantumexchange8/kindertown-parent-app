@@ -87,6 +87,7 @@ Container _photoContainer({
         ),
       ),
       child: Container(
+        padding: const EdgeInsets.all(2),
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
             side: const BorderSide(width: 1, color: Colors.white),
@@ -94,16 +95,20 @@ Container _photoContainer({
           ),
         ),
         child: DottedBorder(
+          borderType: BorderType.RRect,
+          radius: const Radius.circular(20),
           color: yellowPrimary,
-          strokeWidth: 2,
-          dashPattern: const [2, 2],
-          child: Text(
-            name,
-            textAlign: TextAlign.center,
-            style: textSm.copyWith(
-              color: Colors.white,
-              fontSize: height10 * 1.3,
-              fontWeight: FontWeight.w700,
+          strokeWidth: 3,
+          dashPattern: const [5, 5],
+          child: Center(
+            child: Text(
+              name,
+              textAlign: TextAlign.center,
+              style: textSm.copyWith(
+                color: Colors.white,
+                fontSize: height10 * 1.3,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         ),

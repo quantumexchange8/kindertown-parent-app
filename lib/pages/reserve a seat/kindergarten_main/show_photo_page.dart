@@ -25,19 +25,31 @@ class _ShowPhotoPageState extends State<ShowPhotoPage> {
   @override
   Widget build(BuildContext context) {
     bool isFirst = currentIndex == 0;
-    bool isLast = currentIndex == widget.morePhotos.length - 1;
-    bool isFirstOrLast = isFirst || isLast;
+    bool isLast = widget.morePhotos.length > 1
+        ? currentIndex == widget.morePhotos.length - 1
+        : currentIndex == 0;
 
-    final threePhotoPreview = [
-      widget.morePhotos[isFirst ? 0 : currentIndex - 1],
-      widget.morePhotos[isFirst
-          ? currentIndex + 1
-          : isLast
-              ? currentIndex - 1
-              : currentIndex],
-      widget
-          .morePhotos[isLast ? widget.morePhotos.length - 1 : currentIndex + 1],
-    ];
+    print(currentIndex);
+
+    final threePhotoPreview = widget.morePhotos.length < 3
+        ? widget.morePhotos
+        : [
+            widget.morePhotos[isFirst
+                ? 0
+                : isLast
+                    ? currentIndex - 2
+                    : currentIndex - 1],
+            widget.morePhotos[isFirst
+                ? currentIndex + 1
+                : isLast
+                    ? currentIndex - 1
+                    : currentIndex],
+            widget.morePhotos[isLast
+                ? widget.morePhotos.length - 1
+                : isFirst
+                    ? currentIndex + 2
+                    : currentIndex + 1],
+          ];
 
     void onTapPrevious() {
       carouselController.previousPage();
@@ -59,43 +71,56 @@ class _ShowPhotoPageState extends State<ShowPhotoPage> {
           padding: EdgeInsets.symmetric(
               vertical: height20 * 2, horizontal: width10 * 1.4),
           color: Colors.black.withOpacity(0.8),
-          child: Column(
-            children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Icon(
-                  Icons.close,
-                  color: Colors.white,
-                  size: height10 * 2.6,
+          child: SafeArea(
+            child: Column(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: width20),
+                    child: InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.white,
+                        size: height10 * 2.6,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: height10,
-              ),
-              _titleRow(
-                  onTapNext: onTapNext,
-                  onTapPrevious: onTapPrevious,
-                  isFirstOrLast: isFirstOrLast,
-                  title: widget.title),
-              Expanded(
-                  child: CarouselSlider.builder(
-                carouselController: carouselController,
-                options: CarouselOptions(onPageChanged: onPageChanged),
-                itemCount: widget.morePhotos.length,
-                itemBuilder: (context, index, realIndex) {
-                  final photo = widget.morePhotos[realIndex];
-                  return _picColumn(
-                      imageAddress: photo.address,
-                      description: photo.description);
-                },
-              )),
-              _selectPictureRow(
-                  onTapNext: onTapNext,
-                  onTapPrevious: onTapPrevious,
-                  isFirst: isFirst,
-                  isLast: isLast,
-                  threePhotoPreview: threePhotoPreview)
-            ],
+                SizedBox(
+                  height: height10,
+                ),
+                _titleRow(
+                    onTapNext: onTapNext,
+                    onTapPrevious: onTapPrevious,
+                    isFirst: isFirst,
+                    isLast: isLast,
+                    title: widget.title),
+                Expanded(
+                    child: CarouselSlider.builder(
+                  carouselController: carouselController,
+                  options: CarouselOptions(
+                      height: height100 * 3,
+                      viewportFraction: 1,
+                      enableInfiniteScroll: false,
+                      onPageChanged: onPageChanged),
+                  itemCount: widget.morePhotos.length,
+                  itemBuilder: (context, index, realIndex) {
+                    final photo = widget.morePhotos[index];
+                    return _picColumn(
+                        imageAddress: photo.address,
+                        description: photo.description);
+                  },
+                )),
+                _selectPictureRow(
+                    onTapNext: onTapNext,
+                    onTapPrevious: onTapPrevious,
+                    isFirst: isFirst,
+                    isLast: isLast,
+                    threePhotoPreview: threePhotoPreview)
+              ],
+            ),
           ),
         ),
       ),
@@ -106,7 +131,8 @@ class _ShowPhotoPageState extends State<ShowPhotoPage> {
 Row _titleRow({
   void Function()? onTapPrevious,
   void Function()? onTapNext,
-  required bool isFirstOrLast,
+  required bool isFirst,
+  required bool isLast,
   required String title,
 }) {
   return Row(
@@ -116,7 +142,7 @@ Row _titleRow({
         onTap: onTapPrevious,
         child: Icon(
           Icons.arrow_back_ios_rounded,
-          color: isFirstOrLast ? const Color(0xFF545454) : Colors.white,
+          color: isFirst ? const Color(0xFF545454) : Colors.white,
           size: height10 * 3.5,
         ),
       ),
@@ -133,8 +159,8 @@ Row _titleRow({
       InkWell(
         onTap: onTapNext,
         child: Icon(
-          Icons.arrow_back_ios_rounded,
-          color: isFirstOrLast ? const Color(0xFF545454) : Colors.white,
+          Icons.arrow_forward_ios_rounded,
+          color: isLast ? const Color(0xFF545454) : Colors.white,
           size: height10 * 3.5,
         ),
       ),
@@ -192,16 +218,20 @@ Row _selectPictureRow({
   required List<Photo> threePhotoPreview,
 }) {
   return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      if (!isFirst)
-        InkWell(
-          onTap: onTapPrevious,
-          child: Icon(
-            Icons.arrow_circle_left_outlined,
-            color: Colors.white,
-            size: height24,
-          ),
-        ),
+      isFirst
+          ? SizedBox(
+              width: width24,
+            )
+          : InkWell(
+              onTap: onTapPrevious,
+              child: Icon(
+                Icons.arrow_circle_left_outlined,
+                color: Colors.white,
+                size: height24,
+              ),
+            ),
       SizedBox(
         width: width24 / 2,
       ),
@@ -232,15 +262,18 @@ Row _selectPictureRow({
       SizedBox(
         width: width24 / 2,
       ),
-      if (!isLast)
-        InkWell(
-          onTap: onTapNext,
-          child: Icon(
-            Icons.arrow_circle_right_outlined,
-            color: Colors.white,
-            size: height24,
-          ),
-        ),
+      isLast
+          ? SizedBox(
+              width: width24,
+            )
+          : InkWell(
+              onTap: onTapNext,
+              child: Icon(
+                Icons.arrow_circle_right_outlined,
+                color: Colors.white,
+                size: height24,
+              ),
+            ),
     ],
   );
 }

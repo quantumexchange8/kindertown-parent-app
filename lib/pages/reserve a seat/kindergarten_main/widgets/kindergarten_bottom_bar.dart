@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:kindertown_parent_app/component/primary_textbutton.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
@@ -17,7 +18,7 @@ class KindergartenBottomBar extends StatelessWidget {
       height: height100 * 1.74,
       child: Stack(
         children: [
-          Align(alignment: Alignment.topLeft, child: _feeContainer),
+          Align(alignment: Alignment.bottomLeft, child: _feeContainer),
           Align(alignment: Alignment.bottomCenter, child: _bottomContainer),
           Align(
             alignment: Alignment.center,
@@ -43,52 +44,13 @@ class KindergartenBottomBar extends StatelessWidget {
 
 Widget _reserveContainer(
     {required void Function()? onPressed, required bool isFull}) {
-  return FilledButton(
+  return PrimaryTextButton(
+    width: width100 * 2,
     onPressed: isFull ? null : onPressed,
-    style: ButtonStyle(
-        overlayColor: MaterialStatePropertyAll(orangePrimary.withOpacity(0.1))),
-    child: Container(
-      padding: const EdgeInsets.all(1),
-      decoration: ShapeDecoration(
-        color: isFull ? const Color(0xFFE0E0E0) : orangePrimary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25),
-        ),
-        shadows: const [
-          BoxShadow(
-            color: Color(0x3F000000),
-            blurRadius: 4,
-            offset: Offset(0, 4),
-            spreadRadius: 0,
-          )
-        ],
-      ),
-      child: Container(
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1, color: Color(0xFFFFF8EC)),
-            borderRadius: BorderRadius.circular(25),
-          ),
-        ),
-        child: DottedBorder(
-          color: redPrimary,
-          strokeWidth: 3,
-          borderType: BorderType.RRect,
-          radius: const Radius.circular(25),
-          dashPattern: const [2, 2],
-          padding:
-              EdgeInsets.symmetric(vertical: height24 / 2, horizontal: width30),
-          child: Text(
-            isFull ? 'Full Reservation' : 'Reserve Now',
-            textAlign: TextAlign.center,
-            style: textLg.copyWith(
-              color: isFull ? const Color(0xFFBBBBBB) : purplePrimary,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-        ),
-      ),
-    ),
+    isDisabled: isFull,
+    backgroundColor: orangePrimary,
+    dotColor: redPrimary,
+    buttonText: isFull ? 'Full Reservation' : 'Reserve Now',
   );
 }
 

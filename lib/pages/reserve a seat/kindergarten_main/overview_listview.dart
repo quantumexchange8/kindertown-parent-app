@@ -17,43 +17,70 @@ class OverviewListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.symmetric(vertical: height30),
       children: [
-        const PeopleEyeingContainer(totalPeopleEyeing: 3),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: width24),
+          child: const PeopleEyeingContainer(totalPeopleEyeing: 3),
+        ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: height30),
           child: ContentColumn(
               iconAddress: 'assets/icons/kindergarten/gallery.png',
               subtitle: 'More Photos',
-              content: PhotosRow(morePhotos: kindergarten.morePhotos)),
+              content: SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(horizontal: width24),
+                  scrollDirection: Axis.horizontal,
+                  child: PhotosRow(morePhotos: kindergarten.morePhotos))),
         ),
         ContentColumn(
             iconAddress: 'assets/icons/kindergarten/about.png',
             subtitle: 'About the kindergarten',
-            content: AboutKindergartenContainer(
-                title: 'About', aboutText: kindergarten.aboutMe)),
+            content: Padding(
+              padding: EdgeInsets.symmetric(horizontal: width24),
+              child: AboutKindergartenContainer(
+                  title: 'About', aboutText: kindergarten.aboutMe),
+            )),
         Padding(
           padding: EdgeInsets.symmetric(vertical: height30),
-          child: ContentColumn(
-              iconAddress: 'assets/icons/kindergarten/essential_details.png',
-              subtitle: 'Essential details',
-              content: EssentialDetailsContainer(kindergarten: kindergarten)),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width24),
+            child: ContentColumn(
+                iconAddress: 'assets/icons/kindergarten/essential_details.png',
+                subtitle: 'Essential details',
+                content: EssentialDetailsContainer(kindergarten: kindergarten)),
+          ),
         ),
         ContentColumn(
             iconAddress: 'assets/icons/kindergarten/reviews.png',
             subtitle: 'Rating',
-            content: RatingContainer(kindergarten: kindergarten)),
+            content: Padding(
+              padding: EdgeInsets.symmetric(horizontal: width24),
+              child: RatingContainer(kindergarten: kindergarten),
+            )),
         Padding(
           padding: EdgeInsets.symmetric(vertical: height30),
-          child: ContentColumn(
-              iconAddress: 'assets/icons/kindergarten/group.png',
-              subtitle: 'The team',
-              content: TheTeamContainer(teacherList: kindergarten.teacherList)),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width24),
+            child: ContentColumn(
+                iconAddress: 'assets/icons/kindergarten/group.png',
+                subtitle: 'The team',
+                content:
+                    TheTeamContainer(teacherList: kindergarten.teacherList)),
+          ),
         ),
         ContentColumn(
             iconAddress: 'assets/icons/kindergarten/gallery.png',
             subtitle: 'Video',
-            content: VideoContainer(videoAddress: kindergarten.videoAddress)),
+            content: Padding(
+              padding: EdgeInsets.symmetric(horizontal: width24),
+              child: VideoContainer(videoAddress: kindergarten.videoAddress),
+            )),
+        SizedBox(
+          height: height100 * 1.5,
+        )
       ],
     );
   }

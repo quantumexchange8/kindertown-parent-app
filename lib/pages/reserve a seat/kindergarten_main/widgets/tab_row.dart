@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
-import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 
 class TabRow extends StatelessWidget {
@@ -18,21 +17,17 @@ class TabRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: tabList
-          .mapIndexed((i, e) => Padding(
-                padding: EdgeInsets.only(
-                    right: isLast(i, tabList.length) ? 0 : width24 / 2),
-                child: InkWell(
-                  onTap: () {
-                    onTabTap(i);
-                  },
-                  child: _tabContainer(
-                      isSelected: i == activeIndex,
-                      index: i,
-                      listLength: tabList.length,
-                      tabName: e),
-                ),
+          .mapIndexed((i, e) => InkWell(
+                onTap: () {
+                  onTabTap(i);
+                },
+                child: _tabContainer(
+                    isSelected: i == activeIndex,
+                    index: i,
+                    listLength: tabList.length,
+                    tabName: e),
               ))
           .toList(),
     );

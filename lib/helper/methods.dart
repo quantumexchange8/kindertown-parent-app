@@ -1,7 +1,10 @@
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:flutter/services.dart';
 
 bool isLast(int currentIndex, int itemLength) {
-  return (itemLength - 1) == currentIndex;
+  return itemLength > 1 ? (itemLength - 1) == currentIndex : true;
 }
 
 String? getTownStates(String address) {
@@ -33,4 +36,24 @@ Future<double> getFileSizeInMB(File file) async {
 
   // Convert the file size to MB
   return (fileSizeInBytes / (1024 * 1024));
+}
+
+Future<File?> loadFileFromAssets(String assetPath) async {
+  try {
+    // Load the PDF file as a byte array from the assets
+    final byteData = await rootBundle.load(assetPath);
+
+    // Get the temporary directory
+    final tempDir = await getTemporaryDirectory();
+    final tempFile = File('${tempDir.path}/${getBaseName(assetPath)}');
+
+    // Write the byte array to the file
+    await tempFile.writeAsBytes(byteData.buffer.asUint8List());
+
+    // Set the file path to the state
+    return tempFile;
+  } catch (e) {
+    debugPrint(e.toString());
+    return null;
+  }
 }

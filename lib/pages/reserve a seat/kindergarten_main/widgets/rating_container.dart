@@ -53,14 +53,14 @@ InkWell _seeMoreRow({void Function()? onTap}) {
         Text(
           'See more',
           style: textSm.copyWith(
-            color: yellowPrimary,
-            fontWeight: FontWeight.w700,
-            decoration: TextDecoration.underline,
-          ),
+              color: yellowPrimary,
+              fontWeight: FontWeight.w700,
+              decoration: TextDecoration.underline,
+              decorationColor: yellowPrimary),
         ),
         Icon(
           Icons.arrow_forward_ios,
-          size: height20,
+          size: height08 * 2,
           color: yellowPrimary,
         ),
       ],

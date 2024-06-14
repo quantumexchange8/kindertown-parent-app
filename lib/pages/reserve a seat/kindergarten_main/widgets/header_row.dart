@@ -20,8 +20,8 @@ class HeaderRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
           mainAxisSize: MainAxisSize.min,
@@ -78,6 +78,9 @@ class HeaderRow extends StatelessWidget {
               ],
             ),
           ],
+        ),
+        SizedBox(
+          width: width10 * 6,
         ),
         Image.asset(
           'assets/icons/kindergarten/liked_${isLiked ? 'active' : 'inactive'}.png',

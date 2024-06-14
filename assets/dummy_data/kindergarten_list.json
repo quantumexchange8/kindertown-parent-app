@@ -158,7 +158,7 @@
             "2":"2",
             "1":"2"
         },
-        "video_address":"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sidel.mp4",
+        "video_address":"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
         "is_liked":false
     },
     {

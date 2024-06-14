@@ -57,17 +57,22 @@ class EssentialDetailsContainer extends StatelessWidget {
           SizedBox(height: height24 / 4),
           _detailsContainer(
             iconAddress: '$iconAddressPath/menu.png',
-            details: RichText(
-              text: TextSpan(
-                children: kindergarten.classList.entries
-                    .map((e) =>
-                        TextSpan(text: e.key, style: boldTextStyle, children: [
-                          TextSpan(
-                            text: ' (${e.value}), ',
-                            style: normalTextStyle,
-                          )
-                        ]))
-                    .toList(),
+            details: Expanded(
+              child: RichText(
+                text: TextSpan(
+                  children: kindergarten.classList.entries
+                      .expand((e) => [
+                            TextSpan(
+                              text: e.key,
+                              style: boldTextStyle,
+                            ),
+                            TextSpan(
+                              text: ' (${e.value}), ',
+                              style: normalTextStyle,
+                            )
+                          ])
+                      .toList(),
+                ),
               ),
             ),
           ),
@@ -84,6 +89,7 @@ class EssentialDetailsContainer extends StatelessWidget {
             iconAddress: '$iconAddressPath/clock.png',
             details: Column(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ...kindergarten.operationHour.entries.mapIndexed(
                   (i, e) => Padding(
@@ -114,9 +120,11 @@ class EssentialDetailsContainer extends StatelessWidget {
           SizedBox(height: height24 / 4),
           _detailsContainer(
             iconAddress: '$iconAddressPath/toddler.png',
-            details: Text(
-              '${kindergarten.activities.map((e) => '$e, ')}...',
-              style: normalTextStyle,
+            details: Expanded(
+              child: Text(
+                '${kindergarten.activities.join(', ')}...',
+                style: normalTextStyle,
+              ),
             ),
           ),
           SizedBox(height: height24 / 4),
@@ -138,9 +146,11 @@ class EssentialDetailsContainer extends StatelessWidget {
           SizedBox(height: height24 / 4),
           _detailsContainer(
             iconAddress: '$iconAddressPath/address_icon.png',
-            details: Text(
-              kindergarten.address,
-              style: normalTextStyle,
+            details: Expanded(
+              child: Text(
+                kindergarten.address,
+                style: normalTextStyle,
+              ),
             ),
           ),
           SizedBox(height: height24 / 4),

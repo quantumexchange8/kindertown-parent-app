@@ -23,6 +23,9 @@ class RatingColumn extends StatelessWidget {
       children: [
         _titleContainer(
             totalRating: rating, totalPeopleRate: totalPeopleRating),
+        SizedBox(
+          height: height24,
+        ),
         ...ratingPerPeopleRate.entries.mapIndexed((i, e) => Padding(
               padding: EdgeInsets.only(
                   bottom: isLast(i, ratingPerPeopleRate.entries.length)
@@ -87,7 +90,7 @@ Row _starRow({
   required int totalPeople,
 }) {
   return Row(
-    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text(
         star.toString(),
@@ -97,23 +100,27 @@ Row _starRow({
           fontWeight: FontWeight.w700,
         ),
       ),
-      SizedBox(width: width10 * 0.7),
-      Icon(
-        Icons.star_rounded,
-        color: yellowPrimary,
-        size: height08 * 2,
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: width08),
+        child: Icon(
+          Icons.star_rounded,
+          color: yellowPrimary,
+          size: height24,
+        ),
       ),
-      SizedBox(width: width10 * 0.7),
-      Progresso(
-        progress: people / totalPeople,
-        backgroundColor: const Color(0xFFCFCFCF),
-        backgroundStrokeWidth: height08 * 2,
-        backgroundStrokeCap: StrokeCap.round,
-        progressStrokeWidth: height08 * 2,
-        progressColor: yellowPrimary,
-        progressStrokeCap: StrokeCap.round,
+      SizedBox(
+        width: width100 * 2.16,
+        child: Progresso(
+          progress: people / totalPeople,
+          backgroundColor: const Color(0xFFCFCFCF),
+          backgroundStrokeWidth: height08 * 2,
+          backgroundStrokeCap: StrokeCap.round,
+          progressStrokeWidth: height08 * 2,
+          progressColor: yellowPrimary,
+          progressStrokeCap: StrokeCap.round,
+        ),
       ),
-      SizedBox(width: width10 * 0.7),
+      SizedBox(width: width24),
       Text(
         '($people)',
         textAlign: TextAlign.center,

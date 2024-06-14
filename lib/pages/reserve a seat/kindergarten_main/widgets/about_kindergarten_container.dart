@@ -14,7 +14,8 @@ class AboutKindergartenContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryContainer(
-      padding: EdgeInsets.fromLTRB(width10 * 2.8, height24, width10 * 2.8, 0),
+      padding:
+          EdgeInsets.fromLTRB(width10 * 2.8, height24, width10 * 2.8, height20),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -42,10 +43,10 @@ class AboutKindergartenContainer extends StatelessWidget {
                 Text(
                   'Read more',
                   style: textSm.copyWith(
-                    color: yellowPrimary,
-                    fontWeight: FontWeight.w700,
-                    decoration: TextDecoration.underline,
-                  ),
+                      color: yellowPrimary,
+                      fontWeight: FontWeight.w700,
+                      decoration: TextDecoration.underline,
+                      decorationColor: yellowPrimary),
                 ),
                 Icon(
                   Icons.arrow_forward_ios,
