@@ -3,11 +3,10 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/component/primary_textbutton.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
-import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/have_file_container.dart';
 
 class TitleWithUploadFileColumn extends StatelessWidget {
   final void Function(File? file) onSelectFile;
@@ -57,13 +56,7 @@ class TitleWithUploadFileColumn extends StatelessWidget {
                       ),
                     ],
                   )
-                : FutureBuilder(
-                    future: getFileSizeInMB(file!),
-                    builder: (context, snap) {
-                      return _haveFileContainer(
-                          fileName: getBaseName(file!.path),
-                          fileSizeInMB: snap.data ?? 0);
-                    }),
+                : HaveFileContainer(file: file!),
             PrimaryTextButton(
                 onPressed: () async {
                   try {
@@ -94,44 +87,4 @@ class TitleWithUploadFileColumn extends StatelessWidget {
       ],
     );
   }
-}
-
-Widget _haveFileContainer(
-    {required String fileName, required double fileSizeInMB}) {
-  return PrimaryContainer(
-    padding: EdgeInsets.symmetric(
-        vertical: height10 * 1.4, horizontal: width10 * 2.5),
-    child: Row(
-      children: [
-        Image.asset(
-          'assets/icons/file_picked.png',
-          height: height20 * 2,
-          fit: BoxFit.fitHeight,
-        ),
-        SizedBox(
-          width: width24 / 2,
-        ),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              fileName,
-              style: textSm.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            SizedBox(
-              height: height08 / 2,
-            ),
-            Text(
-              '${fileSizeInMB.toStringAsFixed(2)}MB',
-              style: textXS.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
 }

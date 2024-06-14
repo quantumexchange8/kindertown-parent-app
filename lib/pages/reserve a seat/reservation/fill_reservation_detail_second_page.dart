@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:collection/collection.dart';
-import 'package:entry/entry.dart';
 import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/component/textlabel_with_textfield_column.dart';
@@ -9,7 +8,7 @@ import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/data_class/parent_register_info.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/reservation_detail_page_layout.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/selectable_container.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/show_select_form_column.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/title_with_upload_file_column.dart';
 
 class FillReservationDetailSecondPage extends StatefulWidget {
@@ -94,41 +93,27 @@ class _FillReservationDetailSecondPageState
               padding: EdgeInsets.only(
                   bottom:
                       isLast(i, parentRegisterInfoList.length) ? 0 : height10),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      onTapContainer(i);
+              child: ShowSelectFormColumn(
+                onTapContainer: () {
+                  onTapContainer(i);
+                },
+                onTick: moreThanOne
+                    ? () {
+                        onTickContainer(e.id);
+                      }
+                    : () {},
+                isTick: moreThanOne
+                    ? parentRegisterInfoListIDListSelected.contains(e.id)
+                    : true,
+                subtitle: moreThanOne
+                    ? 'Parent / Guardian ${e.id} (Optional)'
+                    : '*Parent / Guardian 1',
+                isVisibleForm: showFormRegister[i],
+                formContainer: _parentFormContainer(
+                    onSelectFile: (newFile) {
+                      onSelectFile(id: e.id, newFile: newFile);
                     },
-                    child: SelectableContainer(
-                      onTick: moreThanOne
-                          ? () {
-                              onTickContainer(e.id);
-                            }
-                          : () {},
-                      text: moreThanOne
-                          ? 'Parent / Guardian ${e.id} (Optional)'
-                          : '*Parent / Guardian 1',
-                      isTick: moreThanOne
-                          ? parentRegisterInfoListIDListSelected.contains(e.id)
-                          : true,
-                    ),
-                  ),
-                  SizedBox(
-                    height: height10,
-                  ),
-                  Entry.all(
-                    opacity: 1,
-                    visible: showFormRegister[i],
-                    yOffset: -150,
-                    child: _parentFormContainer(
-                        onSelectFile: (newFile) {
-                          onSelectFile(id: e.id, newFile: newFile);
-                        },
-                        parentRegisterInfo: e),
-                  )
-                ],
+                    parentRegisterInfo: e),
               ),
             )
           ],
