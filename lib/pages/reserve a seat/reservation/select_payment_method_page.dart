@@ -1,8 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/component/primary_appbar.dart';
+import 'package:kindertown_parent_app/component/primary_container.dart';
+import 'package:kindertown_parent_app/component/primary_textbutton.dart';
+import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/credit_card.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/payment_method_list_container.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/show_select_form_column.dart';
 
 final List<CreditCard> creditCardList = [
@@ -56,15 +61,6 @@ const ewalletList = [
   {'logo': 'assets/icons/bank_logo/bank_rakyat.png', 'name': 'Bank Rakyat'},
 ];
 
-class PaymentMethod {
-  int id;
-  String method;
-  PaymentMethod({
-    required this.id,
-    required this.method,
-  });
-}
-
 class SelectPaymentMethodPage extends StatefulWidget {
   const SelectPaymentMethodPage({super.key});
 
@@ -74,31 +70,18 @@ class SelectPaymentMethodPage extends StatefulWidget {
 }
 
 class _SelectPaymentMethodPageState extends State<SelectPaymentMethodPage> {
-  PaymentMethod? selectedPaymentMethod;
+  int selectedIndex = -1;
+  bool showCreditCardForm = false;
+  bool showOnlineBankingForm = false;
+  bool showEWalletForm = false;
 
   @override
   Widget build(BuildContext context) {
-    final List<PaymentMethod> paymentMethodList = [];
     final creditCardLength = creditCardList.length;
-    for (var i = 1; i <= creditCardLength; i++) {
-      paymentMethodList.add(PaymentMethod(id: i, method: 'credit_card'));
-    }
-    for (var i = creditCardList.length;
-        i <= (creditCardLength + onlineBankingList.length);
-        i++) {
-      paymentMethodList.add(PaymentMethod(id: i, method: 'online_banking'));
-    }
-    for (var i = (creditCardLength + onlineBankingList.length);
-        i <= (creditCardLength + onlineBankingList.length + ewalletList.length);
-        i++) {
-      paymentMethodList.add(PaymentMethod(id: i, method: 'e_wallet'));
-    }
+    final onlineBankingLength = onlineBankingList.length;
+    final eWalletLength = ewalletList.length;
 
-    final paymentMethod = {
-      'Credit / Debit card': creditCardList,
-      'Online banking': onlineBankingList,
-      'E-wallets': ewalletList,
-    };
+    void onPressedPay() {}
 
     return Scaffold(
       appBar: primaryAppbar(
@@ -107,15 +90,172 @@ class _SelectPaymentMethodPageState extends State<SelectPaymentMethodPage> {
         style: textLg.copyWith(fontWeight: FontWeight.w700),
       )),
       body: ListView(
-        children: [
-          ShowSelectFormColumn(
-              onTapContainer: () {},
-              formContainer: Container(),
-              onTick: () {},
-              subtitle: 'Credit',
-              isTick: false),
-        ],
-      ),
+          padding:
+              EdgeInsets.symmetric(vertical: height31, horizontal: width24),
+          children: [
+            ShowSelectFormColumn(
+                onTapContainer: () {
+                  setState(() {
+                    showCreditCardForm = !showCreditCardForm;
+                  });
+                },
+                onTick: () {},
+                isVisibleForm: showCreditCardForm,
+                subtitle: 'Credit / Debit card',
+                isTick: selectedIndex >= 0 && selectedIndex < creditCardLength,
+                formContainer: _creditCardListContainer(
+                  selectedIndex: selectedIndex,
+                  onTapCard: (index) {
+                    setState(() {
+                      selectedIndex = index;
+                    });
+                  },
+                  creditCardList: creditCardList,
+                )),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: height31),
+              child: ShowSelectFormColumn(
+                  onTapContainer: () {
+                    setState(() {
+                      showOnlineBankingForm = !showOnlineBankingForm;
+                    });
+                  },
+                  onTick: () {},
+                  isVisibleForm: showOnlineBankingForm,
+                  subtitle: 'Online banking',
+                  isTick: selectedIndex >= creditCardLength &&
+                      selectedIndex < creditCardLength + onlineBankingLength,
+                  formContainer: PaymentMethodListContainer(
+                    selectedIndex: selectedIndex - creditCardLength,
+                    datas: onlineBankingList,
+                    onTapData: (index) {
+                      setState(() {
+                        selectedIndex = creditCardLength + index;
+                      });
+                    },
+                  )),
+            ),
+            ShowSelectFormColumn(
+                onTapContainer: () {
+                  setState(() {
+                    showEWalletForm = !showEWalletForm;
+                  });
+                },
+                onTick: () {},
+                isVisibleForm: showEWalletForm,
+                subtitle: 'E-wallets',
+                isTick: selectedIndex >=
+                        creditCardLength + onlineBankingLength &&
+                    selectedIndex <
+                        creditCardLength + onlineBankingLength + eWalletLength,
+                formContainer: PaymentMethodListContainer(
+                  selectedIndex:
+                      selectedIndex - creditCardLength - onlineBankingLength,
+                  datas: ewalletList,
+                  onTapData: (index) {
+                    setState(() {
+                      selectedIndex =
+                          creditCardLength + onlineBankingLength + index;
+                    });
+                  },
+                )),
+            SizedBox(
+              height: height10 * 8,
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child:
+                  PrimaryTextButton(onPressed: onPressedPay, buttonText: 'Pay'),
+            )
+          ]),
     );
   }
+}
+
+Widget _creditCardListContainer(
+    {required void Function(int index) onTapCard,
+    required int selectedIndex,
+    required List<CreditCard> creditCardList}) {
+  return PrimaryContainer(
+    padding: EdgeInsets.all(height08),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ...creditCardList.mapIndexed(
+          (i, e) {
+            String? creditCardTypeLogo;
+            switch (e.cardType) {
+              case 'visa':
+                creditCardTypeLogo = 'assets/icons/bank_logo/visa_logo.png';
+              case 'mastercard':
+                creditCardTypeLogo =
+                    'assets/icons/bank_logo/mastercard_logo.png';
+
+                break;
+            }
+            return InkWell(
+              onTap: () {
+                onTapCard(i);
+              },
+              child: Container(
+                padding: EdgeInsets.all(height15),
+                decoration: BoxDecoration(
+                    color: selectedIndex == i
+                        ? const Color(0xFFAF00D3).withOpacity(0.06)
+                        : const Color(0xFFFFF8EC)),
+                child: Row(
+                  children: [
+                    if (creditCardTypeLogo != null)
+                      Image.asset(
+                        creditCardTypeLogo,
+                        width: width30,
+                        fit: BoxFit.fitWidth,
+                      ),
+                    SizedBox(
+                      width: width10,
+                    ),
+                    Expanded(
+                      child: Text(
+                        e.bankName,
+                        style: textMd.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      '*${e.cardNo.substring(e.cardNo.length - 5, e.cardNo.length)}',
+                      style: textMd.copyWith(
+                        color: const Color(0xFFBBBBBB),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+        Padding(
+          padding: EdgeInsets.all(height15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/icons/plus_icon.png',
+                height: height20,
+              ),
+              Text(
+                'Add new card',
+                textAlign: TextAlign.center,
+                style: textMd.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
 }
