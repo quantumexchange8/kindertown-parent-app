@@ -1,8 +1,10 @@
+import 'package:collection/collection.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/component/primary_appbar.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
+import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/programme.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/about_kindergarten_container.dart';
@@ -20,8 +22,9 @@ class ProgrammePage extends StatelessWidget {
       'Student category': programme.studentCategory,
       'Time': programme.time,
       'Billing start on': programme.billingStartOn,
-      'Available billing mode':
-          '${programme.availableBillingMode.entries.map((e) => '${e.key}: RM${e.value}\n')}',
+      'Available billing mode': programme.availableBillingMode.entries
+          .map((e) => '${e.key}: RM${e.value}\n')
+          .join(),
     };
 
     return Scaffold(
@@ -32,11 +35,12 @@ class ProgrammePage extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
       )),
+      backgroundColor: backgroundColor,
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: height30, horizontal: width20),
         children: [
           ContentColumn(
-              iconAddress: 'assets/kindergarten/puzzle_icon.png',
+              iconAddress: 'assets/icons/kindergarten/puzzle_icon.png',
               subtitle: 'Programme description',
               content: AboutKindergartenContainer(
                   title: 'Programme description',
@@ -54,7 +58,10 @@ class ProgrammePage extends StatelessWidget {
           ContentColumn(
               iconAddress: 'assets/icons/kindergarten/activities_icon.png',
               subtitle: 'Class activities',
-              content: _classActivitesColumn(programme.classActivities))
+              content: _classActivitesColumn(programme.classActivities)),
+          SizedBox(
+            height: height100,
+          )
         ],
       ),
     );
@@ -63,7 +70,7 @@ class ProgrammePage extends StatelessWidget {
 
 Container _essentialDetailsContainer(Map<String, dynamic> essentialDetails) {
   return Container(
-    padding: EdgeInsets.symmetric(horizontal: width10, vertical: height24 / 2),
+    padding: EdgeInsets.all(height08 / 2),
     clipBehavior: Clip.antiAlias,
     decoration: ShapeDecoration(
       color: Colors.white,
@@ -75,9 +82,11 @@ Container _essentialDetailsContainer(Map<String, dynamic> essentialDetails) {
     child: DottedBorder(
       strokeWidth: 3,
       color: redPrimary,
-      dashPattern: const [2, 2],
+      dashPattern: const [5, 5],
       borderType: BorderType.RRect,
       radius: const Radius.circular(20),
+      padding:
+          EdgeInsets.symmetric(horizontal: width10, vertical: height24 / 2),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +113,7 @@ Container _essentialDetailsContainer(Map<String, dynamic> essentialDetails) {
                       ),
                       SizedBox(height: height24 / 4),
                       Text(
-                        e.key,
+                        e.value,
                         style: textMd.copyWith(
                           fontWeight: FontWeight.w600,
                         ),
@@ -123,44 +132,48 @@ Container _essentialDetailsContainer(Map<String, dynamic> essentialDetails) {
 Column _classActivitesColumn(List<String> classActivities) {
   return Column(
     children: classActivities
-        .map((e) => Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: width10 * 1.8, vertical: height24 / 2),
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(width: 1, color: Color(0xFFF67F00)),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        determineIconForActivity(e),
-                        height: height10 * 2.8,
-                        fit: BoxFit.fitHeight,
-                      ),
-                      SizedBox(width: width24 / 2),
-                      Text(
-                        e,
-                        style: textMd.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ],
+        .mapIndexed((i, e) => Padding(
+              padding: EdgeInsets.only(
+                  bottom: isLast(i, classActivities.length) ? 0 : height24 / 2),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: width10 * 1.8, vertical: height24 / 2),
+                decoration: ShapeDecoration(
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(width: 1, color: Color(0xFFF67F00)),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  if (e.toLowerCase().contains('math') ||
-                      e.toLowerCase().contains('science'))
-                    Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      color: orangePrimary,
-                      size: height24,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.asset(
+                          determineIconForActivity(e),
+                          height: height10 * 2.8,
+                          fit: BoxFit.fitHeight,
+                        ),
+                        SizedBox(width: width24 / 2),
+                        Text(
+                          e,
+                          style: textMd.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
                     ),
-                ],
+                    if (e.toLowerCase().contains('math') ||
+                        e.toLowerCase().contains('science'))
+                      Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        color: orangePrimary,
+                        size: height24,
+                      ),
+                  ],
+                ),
               ),
             ))
         .toList(),

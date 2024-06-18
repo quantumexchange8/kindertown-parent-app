@@ -1,7 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:kindertown_parent_app/component/primary_appbar.dart';
 import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
@@ -24,6 +22,7 @@ class ReviewPage extends StatelessWidget {
         'Review',
         style: textLg.copyWith(fontWeight: FontWeight.w700),
       )),
+      backgroundColor: backgroundColor,
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: height31, horizontal: width20),
         children: [
@@ -42,8 +41,12 @@ class ReviewPage extends StatelessWidget {
           SizedBox(height: height10 * 4.7),
           Text(
             'End of comment section.',
+            textAlign: TextAlign.center,
             style: textMd.copyWith(
                 fontSize: height10 * 1.7, fontWeight: FontWeight.w700),
+          ),
+          SizedBox(
+            height: height30,
           )
         ],
       ),
@@ -56,6 +59,7 @@ Widget _reviewContainer({
 }) {
   return PrimaryContainer(
     padding: EdgeInsets.symmetric(vertical: height24, horizontal: width30),
+    color: Colors.white,
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -69,10 +73,10 @@ Widget _reviewContainer({
                   image: NetworkImage(review.profilePicture),
                   fit: BoxFit.cover,
                 ),
-                shape: OvalBorder(
+                shape: const OvalBorder(
                   side: BorderSide(width: 1, color: yellowPrimary),
                 ),
-                shadows: [
+                shadows: const [
                   BoxShadow(
                     color: Color(0x3F000000),
                     blurRadius: 4,
@@ -86,15 +90,12 @@ Widget _reviewContainer({
               width: width08 * 2,
             ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '@alicia0810',
-                  style: TextStyle(
-                    color: Color(0xFF3C0048),
-                    fontSize: 20,
-                    fontFamily: 'Raleway',
+                  '@${review.username}',
+                  style: textLg.copyWith(
                     fontWeight: FontWeight.w700,
-                    height: 0,
                   ),
                 ),
                 Row(
@@ -102,53 +103,15 @@ Widget _reviewContainer({
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 20,
-                      height: 20,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
-                      child: FlutterLogo(),
-                    ),
-                    const SizedBox(width: 4),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
-                      child: FlutterLogo(),
-                    ),
-                    const SizedBox(width: 4),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
-                      child: FlutterLogo(),
-                    ),
-                    const SizedBox(width: 4),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
-                      child: FlutterLogo(),
-                    ),
-                    const SizedBox(width: 4),
-                    Container(
-                      width: 20,
-                      height: 20,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
-                      child: FlutterLogo(),
+                    _starRow(review.rating),
+                    SizedBox(
+                      width: width08,
                     ),
                     Text(
-                      '4.8',
-                      style: TextStyle(
-                        color: Color(0xFF3C0048),
-                        fontSize: 15,
-                        fontFamily: 'Raleway',
+                      review.rating.toString(),
+                      style: textMd.copyWith(
+                        fontSize: height15,
                         fontWeight: FontWeight.w700,
-                        height: 0,
                       ),
                     ),
                   ],
@@ -175,5 +138,27 @@ Widget _reviewContainer({
         ),
       ],
     ),
+  );
+}
+
+Row _starRow(double rating) {
+  int rate = rating.round();
+
+  List<Widget> children = [];
+  for (var i = 1; i <= 5; i++) {
+    children.add(
+      Padding(
+        padding: EdgeInsets.only(right: isLast(i, 6) ? 0 : width08 / 2),
+        child: Icon(
+          i <= rate ? Icons.star_rounded : Icons.star_outline_rounded,
+          size: height20,
+          color: yellowPrimary,
+        ),
+      ),
+    );
+  }
+
+  return Row(
+    children: children,
   );
 }

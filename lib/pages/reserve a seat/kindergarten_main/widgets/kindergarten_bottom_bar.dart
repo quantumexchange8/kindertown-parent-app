@@ -18,22 +18,31 @@ class KindergartenBottomBar extends StatelessWidget {
       height: height100 * 1.74,
       child: Stack(
         children: [
-          Align(alignment: Alignment.bottomLeft, child: _feeContainer),
+          Column(
+            children: [
+              _feeContainer,
+            ],
+          ),
           Align(alignment: Alignment.bottomCenter, child: _bottomContainer),
           Align(
             alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.only(left: width10 * 2.2),
-              child: Row(
-                children: [
-                  _feeColumn(kindergarten.feePerMonth),
-                  SizedBox(width: width10 * 2.7),
-                  _reserveContainer(
+            child: Row(
+              children: [
+                SizedBox(
+                  width: width10 * 2.2,
+                ),
+                _feeColumn(kindergarten.feePerMonth),
+                SizedBox(width: width30),
+                Expanded(
+                  child: _reserveContainer(
                       onPressed: () {},
                       isFull:
-                          kindergarten.totalStudent == kindergarten.maxStudent)
-                ],
-              ),
+                          kindergarten.totalStudent == kindergarten.maxStudent),
+                ),
+                SizedBox(
+                  width: width10,
+                )
+              ],
             ),
           )
         ],
@@ -45,7 +54,7 @@ class KindergartenBottomBar extends StatelessWidget {
 Widget _reserveContainer(
     {required void Function()? onPressed, required bool isFull}) {
   return PrimaryTextButton(
-    width: width100 * 2,
+    height: height10 * 5.8,
     onPressed: isFull ? null : onPressed,
     isDisabled: isFull,
     backgroundColor: orangePrimary,
@@ -63,7 +72,7 @@ Container _feeContainer = Container(
     shape: BoxShape.circle,
   ),
   child: Container(
-    padding: const EdgeInsets.all(1),
+    padding: const EdgeInsets.all(2),
     decoration: BoxDecoration(
         border: Border.all(width: 1, color: redPrimary),
         shape: BoxShape.circle),
@@ -71,7 +80,7 @@ Container _feeContainer = Container(
       borderType: BorderType.Circle,
       color: Colors.white,
       strokeWidth: 3,
-      dashPattern: const [2, 2],
+      dashPattern: const [4, 4],
       child: Container(),
     ),
   ),

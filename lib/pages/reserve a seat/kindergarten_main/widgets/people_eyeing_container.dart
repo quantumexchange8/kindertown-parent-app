@@ -32,8 +32,9 @@ class PeopleEyeingContainer extends StatelessWidget {
         borderType: BorderType.RRect,
         radius: const Radius.circular(20),
         color: Colors.white,
-        padding: EdgeInsets.symmetric(vertical: height24 / 4),
-        strokeWidth: 2,
+        padding:
+            EdgeInsets.symmetric(vertical: height24 / 4, horizontal: width20),
+        strokeWidth: 1,
         child: Row(
           children: [
             Image.asset(

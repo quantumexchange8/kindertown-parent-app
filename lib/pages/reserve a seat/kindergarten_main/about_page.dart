@@ -24,6 +24,7 @@ class AboutPage extends StatelessWidget {
         child: Column(
           children: [
             PrimaryContainer(
+              color: Colors.white,
               padding: EdgeInsets.fromLTRB(
                   width20 + width08, height20, width24, height10 * 4.6),
               child: Text(

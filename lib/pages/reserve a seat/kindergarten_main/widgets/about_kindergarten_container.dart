@@ -14,6 +14,7 @@ class AboutKindergartenContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryContainer(
+      color: Colors.white,
       padding:
           EdgeInsets.fromLTRB(width10 * 2.8, height24, width10 * 2.8, height20),
       child: Column(

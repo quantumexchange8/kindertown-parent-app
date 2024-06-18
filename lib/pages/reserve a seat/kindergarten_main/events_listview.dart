@@ -18,14 +18,18 @@ class EventsListview extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      padding: EdgeInsets.symmetric(vertical: height30),
+      padding: EdgeInsets.fromLTRB(width20, height30, width20, height100 * 2),
       itemCount: eventList.length,
       itemBuilder: (context, index) {
         final event = eventList[index];
-        return ContentColumn(
-            iconAddress: 'assets/icons/kindergarten/event_icon.png',
-            subtitle: event.name,
-            content: _eventContainer(event: event));
+        return Padding(
+          padding: EdgeInsets.only(
+              bottom: isLast(index, eventList.length) ? 0 : height30),
+          child: ContentColumn(
+              iconAddress: 'assets/icons/kindergarten/event_icon.png',
+              subtitle: event.name,
+              content: _eventContainer(event: event)),
+        );
       },
     );
   }
@@ -36,14 +40,22 @@ Widget _eventContainer({ScrollController? controller, required Event event}) {
     padding: EdgeInsets.symmetric(vertical: height10, horizontal: width08),
     child: Column(
       children: [
-        Text(
-          event.description,
-          style: textXS.copyWith(
-            fontWeight: FontWeight.w500,
+        SizedBox(
+          height: height08,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: width10 * 1.4),
+          child: Text(
+            event.description,
+            style: textXS.copyWith(
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
-        _filmContainer(
-            controller: controller, totalPhoto: event.pictureList.length),
+        SizedBox(
+          height: height24,
+        ),
+        _filmContainer(totalPhoto: event.pictureList.length),
         SingleChildScrollView(
           controller: controller,
           scrollDirection: Axis.horizontal,
@@ -78,15 +90,13 @@ Widget _eventContainer({ScrollController? controller, required Event event}) {
             ),
           ),
         ),
-        _filmContainer(
-            controller: controller, totalPhoto: event.pictureList.length),
+        _filmContainer(totalPhoto: event.pictureList.length),
       ],
     ),
   );
 }
 
-Container _filmContainer(
-    {required int totalPhoto, ScrollController? controller}) {
+Container _filmContainer({required int totalPhoto}) {
   List<Widget> listHoleContainer = [];
   for (var index = 0; index < totalPhoto; index++) {
     for (var i = 0; i < 8; i++) {
@@ -113,8 +123,8 @@ Container _filmContainer(
     padding: EdgeInsets.symmetric(vertical: height15 / 5),
     color: yellowPrimary,
     child: SingleChildScrollView(
+      physics: const NeverScrollableScrollPhysics(),
       scrollDirection: Axis.horizontal,
-      controller: controller,
       child: Row(mainAxisSize: MainAxisSize.min, children: listHoleContainer),
     ),
   );

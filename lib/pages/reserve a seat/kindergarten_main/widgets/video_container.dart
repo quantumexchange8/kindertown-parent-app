@@ -21,6 +21,7 @@ class _VideoContainerState extends State<VideoContainer> {
     super.initState();
     if (widget.videoAddress != null) {
       flickManager = FlickManager(
+        autoPlay: false,
         videoPlayerController:
             VideoPlayerController.networkUrl(Uri.parse(widget.videoAddress!)),
       );
@@ -39,14 +40,14 @@ class _VideoContainerState extends State<VideoContainer> {
       padding:
           EdgeInsets.symmetric(vertical: height24, horizontal: width10 * 2.2),
       child: Container(
+        width: width100 * 3.35,
+        height: height100 * 1.95,
         decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
-            image: widget.videoAddress == null
-                ? null
-                : const DecorationImage(
-                    image: AssetImage('assets/images/video_unavailable.png'))),
+            image: const DecorationImage(
+                image: AssetImage('assets/images/video_unavailable.png'))),
         child: flickManager != null
             ? FlickVideoPlayer(
                 flickManager: flickManager!,
