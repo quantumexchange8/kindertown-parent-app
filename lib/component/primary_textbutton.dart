@@ -7,6 +7,7 @@ import 'package:kindertown_parent_app/helper/text_styles.dart';
 class PrimaryTextButton extends StatelessWidget {
   final void Function()? onPressed;
   final double? width;
+  final double? height;
   final String buttonText;
   final bool isDisabled;
   final Color? dotColor;
@@ -18,7 +19,8 @@ class PrimaryTextButton extends StatelessWidget {
       this.width,
       this.backgroundColor,
       this.onPressed,
-      this.dotColor});
+      this.dotColor,
+      this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class PrimaryTextButton extends StatelessWidget {
               isDisabled ? Colors.transparent : yellowSecondary),
           shadowColor: const MaterialStatePropertyAll(Color(0x3F000000)),
           fixedSize: MaterialStatePropertyAll(
-              Size(width ?? width100 * 1.3, height10 * 4.5)),
+              Size(width ?? width100 * 1.3, height ?? height10 * 4.5)),
           padding: const MaterialStatePropertyAll(EdgeInsets.all(1)),
           backgroundColor: MaterialStatePropertyAll(isDisabled
               ? const Color(0xFFE0E0E0)
@@ -62,7 +64,7 @@ class PrimaryTextButton extends StatelessWidget {
             color: isDisabled
                 ? const Color(0xFFCFCFCF)
                 : dotColor ?? orangePrimary,
-            dashPattern: const [2, 2],
+            dashPattern: const [5, 5],
             strokeWidth: 4,
             radius: const Radius.circular(25),
             child: Center(

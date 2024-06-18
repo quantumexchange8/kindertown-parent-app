@@ -4,6 +4,7 @@ import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 
 PreferredSizeWidget primaryAppbar({
+  bool showBackButton = true,
   Widget? title,
   List<Widget> actions = const <Widget>[],
 }) {
@@ -22,9 +23,10 @@ PreferredSizeWidget primaryAppbar({
       child: SafeArea(
           child: Row(
         children: [
-          PrimaryBackButton(
-            size: height24,
-          ),
+          if (showBackButton)
+            PrimaryBackButton(
+              size: height24,
+            ),
           if (title != null) Expanded(flex: 3, child: title),
           Expanded(
               child: Row(

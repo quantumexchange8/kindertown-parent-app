@@ -6,14 +6,16 @@ import 'package:kindertown_parent_app/helper/dimensions.dart';
 class PrimaryContainer extends StatelessWidget {
   final Widget child;
   final EdgeInsets padding;
+  final Color? color;
   const PrimaryContainer(
-      {super.key, required this.child, required this.padding});
+      {super.key, required this.child, required this.padding, this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.all(height24 / 4),
         decoration: BoxDecoration(
+            color: color,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(color: orangePrimary)),
         child: DottedBorder(
