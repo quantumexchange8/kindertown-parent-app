@@ -85,6 +85,9 @@ flutter:
     - assets/images/classroom/
     - assets/images/event/
     - assets/images/reservation/
+    - assets/images/kid_status/
+    - assets/images/meals/
+    - assets/images/articles/
     - assets/icons/
     - assets/icons/kindergarten/
     - assets/icons/class_activities/

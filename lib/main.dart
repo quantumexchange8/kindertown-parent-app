@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:kindertown_parent_app/controller/controller.dart';
+import 'package:kindertown_parent_app/controller/home_controller.dart';
 import 'package:kindertown_parent_app/controller/kindergarten_controller.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/pages/auth/login/login_page.dart';
@@ -20,6 +21,7 @@ void main() {
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
   Get.put(KindergartenController());
+  Get.put(HomeController());
 
   Future.delayed(const Duration(milliseconds: 200)).then((val) async {
     runApp(const MyApp());
@@ -49,6 +51,10 @@ class MyApp extends StatelessWidget {
       final getKindergatenSuccess =
           await kindergartenController.getKindergartenList();
       if (!getKindergatenSuccess) {
+        return false;
+      }
+      final getMailSuccess = await homeController.getMailList();
+      if (!getMailSuccess) {
         return false;
       }
       return true;
