@@ -1,5 +1,4 @@
 import 'package:flutter/services.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:kindertown_parent_app/models/event.dart';

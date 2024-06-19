@@ -1,0 +1,30 @@
+[
+    {
+        "id":1,
+        "type":"breakfast",
+        "description":"Whole grain pancakes with a side of mixed berries",
+        "image":"assets/images/meals/breakfast.png"
+
+    },
+    {
+        "id":2,
+        "type":"lunch",
+        "description":"Fried chicken nugget and fries with a side of salads.",
+        "image":"assets/images/meals/lunch.png"
+
+    },
+    {
+        "id":3,
+        "type":"dinner",
+        "description":"Pasta with tomato sauce and parmesan",
+        "image":"assets/images/meals/dinner.png"
+
+    },
+    {
+        "id":4,
+        "type":"snacks",
+        "description":"Apple slices ",
+        "image":"assets/images/meals/snacks.png"
+
+    }
+]

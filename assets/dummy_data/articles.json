@@ -1,0 +1,19 @@
+[
+    {
+        "id":1,
+        "image":"assets/images/articles/article_1.png",
+        "title":"8 Ways to strengthen a Parent-Child Relationship"
+
+    },
+    {
+        "id":2,
+        "image":"assets/images/articles/article_2.png",
+        "title":"Improve Your Child’s Quality Of Sleep: How To Practice Good Sleep Hygiene"
+
+    },
+    {
+        "id":3,
+        "image":"assets/images/articles/article_3.png",
+        "title":"The Importance of Good Nutrition for Kids"
+    }
+]
