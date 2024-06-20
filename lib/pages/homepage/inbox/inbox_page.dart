@@ -5,16 +5,56 @@ import 'package:kindertown_parent_app/component/primary_appbar.dart';
 import 'package:kindertown_parent_app/controller/controller.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
+import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/mail.dart';
+import 'package:kindertown_parent_app/pages/homepage/inbox/mail_sort_by_bottomsheet.dart';
+import 'package:kindertown_parent_app/pages/homepage/inbox/message_page.dart';
 
-class InboxPage extends StatelessWidget {
+class InboxPage extends StatefulWidget {
   const InboxPage({super.key});
 
   @override
+  State<InboxPage> createState() => _InboxPageState();
+}
+
+class _InboxPageState extends State<InboxPage> {
+  String? filter;
+
+  @override
   Widget build(BuildContext context) {
+    void onTapSort() async {
+      await showModalBottomSheet(
+        context: context,
+        builder: (context) => MailSortByBottomsheet(filter: filter),
+      ).then((value) {
+        if (value != null) {
+          setState(() {
+            filter = value;
+          });
+        }
+      });
+    }
+
+    void onPressedViewMore(Mail mail) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MessagePage(mail: mail),
+          ));
+    }
+
     return Obx(() {
-      final mailList = homeController.mailList;
+      List<Mail> mailList = homeController.mailList;
+
+      if (filter != null) {
+        if (filter == 'kindertown') {
+          mailList = mailList.where((mail) => mail.from == 'system').toList();
+        } else {
+          mailList =
+              mailList.where((mail) => !(mail.from == 'system')).toList();
+        }
+      }
 
       return Scaffold(
         appBar: primaryAppbar(
@@ -25,18 +65,77 @@ class InboxPage extends StatelessWidget {
             fontWeight: FontWeight.w700,
           ),
         )),
-        body: Column(
+        body: Stack(
+          alignment: Alignment.center,
+          fit: StackFit.expand,
           children: [
-            Row(),
-            Expanded(
-              child: ListView.builder(
-                itemCount: mailList.length,
-                itemBuilder: (context, index) {
-                  final mail = mailList[index];
-                  return _mailContainer(mail);
-                },
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Image.asset(
+                'assets/images/bottom_background.png',
+                height: height100 * 4.43,
+                width: screenWidth,
+                fit: BoxFit.cover,
               ),
-            )
+            ),
+            Column(
+              children: [
+                InkWell(
+                  onTap: onTapSort,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      SizedBox(
+                        height: height20,
+                        width: height20,
+                        child: Stack(
+                          children: [
+                            Icon(
+                              Icons.filter_alt_sharp,
+                              size: height20,
+                              color: purplePrimary,
+                            ),
+                            if (filter != null)
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Icon(
+                                  Icons.check_circle,
+                                  color: orangePrimary,
+                                  size: height08,
+                                ),
+                              )
+                          ],
+                        ),
+                      ),
+                      Text(
+                        'Sort',
+                        style: textXL.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: mailList.length,
+                    itemBuilder: (context, index) {
+                      final mail = mailList[index];
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            bottom:
+                                isLast(index, mailList.length) ? 0 : height10),
+                        child: _mailContainer(
+                            onPressedViewMore: () {
+                              onPressedViewMore(mail);
+                            },
+                            mail: mail),
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
           ],
         ),
       );
@@ -44,7 +143,8 @@ class InboxPage extends StatelessWidget {
   }
 }
 
-Container _mailContainer(Mail mail) {
+Container _mailContainer(
+    {required Mail mail, required void Function()? onPressedViewMore}) {
   Color themeColor;
   Color backgroundColor = Colors.white;
   if (mail.read) {
@@ -123,12 +223,15 @@ Container _mailContainer(Mail mail) {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              Text(
-                'view more >>',
-                textAlign: TextAlign.right,
-                style: textXS.copyWith(
-                  color: themeColor,
-                  fontWeight: FontWeight.w700,
+              TextButton(
+                onPressed: onPressedViewMore,
+                child: Text(
+                  'view more >>',
+                  textAlign: TextAlign.right,
+                  style: textXS.copyWith(
+                    color: themeColor,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ],

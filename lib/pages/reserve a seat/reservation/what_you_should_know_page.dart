@@ -5,9 +5,11 @@ import 'package:flutter/widgets.dart';
 import 'package:kindertown_parent_app/component/primary_appbar.dart';
 import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/component/primary_textbutton.dart';
+import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/choose_role_page.dart';
 
 const List<Map<String, dynamic>> whatYouShouldKnow = [
   {
@@ -41,12 +43,20 @@ class WhatYouShouldKnowPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void onPressedGoodToGo() {}
+    void onPressedGoodToGo() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ChooseRolePage(),
+          ));
+    }
 
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: primaryAppbar(
           title: Text(
         'Reservation',
+        textAlign: TextAlign.center,
         style: textLg.copyWith(fontWeight: FontWeight.w700),
       )),
       body: ListView(
@@ -55,72 +65,81 @@ class WhatYouShouldKnowPage extends StatelessWidget {
         children: [
           Stack(
             children: [
-              PrimaryContainer(
-                padding: EdgeInsets.symmetric(
-                    vertical: height31, horizontal: width08 * 2),
-                child: Column(
-                  children: [
-                    _titleColumn,
-                    SizedBox(
-                      height: height30 * 2,
-                    ),
-                    ...whatYouShouldKnow.mapIndexed((i, e) => Padding(
-                          padding: EdgeInsets.only(
-                              bottom: isLast(i, whatYouShouldKnow.length)
-                                  ? 0
-                                  : height30 * 2),
-                          child: _contentColumn(
-                              index: i,
-                              title: e['title'],
-                              image: e['image'],
-                              description: e['description']),
-                        ))
-                  ],
+              Padding(
+                padding: EdgeInsets.only(
+                    top: height10 * 4.3, left: width10, right: width10),
+                child: PrimaryContainer(
+                  color: Colors.white,
+                  padding: EdgeInsets.symmetric(
+                      vertical: height31, horizontal: width08 * 2),
+                  child: Column(
+                    children: [
+                      _titleColumn,
+                      SizedBox(
+                        height: height30 * 2,
+                      ),
+                      ...whatYouShouldKnow.mapIndexed((i, e) => Padding(
+                            padding: EdgeInsets.only(
+                                bottom: isLast(i, whatYouShouldKnow.length)
+                                    ? 0
+                                    : height30 * 2),
+                            child: _contentColumn(
+                                index: i,
+                                title: e['title'],
+                                image: e['image'],
+                                description: e['description']),
+                          ))
+                    ],
+                  ),
                 ),
               ),
-              Positioned(
-                right: width10,
-                bottom: height10,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Image.asset(
-                      'assets/images/reservation/sallotape_left.png',
-                      height: height10 * 6.5,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Image.asset(
+                    'assets/images/reservation/sallotape_left.png',
+                    height: height10 * 6.5,
+                    fit: BoxFit.fitHeight,
+                  ),
+                  SizedBox(
+                    width: width10 * 9.7,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: height10 * 1.7),
+                    child: Image.asset(
+                      'assets/images/reservation/bulb_help.png',
+                      height: height10 * 8.1,
                       fit: BoxFit.fitHeight,
                     ),
-                    SizedBox(
-                      width: width10 * 9.7,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: height10 * 1.7),
-                      child: Image.asset(
-                        'assets/images/reservation/bulb_help.png',
-                        height: height10 * 8.1,
-                        fit: BoxFit.fitHeight,
-                      ),
-                    ),
-                    SizedBox(
-                      width: width10 * 9.7,
-                    ),
-                    Image.asset(
-                      'assets/images/reservation/sallotape_right.png',
-                      height: height10 * 6.5,
-                      fit: BoxFit.fitHeight,
-                    )
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: width10 * 9.7,
+                  ),
+                  Image.asset(
+                    'assets/images/reservation/sellotape_right.png',
+                    height: height10 * 6.5,
+                    fit: BoxFit.fitHeight,
+                  )
+                ],
               )
             ],
           ),
           SizedBox(
             height: height10 * 5,
           ),
-          PrimaryTextButton(
-              onPressed: onPressedGoodToGo,
-              width: width100 * 2.39,
-              buttonText: 'I\'m goo to go!')
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              PrimaryTextButton(
+                  onPressed: onPressedGoodToGo,
+                  width: width100 * 2.39,
+                  buttonText: 'I\'m good to go!'),
+            ],
+          ),
+          SizedBox(
+            height: height10 * 6,
+          )
         ],
       ),
     );
@@ -140,20 +159,20 @@ Column _titleColumn = Column(
     Stack(
       alignment: Alignment.center,
       children: [
-        Positioned(
-            left: width20,
+        Padding(
+            padding: EdgeInsets.only(left: width100 * 1.2, top: height15),
             child: Container(
               width: width100,
               height: height20,
-              decoration: BoxDecoration(
-                  color: const Color(0xFFAF00D3).withOpacity(0.06),
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.black,
-                        offset: Offset(0, 3),
-                        blurRadius: 10,
-                        spreadRadius: 10)
-                  ]),
+              decoration:
+                  BoxDecoration(color: const Color(0xFFFAF0FC), boxShadow: [
+                BoxShadow(
+                    color:
+                        const Color.fromARGB(255, 17, 14, 14).withOpacity(0.5),
+                    offset: const Offset(0, 3),
+                    blurRadius: 8,
+                    blurStyle: BlurStyle.inner)
+              ]),
             )),
         Text(
           'before making a reservation',
