@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 
 class KidRegisterInfo {
   int id;
-  FocusNode fullNameFocus;
-  FocusNode chineseNameFocus;
-  FocusNode genderFocus;
-  FocusNode dayFocusNode;
-  FocusNode monthFocusNode;
-  FocusNode yearFocusNode;
-  TextEditingController fullNameController;
-  TextEditingController chineseController;
-  TextEditingController dayController;
-  TextEditingController monthController;
-  TextEditingController yearController;
+  final FocusNode fullNameFocus;
+  final FocusNode chineseNameFocus;
+  final FocusNode genderFocus;
+  final FocusNode dayFocusNode;
+  final FocusNode monthFocusNode;
+  final FocusNode yearFocusNode;
+  final TextEditingController fullNameController;
+  final TextEditingController chineseController;
+  final TextEditingController dayController;
+  final TextEditingController monthController;
+  final TextEditingController yearController;
   String? gender;
   String? isMalaysiaCitizen;
   File? file;

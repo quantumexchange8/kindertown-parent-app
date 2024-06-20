@@ -27,7 +27,7 @@ PreferredSizeWidget primaryAppbar({
             PrimaryBackButton(
               size: height24,
             ),
-          if (title != null) Expanded(flex: 3, child: title),
+          if (title != null) Expanded(flex: 6, child: title),
           Expanded(
               child: Row(
             children: actions,

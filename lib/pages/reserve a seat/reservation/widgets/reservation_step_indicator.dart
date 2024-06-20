@@ -33,11 +33,17 @@ class ReservationStepIndicator extends StatelessWidget {
     }
 
     return EasyStepper(
+        showTitle: false,
+        internalPadding: 0,
+        showStepBorder: false,
+        showLoadingAnimation: false,
         activeStep: activeStep,
+        stepRadius: height24 / 2,
         lineStyle: LineStyle(
             activeLineColor: const Color(0xFFE0E0E0),
             defaultLineColor: const Color(0xFFE0E0E0),
             finishedLineColor: yellowPrimary,
+            lineSpace: 0,
             lineLength: width10 * 6,
             lineThickness: 2.5,
             lineType: LineType.normal),

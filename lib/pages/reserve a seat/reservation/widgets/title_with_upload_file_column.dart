@@ -24,7 +24,7 @@ class TitleWithUploadFileColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
           title,
@@ -33,7 +33,7 @@ class TitleWithUploadFileColumn extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: height45,
+          height: height30,
         ),
         Column(
           mainAxisSize: MainAxisSize.min,
@@ -57,6 +57,9 @@ class TitleWithUploadFileColumn extends StatelessWidget {
                     ],
                   )
                 : HaveFileContainer(file: file!),
+            SizedBox(
+              height: height10 * 5,
+            ),
             PrimaryTextButton(
                 onPressed: () async {
                   try {

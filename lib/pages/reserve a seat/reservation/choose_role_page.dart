@@ -3,9 +3,10 @@ import 'package:kindertown_parent_app/component/primary_appbar.dart';
 import 'package:kindertown_parent_app/component/primary_page_background.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/fill_reservation_detail_first_page.dart';
 
-class ChoosRolePage extends StatelessWidget {
-  const ChoosRolePage({super.key});
+class ChooseRolePage extends StatelessWidget {
+  const ChooseRolePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,19 @@ class ChoosRolePage extends StatelessWidget {
       },
     ];
 
+    void onTapRole() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const FillReservationDetailFirstPage(),
+          ));
+    }
+
     return Scaffold(
       appBar: primaryAppbar(
           title: Text(
         'Reservation',
+        textAlign: TextAlign.center,
         style: textLg.copyWith(fontWeight: FontWeight.w700),
       )),
       body: PrimaryPageBackground(
@@ -36,12 +46,19 @@ class ChoosRolePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _titleColumn,
+            SizedBox(
+              height: height30,
+            ),
             Wrap(
               alignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: width10 * 3,
+              runSpacing: height10,
               children: roleList
-                  .map((e) =>
-                      _roleColumn(roleImage: e['image'], roleName: e['role']))
+                  .map((e) => InkWell(
+                      onTap: onTapRole,
+                      child: _roleColumn(
+                          roleImage: e['image'], roleName: e['role'])))
                   .toList(),
             )
           ],

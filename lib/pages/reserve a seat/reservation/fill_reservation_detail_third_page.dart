@@ -6,6 +6,7 @@ import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/fill_reservation_detail_fourth_page.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/agreements_checkbox_row.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/have_file_container.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/reservation_detail_page_layout.dart';
@@ -75,6 +76,12 @@ class _FillReservationDetailThirdPageState
           final policiesList = snap.data ?? [];
 
           return ReservationDetailPageLayout(
+              onPressedNext: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const FillReservationDetailFourthPage(),
+                  )),
               activeStep: 2,
               title: 'Policies & Agreements',
               contents: [
@@ -92,7 +99,7 @@ class _FillReservationDetailThirdPageState
                 AgreementsCheckboxRow(
                     onChanged: onChangedAgree, value: agreeAgreement)
               ],
-              isNextDisabled: agreeAgreement);
+              isNextDisabled: !agreeAgreement);
         });
   }
 }
@@ -121,7 +128,10 @@ Column _titleWithFileContainer({
               'No File Found',
               style: textLg.copyWith(color: redPrimary),
             )
-          : HaveFileContainer(file: file)
+          : HaveFileContainer(
+              file: file,
+              iconAddress: 'assets/icons/pdf_icon.png',
+            )
     ],
   );
 }

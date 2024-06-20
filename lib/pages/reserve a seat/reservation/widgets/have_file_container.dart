@@ -19,6 +19,7 @@ class HaveFileContainer extends StatelessWidget {
           final fileSizeInMB = snap.data ?? 0;
 
           return PrimaryContainer(
+            color: Colors.white,
             padding: EdgeInsets.symmetric(
                 vertical: height10 * 1.4, horizontal: width10 * 2.5),
             child: Row(
@@ -33,6 +34,7 @@ class HaveFileContainer extends StatelessWidget {
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       getBaseName(file.path),

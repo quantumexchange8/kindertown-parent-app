@@ -1,9 +1,11 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/select_payment_method_page.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/reservation_detail_page_layout.dart';
 
 class FillReservationDetailFourthPage extends StatelessWidget {
@@ -22,20 +24,42 @@ class FillReservationDetailFourthPage extends StatelessWidget {
     };
 
     return ReservationDetailPageLayout(
+        onPressedNext: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SelectPaymentMethodPage(),
+            )),
         activeStep: 3,
         title: 'Invoice & Payment',
-        contents: invoice.entries
-            .mapIndexed((i, e) => Padding(
-                  padding: EdgeInsets.only(
-                      bottom: isLast(i, invoice.entries.length) ? 0 : height30),
-                  child: _invoiceDataColumn(key: e.key, data: e.value),
-                ))
-            .toList(),
+        contents: [
+          PrimaryContainer(
+            color: Colors.white,
+            padding: EdgeInsets.all(height24),
+            child: Column(children: [
+              Text(
+                'Invoice',
+                textAlign: TextAlign.center,
+                style: textXL.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              SizedBox(
+                height: height24,
+              ),
+              ...invoice.entries.mapIndexed((i, e) => Padding(
+                    padding: EdgeInsets.only(
+                        bottom:
+                            isLast(i, invoice.entries.length) ? 0 : height30),
+                    child: _invoiceDataColumn(key: e.key, data: e.value),
+                  )),
+            ]),
+          )
+        ],
         isNextDisabled: false);
   }
 }
 
-Column _invoiceDataColumn({
+Widget _invoiceDataColumn({
   bool haveInfoContainer = false,
   required String key,
   required Map<String, dynamic> data,

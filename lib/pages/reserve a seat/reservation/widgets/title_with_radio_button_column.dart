@@ -19,12 +19,16 @@ class TitleWithRadioButtonColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
           style: textLg.copyWith(
             fontWeight: FontWeight.w700,
           ),
+        ),
+        SizedBox(
+          height: height15,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

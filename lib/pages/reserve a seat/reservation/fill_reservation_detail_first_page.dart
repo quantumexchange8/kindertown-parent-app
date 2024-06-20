@@ -2,19 +2,13 @@ import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:kindertown_parent_app/component/primary_container.dart';
-import 'package:kindertown_parent_app/component/primary_dropdown_textfield.dart';
-import 'package:kindertown_parent_app/component/textlabel_with_textfield_column.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
-import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/data_class/kid_register_info.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/fill_reservation_detail_second_page.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/date_of_birth_column.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/kids_form_container.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/reservation_detail_page_layout.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/show_select_form_column.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/title_with_radio_button_column.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/title_with_upload_file_column.dart';
 
 class FillReservationDetailFirstPage extends StatefulWidget {
   const FillReservationDetailFirstPage({super.key});
@@ -51,6 +45,19 @@ class _FillReservationDetailFirstPageState
       ));
       showFormRegister.add(false);
     }
+  }
+
+  @override
+  void dispose() {
+    for (var element in kidRegisterInfoList) {
+      element.fullNameFocus.dispose();
+      element.chineseNameFocus.dispose();
+      element.genderFocus.dispose();
+      element.dayFocusNode.dispose();
+      element.monthFocusNode.dispose();
+      element.yearFocusNode.dispose();
+    }
+    super.dispose();
   }
 
   @override
@@ -137,7 +144,7 @@ class _FillReservationDetailFirstPageState
             isTick: moreThanOne
                 ? kidRegisterInfoIDListSelected.contains(e.id)
                 : true,
-            formContainer: _kidsContainer(
+            formContainer: KidsFormContainer(
                 onTapGender: (newGender) {
                   onTapGender(newGender: newGender, id: e.id);
                 },
@@ -156,84 +163,4 @@ class _FillReservationDetailFirstPageState
       isNextDisabled: isNextDisabled,
     );
   }
-}
-
-PrimaryContainer _kidsContainer({
-  required void Function(String newGender) onTapGender,
-  required void Function(String yesNo) onTickYesNo,
-  required void Function(File? newFIle) onSelectFile,
-  required KidRegisterInfo kidRegisterInfo,
-}) {
-  return PrimaryContainer(
-    padding: EdgeInsets.symmetric(vertical: height08 * 2, horizontal: width20),
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        TextlabelWithTextfieldColumn(
-          textLabel: '*Full name:',
-          focusNode: kidRegisterInfo.fullNameFocus,
-          controller: kidRegisterInfo.fullNameController,
-        ),
-        Row(
-          children: [
-            Expanded(
-              flex: 3,
-              child: TextlabelWithTextfieldColumn(
-                textLabel: ' Chinese name:',
-                focusNode: kidRegisterInfo.chineseNameFocus,
-                controller: kidRegisterInfo.chineseController,
-              ),
-            ),
-            SizedBox(
-              width: width24,
-            ),
-            Expanded(
-              flex: 2,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '*Gender:',
-                    style: textLg.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  SizedBox(
-                    height: height24 / 4,
-                  ),
-                  PrimaryDropdownTextfield(
-                      focusNode: kidRegisterInfo.genderFocus,
-                      items: const ['Male', 'Female'],
-                      selectedItem: kidRegisterInfo.gender,
-                      onTapItem: onTapGender)
-                ],
-              ),
-            ),
-          ],
-        ),
-        DateOfBirthColumn(
-          dayFocusNode: kidRegisterInfo.dayFocusNode,
-          dayController: kidRegisterInfo.dayController,
-          monthFocusNode: kidRegisterInfo.monthFocusNode,
-          monthController: kidRegisterInfo.monthController,
-          yearFocusNode: kidRegisterInfo.yearFocusNode,
-          yearController: kidRegisterInfo.yearController,
-        ),
-        TitleWithRadioButtonColumn(
-            title: '*Is your kid a citizen of Malaysia?',
-            items: const ['Yes', 'No'],
-            selectedItem: kidRegisterInfo.isMalaysiaCitizen,
-            onTick: onTickYesNo),
-        TitleWithUploadFileColumn(
-            file: kidRegisterInfo.file,
-            title: '*Child’s birth certificate:',
-            buttonText: 'Choose File',
-            onSelectFile: onSelectFile),
-        SizedBox(
-          height: height10 * 5,
-        )
-      ],
-    ),
-  );
 }

@@ -26,7 +26,7 @@ class SelectableContainer extends StatelessWidget {
         ),
       ),
       child: Container(
-        padding: const EdgeInsets.all(1),
+        padding: const EdgeInsets.all(2),
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
             side: const BorderSide(width: 1, color: redPrimary),
@@ -36,11 +36,11 @@ class SelectableContainer extends StatelessWidget {
         child: DottedBorder(
           padding: EdgeInsets.symmetric(
               horizontal: width24 / 2, vertical: height24 / 4),
-          strokeWidth: 3,
+          strokeWidth: 2,
           color: orangePrimary,
           borderType: BorderType.RRect,
           radius: const Radius.circular(25),
-          dashPattern: const [3, 3],
+          dashPattern: const [5, 5],
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

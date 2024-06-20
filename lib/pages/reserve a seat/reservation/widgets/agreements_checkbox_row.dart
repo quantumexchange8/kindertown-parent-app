@@ -16,19 +16,22 @@ class AgreementsCheckboxRow extends StatelessWidget {
         SizedBox(
           width: height10 * 2.8,
           height: height10 * 2.8,
-          child: Checkbox(
-            onChanged: onChanged,
-            value: value,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-            checkColor: Colors.white,
-            fillColor: MaterialStateProperty.resolveWith((states) {
-              if (states.contains(MaterialState.selected)) {
-                return yellowPrimary;
-              } else {
-                return const Color(0xFFE0E0E0);
-              }
-            }),
+          child: Transform.scale(
+            scale: 1.3,
+            child: Checkbox(
+              onChanged: onChanged,
+              value: value,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
+              checkColor: Colors.white,
+              fillColor: MaterialStateProperty.resolveWith((states) {
+                if (states.contains(MaterialState.selected)) {
+                  return yellowPrimary;
+                } else {
+                  return const Color(0xFFE0E0E0);
+                }
+              }),
+            ),
           ),
         ),
         SizedBox(width: width08 * 2),

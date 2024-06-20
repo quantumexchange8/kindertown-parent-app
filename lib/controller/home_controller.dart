@@ -8,7 +8,7 @@ import 'package:kindertown_parent_app/models/mission.dart';
 
 class HomeController extends GetxController {
   static HomeController instance = Get.find();
-  RxList mailList = List<Mail>.empty(growable: true).obs;
+  RxList<Mail> mailList = List<Mail>.empty(growable: true).obs;
 
   Future<List<Mission>?> getMissionList() async {
     try {

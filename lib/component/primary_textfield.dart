@@ -40,74 +40,80 @@ class PrimaryTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool gotError = errorText != null;
-    bool isFocus = focusNode.hasFocus;
 
-    return Container(
-      padding: const EdgeInsets.all(1),
-      decoration: ShapeDecoration(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
-          ),
-          shadows: [
-            if (isFocus)
-              const BoxShadow(
-                  color: orangePrimary, blurRadius: 5, spreadRadius: 1)
-          ]),
-      child: Container(
-        padding: const EdgeInsets.all(4),
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            side: BorderSide(
-                width: 1, color: gotError ? redPrimary : orangePrimary),
-            borderRadius: BorderRadius.circular(25),
-          ),
-        ),
-        child: DottedBorder(
-          padding:
-              EdgeInsets.symmetric(horizontal: width20, vertical: height08),
-          color: gotError
-              ? redPrimary
-              : isFocus
-                  ? orangePrimary
-                  : yellowPrimary,
-          strokeWidth: 3,
-          borderType: BorderType.RRect,
-          dashPattern: const [5, 5],
-          radius: const Radius.circular(25),
-          child: TextField(
-            maxLength: maxLength,
-            obscureText: obscureText,
-            readOnly: readOnly,
-            obscuringCharacter: '●',
-            focusNode: focusNode,
-            keyboardType: keyboardType,
-            cursorColor: purplePrimary,
-            controller: controller,
-            style: textLg.copyWith(
-                fontSize: height10 * 1.8, fontWeight: FontWeight.w500),
-            inputFormatters: inputFormatters,
-            decoration: InputDecoration(
-                contentPadding: EdgeInsets.zero,
-                constraints: const BoxConstraints(),
-                isDense: true,
-                hintText: hintText,
-                hintStyle: hintStyle,
-                border: InputBorder.none,
-                errorBorder: InputBorder.none,
-                enabledBorder: InputBorder.none,
-                focusedBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
-                focusedErrorBorder: InputBorder.none,
-                prefixText: prefixText,
-                prefixIconConstraints: const BoxConstraints(),
-                prefixStyle: prefixStyle,
-                prefixIcon: prefixIcon,
-                suffixIcon: suffixIcon,
-                suffixIconConstraints: const BoxConstraints()),
-          ),
-        ),
-      ),
-    );
+    return AnimatedBuilder(
+        animation: focusNode,
+        builder: (context, child) {
+          bool isFocus = focusNode.hasFocus;
+
+          return Container(
+            padding: const EdgeInsets.all(1),
+            decoration: ShapeDecoration(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                shadows: [
+                  if (isFocus)
+                    const BoxShadow(
+                        color: orangePrimary, blurRadius: 5, spreadRadius: 1)
+                ]),
+            child: Container(
+              padding: const EdgeInsets.all(4),
+              decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  side: BorderSide(
+                      width: 1, color: gotError ? redPrimary : orangePrimary),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+              child: DottedBorder(
+                padding: EdgeInsets.symmetric(
+                    horizontal: width20, vertical: height08),
+                color: gotError
+                    ? redPrimary
+                    : isFocus
+                        ? orangePrimary
+                        : yellowPrimary,
+                strokeWidth: 3,
+                borderType: BorderType.RRect,
+                dashPattern: const [5, 5],
+                radius: const Radius.circular(25),
+                child: TextField(
+                  maxLength: maxLength,
+                  obscureText: obscureText,
+                  readOnly: readOnly,
+                  obscuringCharacter: '●',
+                  focusNode: focusNode,
+                  keyboardType: keyboardType,
+                  cursorColor: purplePrimary,
+                  controller: controller,
+                  style: textLg.copyWith(
+                      fontSize: height10 * 1.8, fontWeight: FontWeight.w500),
+                  inputFormatters: inputFormatters,
+                  decoration: InputDecoration(
+                      counterText: '',
+                      contentPadding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                      isDense: true,
+                      hintText: hintText,
+                      hintStyle: hintStyle,
+                      border: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                      focusedErrorBorder: InputBorder.none,
+                      prefixText: prefixText,
+                      prefixIconConstraints: const BoxConstraints(),
+                      prefixStyle: prefixStyle,
+                      prefixIcon: prefixIcon,
+                      suffixIcon: suffixIcon,
+                      suffixIconConstraints: const BoxConstraints()),
+                ),
+              ),
+            ),
+          );
+        });
   }
 }

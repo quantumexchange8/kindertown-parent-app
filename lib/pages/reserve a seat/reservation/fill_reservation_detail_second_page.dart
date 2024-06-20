@@ -7,6 +7,7 @@ import 'package:kindertown_parent_app/component/textlabel_with_textfield_column.
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/data_class/parent_register_info.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/fill_reservation_detail_third_page.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/reservation_detail_page_layout.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/show_select_form_column.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/title_with_upload_file_column.dart';
@@ -47,12 +48,15 @@ class _FillReservationDetailSecondPageState
   Widget build(BuildContext context) {
     bool isNextDisabled = false;
     for (var element in parentRegisterInfoListIDListSelected) {
-      final kidForm = parentRegisterInfoList.firstWhere((e) => e.id == element);
-      if (kidForm.fullNameController.text.isEmpty &&
-          kidForm.contactNoController.text.isEmpty &&
-          kidForm.emailController.text.isEmpty &&
-          kidForm.parentIdentificationDocument == null) {
+      final parentForm =
+          parentRegisterInfoList.firstWhere((e) => e.id == element);
+      if (parentForm.fullNameController.text.isEmpty ||
+          parentForm.contactNoController.text.isEmpty ||
+          parentForm.emailController.text.isEmpty ||
+          parentForm.parentIdentificationDocument == null) {
         isNextDisabled = true;
+      } else {
+        isNextDisabled = false;
       }
     }
 
@@ -80,7 +84,13 @@ class _FillReservationDetailSecondPageState
       });
     }
 
-    void onPressedNext() {}
+    void onPressedNext() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const FillReservationDetailThirdPage(),
+          ));
+    }
 
     return ReservationDetailPageLayout(
       activeStep: 1,
@@ -130,6 +140,7 @@ PrimaryContainer _parentFormContainer({
   required ParentRegisterInfo parentRegisterInfo,
 }) {
   return PrimaryContainer(
+    color: Colors.white,
     padding: EdgeInsets.symmetric(vertical: height08 * 2, horizontal: width20),
     child: Column(
       mainAxisSize: MainAxisSize.min,
@@ -139,15 +150,21 @@ PrimaryContainer _parentFormContainer({
           focusNode: parentRegisterInfo.fullNameFocus,
           controller: parentRegisterInfo.fullNameController,
         ),
-        TextlabelWithTextfieldColumn(
-          textLabel: '*Contact no:',
-          focusNode: parentRegisterInfo.contactNoFocus,
-          controller: parentRegisterInfo.contactNoController,
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: height30),
+          child: TextlabelWithTextfieldColumn(
+            textLabel: '*Contact no:',
+            focusNode: parentRegisterInfo.contactNoFocus,
+            controller: parentRegisterInfo.contactNoController,
+          ),
         ),
         TextlabelWithTextfieldColumn(
           textLabel: '*Email address:',
           focusNode: parentRegisterInfo.emailFocus,
           controller: parentRegisterInfo.emailController,
+        ),
+        SizedBox(
+          height: height30,
         ),
         TitleWithUploadFileColumn(
             file: parentRegisterInfo.parentIdentificationDocument,

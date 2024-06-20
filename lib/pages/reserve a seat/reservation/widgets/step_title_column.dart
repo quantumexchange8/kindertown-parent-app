@@ -11,7 +11,7 @@ class StepTitleColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(mainAxisSize: MainAxisSize.min, children: [
       Text(
-        'Step $step:\n',
+        'Step $step:',
         textAlign: TextAlign.center,
         style: textLg.copyWith(
           fontWeight: FontWeight.w500,

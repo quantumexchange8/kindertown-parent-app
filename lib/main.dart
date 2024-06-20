@@ -10,6 +10,8 @@ import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/pages/auth/login/login_page.dart';
 import 'package:kindertown_parent_app/pages/onboarding/hello_page.dart';
 import 'package:kindertown_parent_app/pages/onboarding/onboarding_page.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/fill_reservation_detail_first_page.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/what_you_should_know_page.dart';
 
 void main() {
   LicenseRegistry.addLicense(() async* {
@@ -61,32 +63,33 @@ class MyApp extends StatelessWidget {
     }
 
     return MaterialApp(
-      title: 'Kindertown Parent App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      navigatorObservers: [ClearFocusOnPop()],
-      home: FutureBuilder(
-          future: isFirstTime(),
-          builder: (context, snap) {
-            final isFirstTime = snap.data;
+        title: 'Kindertown Parent App',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        navigatorObservers: [ClearFocusOnPop()],
+        home: const FillReservationDetailFirstPage()
+        // FutureBuilder(
+        //     future: isFirstTime(),
+        //     builder: (context, snap) {
+        //       final isFirstTime = snap.data;
 
-            if (isFirstTime != null && !isFirstTime) {
-              return FutureBuilder(
-                  future: getAllData(),
-                  builder: (context, snap) {
-                    if (snap.data == null || snap.data == false) {
-                      return const LoginPage();
-                    } else {
-                      return const HelloPage();
-                    }
-                  });
-            } else {
-              return const OnboardingPage();
-            }
-          }),
-    );
+        //       if (isFirstTime != null && !isFirstTime) {
+        //         return FutureBuilder(
+        //             future: getAllData(),
+        //             builder: (context, snap) {
+        //               if (snap.data == null || snap.data == false) {
+        //                 return const LoginPage();
+        //               } else {
+        //                 return const HelloPage();
+        //               }
+        //             });
+        //       } else {
+        //         return const OnboardingPage();
+        //       }
+        //     }),
+        );
   }
 }
 

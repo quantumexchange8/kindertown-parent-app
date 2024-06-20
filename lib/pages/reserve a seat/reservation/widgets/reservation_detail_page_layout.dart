@@ -23,39 +23,41 @@ class ReservationDetailPageLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: primaryAppbar(
-          title: Text(
-        'Reservation',
-        style: textLg.copyWith(fontWeight: FontWeight.w700),
-      )),
-      backgroundColor: backgroundColor,
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: width20, vertical: height30),
-        children: [
-          ReservationStepIndicator(activeStep: activeStep),
-          SizedBox(
-            height: height30,
-          ),
-          StepTitleColumn(
-            step: activeStep + 1,
-            title: title,
-          ),
-          SizedBox(
-            height: height30,
-          ),
-          ...contents.map((e) => e),
-          SizedBox(
-            height: height30 * 3,
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: PrimaryTextButton(
-                onPressed: isNextDisabled ? () {} : onPressedNext,
-                isDisabled: isNextDisabled,
-                buttonText: 'Next'),
-          )
-        ],
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: primaryAppbar(
+            title: Text(
+          'Reservation',
+          textAlign: TextAlign.center,
+          style: textLg.copyWith(fontWeight: FontWeight.w700),
+        )),
+        backgroundColor: backgroundColor,
+        body: ListView(
+          padding:
+              EdgeInsets.symmetric(horizontal: width20, vertical: height30),
+          children: [
+            ReservationStepIndicator(activeStep: activeStep),
+            StepTitleColumn(
+              step: activeStep + 1,
+              title: title,
+            ),
+            SizedBox(
+              height: height30,
+            ),
+            ...contents.map((e) => e),
+            SizedBox(
+              height: height30 * 3,
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: PrimaryTextButton(
+                  onPressed: isNextDisabled ? () {} : onPressedNext,
+                  isDisabled: isNextDisabled,
+                  buttonText: 'Next'),
+            )
+          ],
+        ),
       ),
     );
   }

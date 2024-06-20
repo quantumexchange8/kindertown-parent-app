@@ -35,12 +35,14 @@ class ShowSelectFormColumn extends StatelessWidget {
         SizedBox(
           height: height10,
         ),
-        Entry.all(
-          opacity: 1,
-          visible: isVisibleForm,
-          yOffset: -150,
-          child: formContainer,
-        )
+        if (isVisibleForm)
+          Entry.all(
+            visible: isVisibleForm,
+            yOffset: -50,
+            scale: 1,
+            duration: const Duration(milliseconds: 500),
+            child: formContainer,
+          )
       ],
     );
   }
