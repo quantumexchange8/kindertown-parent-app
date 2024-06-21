@@ -1,0 +1,184 @@
+[
+    {
+        "id":1,
+        "name":"apple",
+        "pronounce":"ˈæpl̩",
+        "description":"A round fruit with red or green skin, often crisp and juicy, commonly eaten fresh or used in various culinary dishes.",
+        "unlocked":true
+    },
+    {
+        "id":2,
+        "name":"bus",
+        "pronounce":"bʌs",
+        "description":"A \"bus\" typically refers to a large motor vehicle designed for the transportation of passengers, usually along a fixed route with scheduled stops.",
+        "unlocked":false
+    },
+    {
+        "id":3,
+        "name":"cow",
+        "pronounce":" kaʊ",
+        "description":"A \"cow\" is a female adult bovine, which is a domesticated mammal belonging to the species Bos taurus.",
+        "unlocked":false
+    },
+    {
+        "id":4,
+        "name":"dog",
+        "pronounce":"dɒg",
+        "description":"A domesticated carnivorous mammal, known for its loyalty and companionship with humans.",
+        "unlocked":false
+    },
+    {
+        "id":5,
+        "name":"elephant",
+        "pronounce":"ˈɛlɪfənt",
+        "description":"A large herbivorous mammal characterized by its long trunk, large ears, and tusks.",
+        "unlocked":false
+    },
+    {
+        "id":6,
+        "name":"fountain",
+        "pronounce":"ˈfaʊn.tɪn",
+        "description":"A \"fountain\" is a decorative structure that releases water into the air, either in a continuous stream or in patterns. ",
+        "unlocked":false
+    },
+    {
+        "id":7,
+        "name":"grass",
+        "pronounce":"ɡræs",
+        "description":"Short plants with narrow leaves that cover the ground in lawns and fields.",
+        "unlocked":false
+    },
+    {
+        "id":8,
+        "name":"house",
+        "pronounce":"ˈhaʊ.zɪz",
+        "description":"A \"house\" is a building or structure that serves as a dwelling for people.",
+        "unlocked":false
+    },
+    {
+        "id":9,
+        "name":"ice cream",
+        "pronounce":"aɪs kriːm",
+        "description":"A frozen dessert made from sweetened and flavored cream or milk, often enjoyed in various flavors.",
+        "unlocked":false
+    },
+    {
+        "id":10,
+        "name":"jacket",
+        "pronounce":"ˈdʒækɪt",
+        "description":"A short outer garment worn over other clothing, typically with sleeves and fastened down the front.",
+        "unlocked":false
+    },
+    {
+        "id":11,
+        "name":"kite",
+        "pronounce":"kaɪt",
+        "description":"An object, often made of paper or fabric, attached to a string and flown in the air for recreation.",
+        "unlocked":false
+    },
+    {
+        "id":12,
+        "name":"library",
+        "pronounce":" ˈlaɪbrəri",
+        "description":"A place where books and other reading materials are stored, organized, and made available for borrowing or reading.",
+        "unlocked":false
+    },
+    {
+        "id":13,
+        "name":"mailbox",
+        "pronounce":"ˈmeɪlbɒks",
+        "description":"A container for receiving mail, usually found outside homes or in public spaces.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"nurse",
+        "pronounce":"nɜːrs",
+        "description":"A trained healthcare professional responsible for providing medical care, assistance, and support to patients.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"owl",
+        "pronounce":"aʊl",
+        "description":"A nocturnal bird of prey known for its distinct facial features, often associated with wisdom.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"penguin",
+        "pronounce":"ˈpɛŋɡwɪn",
+        "description":"A flightless bird that is known for its distinctive black and white plumage and is often found in cold climates.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"queen",
+        "pronounce":"kwiːn",
+        "description":"A female ruler who holds a position of royalty and leadership.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"rainbow",
+        "pronounce":"ˈreɪnboʊ",
+        "description":" An optical and meteorological phenomenon characterized by a spectrum of light appearing in the sky after rainfall.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"shop",
+        "pronounce":"ʃɒp",
+        "description":"A \"shop\" is a commercial establishment or retail business where goods or services are offered for sale to consumers.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"tree",
+        "pronounce":"triː",
+        "description":"A perennial plant with a single main stem or trunk, supporting branches and leaves.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"uniform",
+        "pronounce":"ˈjuːnɪfɔːm",
+        "description":"Special clothing worn by members of a group or organization to identify and distinguish them.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"vegetable",
+        "pronounce":"ˈvɛdʒtəbl̩",
+        "description":"A plant or part of a plant consumed as food, typically savory and nutritious.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"water",
+        "pronounce":"ˈwɔːtər",
+        "description":" A clear, odorless, and tasteless liquid essential for life, widely used for hydration.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"xylophone",
+        "pronounce":"ˈzaɪləfoʊn",
+        "description":"A musical instrument consisting of a series of wooden bars struck by mallets to produce musical tones.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"yogurt",
+        "pronounce":"ˈjoʊɡərt",
+        "description":"A dairy product created by fermenting milk with bacteria, often served as a nutritious and delicious food.",
+        "unlocked":false
+    },
+    {
+        "id":1,
+        "name":"zoo",
+        "pronounce":"zuː",
+        "description":"A facility where live animals are exhibited, allowing visitors to observe and learn about various species.",
+        "unlocked":false
+    }
+]

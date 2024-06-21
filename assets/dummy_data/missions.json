@@ -2,22 +2,19 @@
     {
         "id":1,
         "description":"Drink 5 cups of water",
-        "completedMission":0,
-        "totalMission":3
+       "completed":true
 
     },
     {
         "id":2,
         "description":"Complete all homework",
-        "completedMission":0,
-        "totalMission":3
+        "completed":false
 
     },
     {
         "id":3,
         "description":"Early to bed, early to rise",
-        "completedMission":0,
-        "totalMission":3
+        "completed":false
 
     }
 ]

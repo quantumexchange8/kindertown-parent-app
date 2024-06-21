@@ -6,12 +6,14 @@ import 'package:get/get.dart';
 import 'package:kindertown_parent_app/controller/controller.dart';
 import 'package:kindertown_parent_app/controller/home_controller.dart';
 import 'package:kindertown_parent_app/controller/kindergarten_controller.dart';
+import 'package:kindertown_parent_app/controller/mission_controller.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
-import 'package:kindertown_parent_app/pages/auth/login/login_page.dart';
-import 'package:kindertown_parent_app/pages/onboarding/hello_page.dart';
-import 'package:kindertown_parent_app/pages/onboarding/onboarding_page.dart';
+// import 'package:kindertown_parent_app/pages/auth/login/login_page.dart';
+// import 'package:kindertown_parent_app/pages/onboarding/hello_page.dart';
+// import 'package:kindertown_parent_app/pages/onboarding/onboarding_page.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/fill_reservation_detail_first_page.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/what_you_should_know_page.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/select_payment_method_page.dart';
+// import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/what_you_should_know_page.dart';
 
 void main() {
   LicenseRegistry.addLicense(() async* {
@@ -24,6 +26,7 @@ void main() {
 
   Get.put(KindergartenController());
   Get.put(HomeController());
+  Get.put(MissionController());
 
   Future.delayed(const Duration(milliseconds: 200)).then((val) async {
     runApp(const MyApp());
@@ -69,7 +72,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         navigatorObservers: [ClearFocusOnPop()],
-        home: const FillReservationDetailFirstPage()
+        home: const SelectPaymentMethodPage()
         // FutureBuilder(
         //     future: isFirstTime(),
         //     builder: (context, snap) {

@@ -10,14 +10,12 @@ class Mission {
   int id;
   String description;
   String iconAddress;
-  int completedMission;
-  int totalMission;
+  bool isCompleted;
   Mission({
     required this.id,
     required this.description,
     required this.iconAddress,
-    required this.completedMission,
-    required this.totalMission,
+    required this.isCompleted,
   });
 
   Map<String, dynamic> toMap() {
@@ -25,8 +23,7 @@ class Mission {
       'id': id,
       'description': description,
       'icon_address': iconAddress,
-      'completed_mission': completedMission,
-      'total_mission': totalMission,
+      'is_completed': isCompleted
     };
   }
 
@@ -34,22 +31,22 @@ class Mission {
     String description = map['description'];
     String iconAddress;
     if (description.toLowerCase().contains('water')) {
-      iconAddress = 'assets/icons/water_icon.png';
+      iconAddress = 'assets/icons/missions/water_icon.png';
+    } else if (description.toLowerCase().contains('sleep')) {
+      iconAddress = 'assets/icons/missions/sleep_icon.png';
     } else {
-      iconAddress = 'assets/icons/homework_icon.png';
+      iconAddress = 'assets/icons/missions/homework_icon.png';
     }
 
     return Mission(
-      id: map['id'] as int,
-      description: description,
-      iconAddress: iconAddress,
-      completedMission: map['completed_mission'] as int,
-      totalMission: map['total_mission'] as int,
-    );
+        id: map['id'] as int,
+        description: description,
+        iconAddress: iconAddress,
+        isCompleted: map['completed'] as bool);
   }
 
   String toJson() => json.encode(toMap());
 
   factory Mission.fromJson(String source) =>
-      Mission.fromMap(json.decode(source) as Map<String, dynamic>);
+      Mission.fromMap(json.decode(source));
 }

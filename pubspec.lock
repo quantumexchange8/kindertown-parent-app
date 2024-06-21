@@ -520,6 +520,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.2"
+  shape_of_view_null_safe:
+    dependency: "direct main"
+    description:
+      name: shape_of_view_null_safe
+      sha256: "5ac76fe9ec3143006ebc29fd7b9dcd4389f01f4cc4c90ad58fc15b48803d40c1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   simple_animations:
     dependency: transitive
     description:
@@ -528,6 +536,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.2"
+  simple_progress_indicators:
+    dependency: "direct main"
+    description:
+      name: simple_progress_indicators
+      sha256: f914a6a81633eae593babbdf78bc26a06d6ec09685a05d53aa2bc45bba228f60
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   sky_engine:
     dependency: transitive
     description: flutter
