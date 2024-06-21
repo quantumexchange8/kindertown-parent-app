@@ -18,6 +18,7 @@ class PaymentMethodListContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryContainer(
+      color: Colors.white,
       padding: EdgeInsets.all(height08),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -30,6 +31,8 @@ class PaymentMethodListContainer extends StatelessWidget {
                       },
                       child: _listContainer(
                           isSelected: selectedIndex == i,
+                          isFirst: i == 0,
+                          isLast: i == datas.length - 1,
                           logo: e['logo'],
                           name: e['name'])),
                 ))
@@ -43,17 +46,20 @@ Container _listContainer({
   required String logo,
   required String name,
   required bool isSelected,
+  required bool isFirst,
+  required bool isLast,
 }) {
   return Container(
     padding:
         EdgeInsets.symmetric(vertical: height05, horizontal: width10 * 1.8),
     decoration: ShapeDecoration(
-      color: isSelected ? const Color(0xFFAF00D3) : const Color(0xFFFFF8EC),
-      shape: const RoundedRectangleBorder(
+      color: isSelected ? const Color(0xFFFAF0FC) : const Color(0xFFFFF8EC),
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(15),
-          topRight: Radius.circular(15),
-        ),
+            topLeft: isFirst ? const Radius.circular(15) : Radius.zero,
+            topRight: isFirst ? const Radius.circular(15) : Radius.zero,
+            bottomLeft: isLast ? const Radius.circular(15) : Radius.zero,
+            bottomRight: isLast ? const Radius.circular(15) : Radius.zero),
       ),
     ),
     child: Row(

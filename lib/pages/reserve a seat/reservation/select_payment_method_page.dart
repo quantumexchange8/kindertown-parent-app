@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/component/primary_appbar.dart';
 import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/component/primary_textbutton.dart';
+import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/credit_card.dart';
+import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/payment_status_page.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/payment_method_list_container.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/show_select_form_column.dart';
 
@@ -19,8 +21,8 @@ final List<CreditCard> creditCardList = [
 ];
 
 const onlineBankingList = [
-  {'logo': 'assets/icons/bank_logo/maybank.png', 'name': 'Maybank2u'},
-  {'logo': 'assets/icons/bank_logo/cimb.png', 'name': 'CIMB Clicks'},
+  {'logo': 'assets/icons/bank_logo/maybank2u.png', 'name': 'Maybank2u'},
+  {'logo': 'assets/icons/bank_logo/cimb_clicks.png', 'name': 'CIMB Clicks'},
   {'logo': 'assets/icons/bank_logo/public_bank.png', 'name': 'Public Bank'},
   {'logo': 'assets/icons/bank_logo/ambank.png', 'name': 'Ambank'},
   {'logo': 'assets/icons/bank_logo/rhb_now.png', 'name': 'RHB Now'},
@@ -33,7 +35,7 @@ const onlineBankingList = [
     'name': 'Standard Chartered Bank'
   },
   {
-    'logo': 'assets/icons/bank_logo/hong_leong_bank.png',
+    'logo': 'assets/icons/bank_logo/hong_leong_connect.png',
     'name': 'Hong Leong Connect'
   },
   {'logo': 'assets/icons/bank_logo/ocbc_online.png', 'name': 'OCBC Online'},
@@ -47,18 +49,8 @@ const ewalletList = [
   {'logo': 'assets/icons/e_wallet/shopee_pay.png', 'name': 'Shopee Pay'},
   {'logo': 'assets/icons/e_wallet/mae.png', 'name': 'MAE by Maybank'},
   {'logo': 'assets/icons/e_wallet/wechat_pay_my.png', 'name': 'Wechat Pay MY'},
-  {'logo': 'assets/icons/e_wallet/favepay.png', 'name': 'FavePay'},
+  {'logo': 'assets/icons/e_wallet/fave_pay.png', 'name': 'FavePay'},
   {'logo': 'assets/icons/e_wallet/alipay.png', 'name': 'Alipay'},
-  {
-    'logo': 'assets/icons/bank_logo/standard_chartered_bank.png',
-    'name': 'Standard Chartered Bank'
-  },
-  {
-    'logo': 'assets/icons/bank_logo/hong_leong_bank.png',
-    'name': 'Hong Leong Connect'
-  },
-  {'logo': 'assets/icons/bank_logo/ocbc_online.png', 'name': 'OCBC Online'},
-  {'logo': 'assets/icons/bank_logo/bank_rakyat.png', 'name': 'Bank Rakyat'},
 ];
 
 class SelectPaymentMethodPage extends StatefulWidget {
@@ -81,9 +73,16 @@ class _SelectPaymentMethodPageState extends State<SelectPaymentMethodPage> {
     final onlineBankingLength = onlineBankingList.length;
     final eWalletLength = ewalletList.length;
 
-    void onPressedPay() {}
+    void onPressedPay() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PaymentStatusPage(status: 'failed'),
+          ));
+    }
 
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: primaryAppbar(
           title: Text(
         'Select payment method',
@@ -177,6 +176,7 @@ Widget _creditCardListContainer(
     required int selectedIndex,
     required List<CreditCard> creditCardList}) {
   return PrimaryContainer(
+    color: Colors.white,
     padding: EdgeInsets.all(height08),
     child: Column(
       mainAxisSize: MainAxisSize.min,
@@ -245,6 +245,7 @@ Widget _creditCardListContainer(
                 'assets/icons/plus_icon.png',
                 height: height20,
               ),
+              SizedBox(width: width08 / 2),
               Text(
                 'Add new card',
                 textAlign: TextAlign.center,

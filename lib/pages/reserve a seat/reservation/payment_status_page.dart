@@ -34,7 +34,7 @@ class PaymentStatusPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: width100),
+              padding: EdgeInsets.symmetric(horizontal: width10 * 6),
               child: Text(
                 isSuccess ? 'Payment Successful!' : 'Payment Failed...',
                 textAlign: TextAlign.center,

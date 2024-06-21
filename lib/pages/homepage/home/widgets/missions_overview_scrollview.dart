@@ -22,8 +22,8 @@ class MissionsOverviewScrollview extends StatelessWidget {
                       right: isLast(i, missionList.length) ? 0 : width24 / 2),
                   child: _missionContainer(
                       icon: e.iconAddress,
-                      missionCompleted: e.completedMission,
-                      totalMission: e.totalMission,
+                      missionCompleted: i + 1,
+                      totalMission: missionList.length,
                       mission: e.description),
                 ))
             .toList(),
