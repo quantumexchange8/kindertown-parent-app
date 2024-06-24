@@ -2,28 +2,38 @@
     {
         "id":1,
         "start_date":"2023-12-13 17:00:00",
+        "image":"assets/images/happening_now/holiday.png",
         "title":"Festive Holiday Celebrations at Culture kindergarten",
-        "description":"We are excited to share the plans for our festive celebrations at Culture kindergarten! We believe that creating magical moments for our little ones is a wonderful way to end the year on a cheerful note."
-
+        "description":"We are excited to share the plans for our festive celebrations at Culture kindergarten! We believe that creating magical moments for our little ones is a wonderful way to end the year on a cheerful note.\n\nDate: 20 December 2023\nLocation: Culture Kindergarten\n\n1. Christmas Decorations: \n\nOur classrooms will be adorned with festive decorations, and our young learners will have the opportunity to engage in holiday-themed arts and crafts activities to bring the Christmas spirit to life.\n\n2. Holiday Performances\n\nPrepare to be dazzled by our little stars as they showcase their talents in special holiday performances. Each class has been working hard to prepare delightful presentations that capture the magic of the season.\n\nWe look forward to celebrating this magical time of year with your children and creating lasting memories. \n\nIf you have any questions or would like to contribute to our celebrations, please contact Ms Lee (+601123345678).\n\nWishing you and your families a warm and joyful holiday season!"
     },
     {
         "id":2,
-        "start_date":"2023-12-13 17:00:00",
-        "title":"Festive Holiday Celebrations at Culture kindergarten",
-        "description":"We are excited to share the plans for our festive celebrations at Culture kindergarten! We believe that creating magical moments for our little ones is a wonderful way to end the year on a cheerful note."
+        "start_date":"2023-12-12 15:30:00",
+        "image":"assets/images/happening_now/checkup.png",
+        "title":"Body Checkup Day for all the students",
+        "description":"As part of our commitment to ensuring the well-being of our little ones, we are pleased to announce the upcoming Kindergarten Body Checkup for all students."
 
     },
     {
         "id":3,
-        "start_date":"2023-12-13 17:00:00",
-        "title":"Festive Holiday Celebrations at Culture kindergarten",
-        "description":"We are excited to share the plans for our festive celebrations at Culture kindergarten! We believe that creating magical moments for our little ones is a wonderful way to end the year on a cheerful note."
+        "start_date":"2023-12-11 16:35:00",
+        "image":"assets/images/happening_now/extracurricular.png",
+        "title":"Exciting Extracurricular Opportunities Ahead!",
+        "description":"We hope this announcement finds you well. As we dive into the new year, we are thrilled to introduce a series of exciting extracurricular activities designed to enrich the learning experience for your children at Culture kindergarten."
 
     },
     {
         "id":4,
-        "start_date":"2023-12-13 17:00:00",
-        "title":"Festive Holiday Celebrations at Culture kindergarten",
-        "description":"We are excited to share the plans for our festive celebrations at Culture kindergarten! We believe that creating magical moments for our little ones is a wonderful way to end the year on a cheerful note."
+        "start_date":"2023-12-11 11:00:00",
+        "image":"assets/images/happening_now/safety_upgrade.png",
+        "title":"Kindergarten Wellness and Safety Update",
+        "description":"The well-being and safety of our students are of utmost importance, and we would like to share some important updates related to wellness and safety at Culture kindergarten."
+    },
+    {
+        "id":5,
+        "start_date":"2023-12-10 12:20:00",
+        "image":"assets/images/happening_now/fairy_tale.png",
+        "title":"Invitation to an Enchanting Fairy Tale Party Night!",
+        "description":"We are delighted to extend a magical invitation to you and your little ones for an Enchanting Fairy Tale Party Night! Join us for an evening filled with whimsy, wonder, and fairy-tale magic as we embark on an enchanted journey together."
     }
 ]

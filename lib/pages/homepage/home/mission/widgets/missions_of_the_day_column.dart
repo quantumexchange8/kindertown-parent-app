@@ -7,7 +7,7 @@ import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/mission.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/content_column.dart';
+import 'package:kindertown_parent_app/component/content_column.dart';
 
 class MissionsOfTheDayColumn extends StatelessWidget {
   final List<Mission> missionList;

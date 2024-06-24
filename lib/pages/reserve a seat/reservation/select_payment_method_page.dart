@@ -77,7 +77,7 @@ class _SelectPaymentMethodPageState extends State<SelectPaymentMethodPage> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => PaymentStatusPage(status: 'failed'),
+            builder: (context) => const PaymentStatusPage(status: 'success'),
           ));
     }
 

@@ -1,0 +1,27 @@
+[
+    {
+        "id":1,
+        "task":"Drawing a Tiger",
+        "done":false
+    },
+    {
+        "id":2,
+        "task":"Tracing letters ‘A’ to ‘G’",
+        "done":false
+    },
+    {
+        "id":3,
+        "task":"Counting from ‘1’ to ‘10’",
+        "done":false
+    },
+    {
+        "id":4,
+        "task":"Colouring the Cats with three colours",
+        "done":false
+    },
+    {
+        "id":5,
+        "task":"Bring purple color paper for tomorrow",
+        "done":false
+    }
+]

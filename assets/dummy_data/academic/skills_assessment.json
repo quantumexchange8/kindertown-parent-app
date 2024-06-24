@@ -1,0 +1,146 @@
+[
+    {
+        "id":1,
+        "skill":"Cognitive Skills",
+        "percentage":46.6,
+        "subs":[
+            {
+                "id":1,
+                "subtitle":"Language & Literacy",
+                "percentage":40,
+                "subs":[
+                   {
+                    "1.1 Listening Skills":"Child's ability to listen attentively and comprehend spoken language, including following instructions and responding appropriately.",
+                    "1.2 Speaking Skills":"Child's expressive language skills, including vocabulary, sentence structure, and clarity of speech.",
+                    "1.3 Reading Readiness":"Child’s pre-reading skills, such as letter recognition, phonemic awareness, and understanding basic concepts of print."
+                   }
+                ]
+            },
+            {
+                "id":2,
+                "subtitle":"Numeracy & Mathematics",
+                "percentage":60,
+                "subs":[
+                   {
+                    "1.1 Number Recognition":"Child's ability to recognise and name numbers.",
+                    "1.2 Counting Skills":"Child's ability to count objects and understand the concept of one-to-one correspondence.",
+                    "1.3 Pattern Recognition":"Child's ability to identify and create basic patterns."
+                   }
+                ]
+            },
+            {
+                "id":3,
+                "subtitle":"Problem-Solving",
+                "percentage":40,
+                "subs":[
+                   {
+                    "1.1 Critical Thinking":"Child's ability to listen attentively and comprehend spoken language, including following instructions and responding appropriately.",
+                    "1.2 Problem-Solving Strategies":"How well the child approaches and solves problems, considering different strategies and approaches."
+                   }
+                ]
+            }
+        ]
+    },
+    {
+        "id":2,
+        "skill":"Social & Emotional Skills",
+        "percentage":63.3,
+        "subs":[
+            {
+                "id":1,
+                "subtitle":"Social Interaction",
+                "percentage":80,
+                "subs":[
+                   {
+                    "1.1 Peer Interaction":"Child's ability to initiate and engage in play with peers, considering factors such as sharing, turn-taking, and cooperation.",
+                    "1.2 Communication Skills":"Child’s verbal and nonverbal communication abilities, including the use of eye contact, facial expressions, and body language.",
+                    "1.3 Friendship Building":"Child’s capacity to form and maintain friendships."
+                   }
+                ]
+            },
+            {
+                "id":2,
+                "subtitle":"Emotional Regulation",
+                "percentage":40,
+                "subs":[
+                   {
+                    "1.1 Self-Awareness":"Child's ability to recognise and label their own emotions.",
+                    "1.2 Self-Control":"How well the child manages and controls their emotional reactions.",
+                    "1.3 Coping Strategies":"Child's repertoire of coping mechanisms when faced with stress or adversity, including seeking help from adults, or expressing emotions through words or art."
+                   }
+                ]
+            },
+            {
+                "id":3,
+                "subtitle":"Empathy",
+                "percentage":70,
+                "subs":[
+                   {
+                    "1.1 Understanding others":"Child's capacity to recognise and understand the emotions of others, demonstrating empathy through supportive behaviours.",
+                    "1.2 Helping and Caring":"Whether the child offers assistance, comfort, or support to peers, teachers, or even inanimate objects, indicating a developing sense of empathy and kindness."
+                   }
+                ]
+            }
+        ]
+    },
+    {
+        "id":3,
+        "skill":"Physical Development",
+        "percentage":75,
+        "subs":[
+            {
+                "id":1,
+                "subtitle":"Gross Motor Skills",
+                "percentage":90,
+                "subs":[
+                   {
+                    "1.1 Locomotor Skills":"Child's ability to move and control their body in different ways, including walking, running, jumping, hopping, skipping, and galloping.",
+                    "1.2 Balance":"Child's balance while engaging in activities such as standing on one foot, walking on a straight line, or navigating obstacles.",
+                    "1.3 Coordination":"Child's hand-eye coordination and overall body coordination."
+                   }
+                ]
+            },
+            {
+                "id":2,
+                "subtitle":"Fine Motor Skills",
+                "percentage":60,
+                "subs":[
+                   {
+                    "1.1 Hand and Finger Coordination":"Child's ability to manipulate small objects using their hands and fingers, including tasks such as picking up small items, holding writing utensils, and using scissors.",
+                    "1.2 Handwriting Skills":"Child’s ability to form letters, numbers, and shapes with control and precision."
+                   }
+                ]
+            }
+        ]
+    },
+    {
+        "id":4,
+        "skill":"Early Learning Behaviours",
+        "percentage":65,
+        "subs":[
+            {
+                "id":1,
+                "subtitle":"Curiosity & Exploration",
+                "percentage":70,
+                "subs":[
+                   {
+                    "1.1 Interest in Learning":"Child's eagerness to explore new ideas, concepts, and materials.",
+                    "1.2 Questioning":"Child's ability to ask questions about their environment, showing curiosity about how things work and seeking information to satisfy their natural curiosity.",
+                    "1.3 Exploratory Play":"Child's willingness to engage in exploratory play and experimenting with different materials"
+                   }
+                ]
+            },
+            {
+                "id":2,
+                "subtitle":"Independence & Self-Care",
+                "percentage":60,
+                "subs":[
+                   {
+                    "1.1 Independence Task":"Child’s ability to complete a task independently.",
+                    "1.2 Self-Care":"Child's independence in basic self-care tasks, such as handwashing, using tissues and etc."
+                   }
+                ]
+            }
+        ]
+    }
+]

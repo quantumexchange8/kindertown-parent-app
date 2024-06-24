@@ -1,0 +1,51 @@
+{
+    "id":1,
+    "rank":1,
+    "total_rank":12,
+    "grade_list":[
+        {
+            "id":1,
+            "subject":"Malay",
+            "mark":75,
+            "grade":"A-",
+            "grade_comment":{
+                "id":1,
+                "from":"Ms. Cecillia",
+                "comment":"Lisa has done a great job in this subject. Keep it up in the future!"
+            }
+        },
+        {
+            "id":2,
+            "subject":"English",
+            "mark":73,
+            "grade":"A-",
+            "grade_comment":null
+        },
+        {
+            "id":3,
+            "subject":"Chinese",
+            "mark":60,
+            "grade":"B-",
+            "grade_comment":{
+                "id":2,
+                "from":"Ms. Li",
+                "comment":"I hope to see Lisa’s improvement on this subject."
+            }
+        },
+        {
+            "id":4,
+            "subject":"Mathematics",
+            "mark":90,
+            "grade":"A-",
+            "grade_comment":null
+        },
+        {
+            "id":5,
+            "subject":"Science",
+            "mark":71,
+            "grade":"A-",
+            "grade_comment":null
+        }
+    ]
+
+}

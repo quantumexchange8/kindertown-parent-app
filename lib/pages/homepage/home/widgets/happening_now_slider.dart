@@ -26,12 +26,26 @@ class HappeningNowSlider extends StatelessWidget {
       return Column(
         children: [
           PrimaryContainer(
-            padding: EdgeInsets.zero,
-            child: SizedBox(
-              width: width100 * 3.88,
-              height: height100 * 3.51,
-            ),
-          ),
+              padding: EdgeInsets.all(height15),
+              child: Container(
+                width: width100 * 3.49,
+                height: height100 * 3.15,
+                decoration: ShapeDecoration(
+                  color: const Color(0x0FAF00D2),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    'No data yet.',
+                    style: textSm.copyWith(
+                      color: const Color(0xFF898A8D),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              )),
           SizedBox(
             height: height10 * 1.8,
           ),
@@ -48,6 +62,7 @@ class HappeningNowSlider extends StatelessWidget {
           CarouselSlider.builder(
             carouselController: carouselController,
             options: CarouselOptions(
+              autoPlay: true,
               onPageChanged: (index, reason) {
                 indicatorController.jumpToPage(
                   index,
@@ -58,7 +73,7 @@ class HappeningNowSlider extends StatelessWidget {
             itemBuilder: (context, index, realIndex) {
               final happeningNow = happeningNowList[index];
 
-              return _happeningNowContainer(happeningNow);
+              return happeningNowContainer(happeningNow);
             },
           ),
           SizedBox(
@@ -84,7 +99,7 @@ class HappeningNowSlider extends StatelessWidget {
   }
 }
 
-Widget _happeningNowContainer(HappeningNow happeningNow) {
+Widget happeningNowContainer(HappeningNow happeningNow) {
   return Container(
     width: width100 * 3.88,
     height: height100 * 3.51,
@@ -103,12 +118,12 @@ Widget _happeningNowContainer(HappeningNow happeningNow) {
           child: Container(
             width: width100 * 3.85,
             height: height100 * 1.3,
-            decoration: const ShapeDecoration(
+            decoration: ShapeDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/event/happening_now.png"),
+                image: AssetImage(happeningNow.image),
                 fit: BoxFit.cover,
               ),
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
@@ -128,71 +143,76 @@ Widget _happeningNowContainer(HappeningNow happeningNow) {
         ),
         Align(
           alignment: Alignment.bottomCenter,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: width10 * 6.6,
-                    height: height24,
-                    decoration: ShapeDecoration(
-                      color: yellowPrimary,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: height24 / 2, horizontal: width30),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: width10 * 6.6,
+                      height: height24,
+                      decoration: ShapeDecoration(
+                        color: yellowPrimary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
                       ),
-                    ),
-                    child: Center(
-                      child: Text(
-                        DateFormat('dd/MM').format(happeningNow.startDate),
-                        style: textXS.copyWith(
-                          fontWeight: FontWeight.w700,
+                      child: Center(
+                        child: Text(
+                          DateFormat('dd/MM').format(happeningNow.startDate),
+                          style: textXS.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Text(
-                    DateFormat('H:mma').format(happeningNow.startDate),
-                    textAlign: TextAlign.right,
-                    style: textXS.copyWith(
-                      fontWeight: FontWeight.w700,
+                    Text(
+                      DateFormat('H:mma').format(happeningNow.startDate),
+                      textAlign: TextAlign.right,
+                      style: textXS.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
+                  ],
+                ),
+                Text(
+                  happeningNow.title,
+                  style: textLg.copyWith(
+                    fontWeight: FontWeight.w700,
                   ),
-                ],
-              ),
-              Text(
-                happeningNow.title,
-                style: textLg.copyWith(
-                  fontWeight: FontWeight.w700,
                 ),
-              ),
-              SizedBox(height: height10),
-              Text(
-                happeningNow.description,
-                style: textSm.copyWith(
-                  fontWeight: FontWeight.w500,
+                SizedBox(height: height10),
+                Text(
+                  happeningNow.description,
+                  overflow: TextOverflow.ellipsis,
+                  style: textSm.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    'Read more',
-                    style: textSm.copyWith(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Read more',
+                      style: textSm.copyWith(
+                        color: yellowPrimary,
+                        fontWeight: FontWeight.w700,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      size: 21,
                       color: yellowPrimary,
-                      fontWeight: FontWeight.w700,
-                      decoration: TextDecoration.underline,
                     ),
-                  ),
-                  const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 21,
-                    color: yellowPrimary,
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ],

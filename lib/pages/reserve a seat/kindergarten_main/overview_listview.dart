@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/models/kindergarten.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/about_kindergarten_container.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/content_column.dart';
+import 'package:kindertown_parent_app/component/content_column.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/essential_details_container.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/people_eyeing_container.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/photos_row.dart';

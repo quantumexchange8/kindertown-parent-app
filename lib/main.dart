@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:kindertown_parent_app/controller/academic_controller.dart';
 import 'package:kindertown_parent_app/controller/controller.dart';
 import 'package:kindertown_parent_app/controller/home_controller.dart';
 import 'package:kindertown_parent_app/controller/kindergarten_controller.dart';
 import 'package:kindertown_parent_app/controller/mission_controller.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
+import 'package:kindertown_parent_app/pages/join_as_kindertown_affiliate/affiliate_homepage.dart';
 // import 'package:kindertown_parent_app/pages/auth/login/login_page.dart';
 // import 'package:kindertown_parent_app/pages/onboarding/hello_page.dart';
 // import 'package:kindertown_parent_app/pages/onboarding/onboarding_page.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/fill_reservation_detail_first_page.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/select_payment_method_page.dart';
 // import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/what_you_should_know_page.dart';
 
@@ -27,6 +28,7 @@ void main() {
   Get.put(KindergartenController());
   Get.put(HomeController());
   Get.put(MissionController());
+  Get.put(AcademicController());
 
   Future.delayed(const Duration(milliseconds: 200)).then((val) async {
     runApp(const MyApp());
@@ -62,6 +64,19 @@ class MyApp extends StatelessWidget {
       if (!getMailSuccess) {
         return false;
       }
+      final getDailyTasks = await academicController.getDailyTasks();
+      if (!getDailyTasks) {
+        return false;
+      }
+      final getGradesOverview = await academicController.getGradesOverview();
+      if (!getGradesOverview) {
+        return false;
+      }
+      final getSkillsAssesment =
+          await academicController.getSkillsAssesmentList();
+      if (!getSkillsAssesment) {
+        return false;
+      }
       return true;
     }
 
@@ -72,7 +87,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         navigatorObservers: [ClearFocusOnPop()],
-        home: const SelectPaymentMethodPage()
+        home: const AffiliateHomepage()
         // FutureBuilder(
         //     future: isFirstTime(),
         //     builder: (context, snap) {

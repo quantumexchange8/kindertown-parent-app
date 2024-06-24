@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kindertown_parent_app/component/primary_tickbox.dart';
+import 'package:kindertown_parent_app/component/secondary_tickbox.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 
@@ -56,7 +56,7 @@ Row _itemRow({
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      PrimaryTickBox(
+      SecondaryTickBox(
         onTick: onTick,
         isTick: item == selectedItem,
       ),

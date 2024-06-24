@@ -10,11 +10,13 @@ List<HappeningNow> listHappeningNowFromJson(String json) {
 class HappeningNow {
   int id;
   DateTime startDate;
+  String image;
   String title;
   String description;
   HappeningNow({
     required this.id,
     required this.startDate,
+    required this.image,
     required this.title,
     required this.description,
   });
@@ -23,6 +25,7 @@ class HappeningNow {
     return <String, dynamic>{
       'id': id,
       'start_date': startDate.millisecondsSinceEpoch,
+      'image': image,
       'title': title,
       'description': description,
     };
@@ -32,6 +35,7 @@ class HappeningNow {
     return HappeningNow(
       id: map['id'] as int,
       startDate: DateTime.parse(map['start_date'] as String),
+      image: map['image'] as String,
       title: map['title'] as String,
       description: map['description'] as String,
     );

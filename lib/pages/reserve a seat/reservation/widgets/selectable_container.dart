@@ -1,6 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:kindertown_parent_app/component/primary_tickbox.dart';
+import 'package:kindertown_parent_app/component/secondary_tickbox.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
@@ -50,7 +50,7 @@ class SelectableContainer extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              PrimaryTickBox(
+              SecondaryTickBox(
                 onTick: onTick,
                 isTick: isTick,
               )
