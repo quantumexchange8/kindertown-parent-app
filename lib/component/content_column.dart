@@ -18,9 +18,7 @@ class ContentColumn extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SubtitleContainer(iconAddress: iconAddress, subtitle: subtitle),
-        SizedBox(
-          height: height08 * 2,
-        ),
+        SizedBox(height: height08 * 2),
         content
       ],
     );

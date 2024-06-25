@@ -6,15 +6,17 @@ import 'package:kindertown_parent_app/models/mission.dart';
 
 class MissionController extends GetxController {
   static MissionController instance = Get.find();
+  RxList<Mission> missionList = List<Mission>.empty(growable: true).obs;
 
-  Future<List<Mission>?> getMissionList() async {
+  Future<bool> getMissionList() async {
     try {
       final String response =
           await rootBundle.loadString('assets/dummy_data/missions.json');
-      return listMissionFromJson(response);
+      missionList.value = listMissionFromJson(response);
+      return true;
     } catch (e) {
       debugPrint(e.toString());
-      return null;
+      return false;
     }
   }
 

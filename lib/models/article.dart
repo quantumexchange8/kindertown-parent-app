@@ -10,10 +10,12 @@ class Article {
   int id;
   String image;
   String title;
+  String link;
   Article({
     required this.id,
     required this.image,
     required this.title,
+    required this.link,
   });
 
   Map<String, dynamic> toMap() {
@@ -21,6 +23,7 @@ class Article {
       'id': id,
       'image': image,
       'title': title,
+      'link': link
     };
   }
 
@@ -29,6 +32,7 @@ class Article {
       id: map['id'] as int,
       image: map['image'] as String,
       title: map['title'] as String,
+      link: map['link'] as String,
     );
   }
 

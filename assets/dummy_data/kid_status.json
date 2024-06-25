@@ -1,0 +1,265 @@
+{
+    "id":1,
+    "name":"Lisa Tan Lee Sha",
+    "gender":"female",
+    "kindergarten_name":"Culture Kindergarten",
+    "check_in":[
+        {
+            "id":1,
+            "time":"2024-01-08 07:50:00",
+            "temperature":36.4,
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-08 07:53:00",
+            "comment":{
+                "id":1,
+                "comment":null,
+                "photo":"https://www.shutterstock.com/image-photo/kids-street-fashion-concept-portrait-260nw-464258312.jpg"
+            }
+        },
+        {
+            "id":2,
+            "time":"2024-01-09 07:50:00",
+            "temperature":37.5,
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-09 07:55:00",
+            "comment":null
+        },
+        {
+            "id":3,
+            "time":"2024-01-10 07:50:00",
+            "temperature":37.5,
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-10 07:54:00",
+            "comment":null
+        }
+    ],
+    "potty":[
+        {
+            "id":1,
+            "start_time":"2024-01-08 11:30:00",
+            "end_time":"2024-01-08 11:34:00",
+            "potty":"small hard lumps",
+            "from":{
+                "id":2,
+                "name":"Ms. Melissa",
+                "image":"https://randomuser.me/api/portraits/women/27.jpg"
+            },
+            "created_at":"2024-01-08 13:00:00",
+            "comment":{
+                "id":2,
+                "comment":"Lisa might experience constipation this morning, but need not to worry as she didn’t show any other symptoms.",
+                "photo":null
+            }
+        },
+        {
+            "id":2,
+            "start_time":"2024-01-09 11:30:00",
+            "end_time":"2024-01-09 11:34:00",
+            "potty":"lumpy sausage",
+            "from":{
+                "id":2,
+                "name":"Ms. Melissa",
+                "image":"https://randomuser.me/api/portraits/women/27.jpg"
+            },
+            "created_at":"2024-01-09 13:00:00",
+            "comment":null
+        },
+        {
+            "id":3,
+            "start_time":"2024-01-10 11:30:00",
+            "end_time":"2024-01-10 11:34:00",
+            "potty":"soft and smooth sausage",
+            "from":{
+                "id":2,
+                "name":"Ms. Melissa",
+                "image":"https://randomuser.me/api/portraits/women/27.jpg"
+            },
+            "created_at":"2024-01-10 13:00:00",
+            "comment":null
+        }
+    ],
+    "meal_intake":[
+        {
+            "id":1,
+            "start_time":"2024-01-08 12:00:00",
+            "end_time":"2024-01-08 12:45:00",
+            "meal_intake":25,
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-08 13:00:00",
+            "comment":{
+                "id":3,
+                "comment":"Lisa couldn’t finish all of her meal as she said she wasn’t feel like eating the food provided today. Teacher has given her some apple slices as her lunch instead.",
+                "photo":null
+            }
+        },
+        {
+            "id":2,
+            "start_time":"2024-01-09 12:00:00",
+            "end_time":"2024-01-09 12:45:00",
+            "meal_intake":100,
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-09 13:00:00",
+            "comment":null
+        },
+        {
+            "id":3,
+            "start_time":"2024-01-10 12:00:00",
+            "end_time":"2024-01-10 12:45:00",
+            "meal_intake":100,
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-10 13:00:00",
+            "comment":null
+        }
+    ],
+    "nap":[
+        {
+            "id":1,
+            "start_time":"2024-01-08 14:00:00",
+            "end_time":"2024-01-08 15:02:00",
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-08 15:08:00",
+            "comment":null
+        },
+        {
+            "id":2,
+            "start_time":"2024-01-09 14:02:00",
+            "end_time":"2024-01-09 14:58:00",
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-09 15:04:00",
+            "comment":null
+        },
+        {
+            "id":3,
+            "start_time":"2024-01-10 14:30:00",
+            "end_time":"2024-01-10 15:32:00",
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-10 15:58:00",
+            "comment":null
+        }
+    ],
+    "photo":[
+        {
+            "id":1,
+            "start_time":"2024-01-08 15:30:00",
+            "end_time":"2024-01-08 15:45:00",
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-08 15:50:00",
+            "comment":{
+                "id":4,
+                "comment":"After taking a nap, now Lisa is getting better and having fun with her classmates in playground.",
+                "photo":"https://media.istockphoto.com/id/1346503960/photo/school-children-with-a-parachute.jpg?s=612x612&w=0&k=20&c=4BjEbe6hdVjfRsAXXc9N7NJbjt7g0KbBq61fahOddMk="
+            }
+        },
+        {
+            "id":2,
+            "start_time":"2024-01-09 15:30:00",
+            "end_time":"2024-01-09 15:45:00",
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-09 15:50:00",
+            "comment":{
+                "id":4,
+                "comment":"After taking a nap, now Lisa is getting better and having fun with her classmates in playground.",
+                "photo":"https://media.istockphoto.com/id/1346503960/photo/school-children-with-a-parachute.jpg?s=612x612&w=0&k=20&c=4BjEbe6hdVjfRsAXXc9N7NJbjt7g0KbBq61fahOddMk="
+            }
+        },
+        {
+            "id":3,
+            "start_time":"2024-01-10 15:30:00",
+            "end_time":"2024-01-10 15:45:00",
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-10 15:50:00",
+            "comment":{
+                "id":4,
+                "comment":"After taking a nap, now Lisa is getting better and having fun with her classmates in playground.",
+                "photo":"https://media.istockphoto.com/id/1346503960/photo/school-children-with-a-parachute.jpg?s=612x612&w=0&k=20&c=4BjEbe6hdVjfRsAXXc9N7NJbjt7g0KbBq61fahOddMk="
+            }
+        }
+    ],
+    "check_out":[
+        {
+            "id":1,
+            "time":"2024-01-08 16:02:00",
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-08 16:05:00",
+            "comment":{
+                "id":5,
+                "comment":null,
+                "photo":"https://www.shutterstock.com/image-photo/kids-street-fashion-concept-portrait-260nw-464258312.jpg"
+            }
+        },
+        {
+            "id":2,
+            "time":"2024-01-09 16:02:00",
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-09 16:05:00",
+            "comment":null
+        },
+        {
+            "id":3,
+            "time":"2024-01-10 16:02:00",
+            "from":{
+                "id":1,
+                "name":"Ms. Li",
+                "image":"https://randomuser.me/api/portraits/women/83.jpg"
+            },
+            "created_at":"2024-01-10 16:05:00",
+            "comment":null
+        }
+    ]
+}

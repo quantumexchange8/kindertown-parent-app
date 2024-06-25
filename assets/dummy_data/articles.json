@@ -1,19 +1,21 @@
 [
     {
         "id":1,
-        "image":"assets/images/articles/article_1.png",
-        "title":"8 Ways to strengthen a Parent-Child Relationship"
-
+        "image":"https://www.familyservicesnew.org/wp-content/uploads/2019/10/shutterstock_1486364633-small.jpg",
+        "title":"8 Ways to strengthen a Parent-Child Relationship",
+        "link":"https://www.familyservicesnew.org/news/8-ways-to-strengthen-a-parent-child-relationship/"
     },
     {
         "id":2,
-        "image":"assets/images/articles/article_2.png",
-        "title":"Improve Your Child’s Quality Of Sleep: How To Practice Good Sleep Hygiene"
+        "image":"https://storage.googleapis.com/treatspace-prod-media/pracimg/u-564/image_HfHMLp9.jpeg",
+        "title":"Improve Your Child’s Quality Of Sleep: How To Practice Good Sleep Hygiene",
+        "link":"https://www.capitalareapediatrics.com/blog/improve-your-child-s-quality-of-sleep-how-to-practice-good-sleep-hygiene"
 
     },
     {
         "id":3,
-        "image":"assets/images/articles/article_3.png",
-        "title":"The Importance of Good Nutrition for Kids"
+        "image":"https://www.nationwidechildrens.org/-/media/nch/700childrens/2021/blog_importance-of-nutrients.ashx?w=706&h=470&as=1&bc=ffffff&hash=325C08E06C512EFE9991667CAABE6AD2",
+        "title":"The Importance of Good Nutrition for Kids",
+        "link":"https://www.nationwidechildrens.org/family-resources-education/700childrens/2021/03/importance-good-nutrition-kids"
     }
 ]

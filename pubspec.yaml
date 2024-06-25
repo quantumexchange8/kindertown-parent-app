@@ -55,6 +55,8 @@ dependencies:
   shape_of_view_null_safe: ^3.0.0
   simple_progress_indicators: ^0.2.0
   awesome_circular_chart: ^1.0.0
+  fade_indexed_stack: ^0.2.2
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +92,7 @@ flutter:
     - assets/images/event/
     - assets/images/reservation/
     - assets/images/kid_status/
+    - assets/images/happening_now/
     - assets/images/meals/
     - assets/images/articles/
     - assets/images/missions/

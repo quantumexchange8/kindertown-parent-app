@@ -1,91 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:kindertown_parent_app/component/primary_appbar.dart';
-import 'package:kindertown_parent_app/helper/color_pallete.dart';
+import 'package:kindertown_parent_app/component/content_column.dart';
+import 'package:kindertown_parent_app/controller/controller.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
-import 'package:kindertown_parent_app/helper/text_styles.dart';
-import 'package:kindertown_parent_app/pages/homepage/home/widgets/home_info_container.dart';
-import 'package:kindertown_parent_app/pages/onboarding/widgets/language_button.dart';
+import 'package:kindertown_parent_app/pages/homepage/home/widgets/articles_row.dart';
+import 'package:kindertown_parent_app/pages/homepage/home/widgets/class_info_column.dart';
+import 'package:kindertown_parent_app/pages/homepage/home/widgets/happening_now_slider.dart';
+import 'package:kindertown_parent_app/pages/homepage/home/widgets/meal_of_the_day_container.dart';
+import 'package:kindertown_parent_app/pages/homepage/home/widgets/missions_overview_scrollview.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int currentIndex = 2;
-
-  @override
   Widget build(BuildContext context) {
-    final List<Widget?> actionAppBar = [
-      null,
-      Image.asset(
-        'assets/images/academic/timetable.png',
-        height: height24,
-        fit: BoxFit.fitHeight,
-      ),
-      null,
-      null,
-      const LanguageButton(),
-    ];
-    final List<String> titleAppBar = [
-      'Notice',
-      'Academic',
-      'Home',
-      'Payment',
-      'Profile'
-    ];
-
-    return Scaffold(
-      appBar: primaryAppbar(
-          isTransparent: currentIndex == 4,
-          leading: Icon(
-            Icons.menu_rounded,
-            color: purplePrimary,
-            size: height24,
-          ),
-          title: Text(
-            titleAppBar[currentIndex],
-            textAlign: TextAlign.center,
-            style: textLg.copyWith(
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          actions: [
-            actionAppBar[currentIndex] ??
-                Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2),
-                      child: Container(
-                          color: purplePrimary,
-                          child: Icon(
-                            Icons.mail_outline,
-                            color: Colors.transparent,
-                            size: height24,
-                          )),
-                    ),
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        height: height08 / 2,
-                        width: height08 / 2,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: redPrimary,
-                        ),
-                      ),
-                    )
-                  ],
-                )
-          ]),
-      body: ListView(
-        children: [
-          HomeInfoContainer(status: 'pending_physical_registration'),
-        ],
-      ),
+    return ListView(
+      padding: EdgeInsets.symmetric(vertical: height30),
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: width20),
+          child: ClassInfoColumn(kidStatus: homeController.kidStatus.value!),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: height24),
+          child: ContentColumn(
+              iconAddress: 'assets/icons/home/mission.png',
+              subtitle: 'Missions overview',
+              content: MissionsOverviewScrollview(
+                  missionList: missionController.missionList)),
+        ),
+        ContentColumn(
+            iconAddress: 'assets/icons/home/megaphone.png',
+            subtitle: 'Happening now',
+            content: HappeningNowSlider(
+                happeningNowList: homeController.happeningNowList)),
+        Padding(
+          padding:
+              EdgeInsets.symmetric(vertical: height24, horizontal: width24),
+          child: ContentColumn(
+              iconAddress: 'assets/icons/home/meals.png',
+              subtitle: 'Meal of the day',
+              content: ListMealOfTheDayContainer(
+                  mealOfTheDayList: homeController.mealOfTheDayList)),
+        ),
+        ContentColumn(
+            iconAddress: 'assets/icons/home/newspaper.png',
+            subtitle: 'Articles',
+            content: ArticlesRow(articleList: homeController.articleList)),
+        SizedBox(height: height100 * 1.3)
+      ],
     );
   }
 }

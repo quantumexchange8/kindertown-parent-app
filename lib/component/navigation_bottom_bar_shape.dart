@@ -2,24 +2,17 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
+import 'package:kindertown_parent_app/helper/dimensions.dart';
 
 class NavigationBottomBarShape extends CustomPainter {
-  final double cornerRadius;
-  final double arcRadius;
-  final double arcHeight;
-  final double arcWidth;
-
-  NavigationBottomBarShape({
-    required this.cornerRadius,
-    required this.arcRadius,
-    required this.arcHeight,
-    required this.arcWidth,
-  });
-
   @override
   void paint(Canvas canvas, Size size) {
+    const double cornerRadius = 40;
+    final double arcHeight = height10 * 4;
+    final double arcWidth = width10 * 7;
+
     final paint = Paint()
-      ..color = orangePrimary
+      ..color = yellowPrimary
       ..style = PaintingStyle.fill;
 
     final path = Path();
@@ -45,7 +38,7 @@ class NavigationBottomBarShape extends CustomPainter {
     // Bottom-right corner
     path.arcToPoint(
       Offset(size.width - cornerRadius, size.height),
-      radius: Radius.circular(cornerRadius),
+      radius: Radius.circular(100),
     );
 
     // Bottom edge
@@ -53,8 +46,8 @@ class NavigationBottomBarShape extends CustomPainter {
 
     // Bottom-left corner
     path.arcToPoint(
-      Offset(0, size.height - cornerRadius),
-      radius: Radius.circular(cornerRadius),
+      Offset(0, size.height - 80),
+      radius: Radius.circular(80),
     );
 
     // Left edge
@@ -97,9 +90,6 @@ class NavigationBottomBarShape extends CustomPainter {
       }
       distance = 0;
     }
-
-    // Draw the shadow on top
-    canvas.drawShadow(path, Colors.black, 4, false);
   }
 
   @override

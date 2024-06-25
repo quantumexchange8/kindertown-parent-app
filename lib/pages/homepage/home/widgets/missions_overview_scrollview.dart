@@ -14,6 +14,7 @@ class MissionsOverviewScrollview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: width24 / 2),
       scrollDirection: Axis.horizontal,
       child: Row(
         children: missionList

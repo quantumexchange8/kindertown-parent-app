@@ -1,4 +1,3 @@
-import 'package:awesome_circular_chart/awesome_circular_chart.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/component/content_column.dart';
@@ -6,6 +5,7 @@ import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/academic/skill_assessment.dart';
+import 'package:kindertown_parent_app/pages/homepage/navigation_bar_page/academic/widgets/skill_chart.dart';
 
 class SkillsAssessmentColumn extends StatelessWidget {
   final List<SkillAssessment> skillAssessmentList;
@@ -55,7 +55,7 @@ Widget _skillContainer(SkillAssessment skillAssessment) {
   List<Widget> skillsChildren = [];
 
   if (subs.isNotEmpty) {
-    for (var i = 0; i < subs.length; i++) {
+    for (var i = 0; i < subs.length; i += 3) {
       if (i < subs.length) {
         skillsChildren.add(
           _subsRow(
@@ -88,7 +88,10 @@ Widget _skillContainer(SkillAssessment skillAssessment) {
     padding: EdgeInsets.symmetric(vertical: height24, horizontal: width08 * 2),
     child: Row(
       children: [
-        _skillChart(skillAssessment.subs),
+        SkillChart(
+          skillAssessmentsSubs: skillAssessment.subs,
+          size: Size(height100 * 1.25, height100 * 1.25),
+        ),
         SizedBox(width: width20),
         Column(
           mainAxisSize: MainAxisSize.min,
@@ -104,75 +107,5 @@ Widget _skillContainer(SkillAssessment skillAssessment) {
         )
       ],
     ),
-  );
-}
-
-Widget _skillChart(List<SkillAssessmentSubs> skillAssessmentsSubs) {
-  List<CircularStackEntry> initialChartData = [];
-
-  if (skillAssessmentsSubs.isNotEmpty) {
-    for (var i = 0; i < skillAssessmentsSubs.length; i += 3) {
-      bool hasFirstValue = i < skillAssessmentsSubs.length;
-      bool hasSecondValue = (i + 1) < skillAssessmentsSubs.length;
-      bool hasThirdValue = (i + 2) < skillAssessmentsSubs.length;
-
-      initialChartData.add(
-        CircularStackEntry(
-          [
-            if (hasFirstValue)
-              CircularSegmentEntry(
-                skillAssessmentsSubs[i].percentage,
-                const Color(0xFFF79009),
-              ),
-            CircularSegmentEntry(
-              (hasFirstValue ? 100 - skillAssessmentsSubs[i].percentage : 100),
-              const Color(0xFFFEF0C7),
-            ),
-          ],
-        ),
-      );
-      initialChartData.add(
-        CircularStackEntry(
-          [
-            if (hasSecondValue)
-              CircularSegmentEntry(
-                skillAssessmentsSubs[i + 1].percentage,
-                const Color(0xFFF04438),
-              ),
-            CircularSegmentEntry(
-              (hasSecondValue
-                  ? 100 - skillAssessmentsSubs[i + 1].percentage
-                  : 100),
-              const Color(0xFFFEE4E2),
-            ),
-          ],
-        ),
-      );
-      initialChartData.add(
-        CircularStackEntry(
-          [
-            if (hasThirdValue)
-              CircularSegmentEntry(
-                skillAssessmentsSubs[i + 2].percentage,
-                const Color(0xFF2E90FA),
-              ),
-            CircularSegmentEntry(
-              (hasThirdValue
-                  ? 100 - skillAssessmentsSubs[i + 2].percentage
-                  : 100),
-              const Color(0xFFD1E9FF),
-            ),
-          ],
-        ),
-      );
-    }
-  }
-
-  return AnimatedCircularChart(
-    size: Size(height100 * 1.25, height100 * 1.25),
-    initialChartData: initialChartData,
-    chartType: CircularChartType.Radial,
-    edgeStyle: SegmentEdgeStyle.round,
-    percentageValues: true,
   );
 }

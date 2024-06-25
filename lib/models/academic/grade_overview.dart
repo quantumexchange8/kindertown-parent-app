@@ -17,8 +17,8 @@ class GradeOverview {
     return <String, dynamic>{
       'id': id,
       'rank': rank,
-      'totalRank': totalRank,
-      'gradeList': gradeList.map((x) => x.toMap()).toList(),
+      'total_rank': totalRank,
+      'grade_list': gradeList.map((x) => x.toMap()).toList(),
     };
   }
 
@@ -28,7 +28,7 @@ class GradeOverview {
     return GradeOverview(
       id: map['id'] as int,
       rank: map['rank'] as int,
-      totalRank: map['totalRank'] as int,
+      totalRank: map['total_rank'] as int,
       gradeList: gradeList.map((e) => Grade.fromMap(e)).toList(),
     );
   }
@@ -63,10 +63,12 @@ class Grade {
   }
 
   factory Grade.fromMap(Map<String, dynamic> map) {
+    num mark = map['mark'];
+
     return Grade(
       id: map['id'] as int,
       subject: map['subject'] as String,
-      mark: map['mark'] as double,
+      mark: mark.toDouble(),
       grade: map['grade'] as String,
       gradeComment: map['grade_comment'] == null
           ? null
