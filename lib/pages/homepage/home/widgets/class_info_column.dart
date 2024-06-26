@@ -50,9 +50,6 @@ class ClassInfoColumn extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         _dateContainer(),
-        SizedBox(
-          height: height20,
-        ),
         statusWidget,
       ],
     );

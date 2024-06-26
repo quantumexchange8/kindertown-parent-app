@@ -17,7 +17,7 @@ class NavigationBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: screenWidth,
-      height: height100 * 1.2,
+      height: height100,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -51,9 +51,9 @@ class NavigationBottomBar extends StatelessWidget {
                     iconAddress: 'assets/icons/bottom_bar/academic_default.png',
                     title: 'Academic'),
                 Padding(
-                  padding: EdgeInsets.only(bottom: height08 / 2),
+                  padding: EdgeInsets.only(bottom: height24),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: width10 * 4.4),
+                    padding: EdgeInsets.symmetric(horizontal: width10 * 4.3),
                     child: _middleIconColumn(
                       onTap: () {
                         onTapItem(2);
@@ -140,7 +140,7 @@ Widget _middleIconColumn({void Function()? onTap, required bool isActive}) {
           'Home',
           textAlign: TextAlign.center,
           style: textXS.copyWith(
-            color: orangePrimary,
+            color: isActive ? orangePrimary : purplePrimary,
             fontFamily: 'Inter',
             fontWeight: FontWeight.w700,
           ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/component/primary_appbar.dart';
 import 'package:kindertown_parent_app/component/secondary_page_background.dart';
 import 'package:kindertown_parent_app/controller/controller.dart';
+import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/mission.dart';
 import 'package:kindertown_parent_app/pages/homepage/home/mission/unlocked_element_page.dart';
@@ -28,30 +29,35 @@ class DailyMissionPage extends StatelessWidget {
         ),
       )),
       body: SecondaryPageBackground(
-        child: Column(
-          children: [
-            Align(
-                alignment: Alignment.centerRight,
-                child: InkWell(
-                    onTap: () async {
-                      missionController
-                          .getAchievementElements()
-                          .then((allElements) {
-                        if (allElements != null) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => UnlockedElementPage(
-                                    allElements: allElements),
-                              ));
-                        }
-                      });
-                    },
-                    child: const TotalStarContainer(totalStar: 131))),
-            MissionProgressBar(
-                value: totalCompletedMission / missionList.length),
-            MissionsOfTheDayColumn(missionList: missionList)
-          ],
+        child: Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: width20, vertical: height30),
+          child: Column(
+            children: [
+              Align(
+                  alignment: Alignment.centerRight,
+                  child: InkWell(
+                      onTap: () async {
+                        missionController
+                            .getAchievementElements()
+                            .then((allElements) {
+                          if (allElements != null) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => UnlockedElementPage(
+                                      allElements: allElements),
+                                ));
+                          }
+                        });
+                      },
+                      child: const TotalStarContainer(totalStar: 131))),
+              SizedBox(height: height31),
+              MissionProgressBar(
+                  value: totalCompletedMission / missionList.length),
+              MissionsOfTheDayColumn(missionList: missionList)
+            ],
+          ),
         ),
       ),
     );

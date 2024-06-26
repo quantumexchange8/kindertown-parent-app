@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
@@ -17,6 +18,7 @@ class ListMealOfTheDayContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryContainer(
+      color: Colors.white,
       padding: EdgeInsets.all(height10 * 1.1),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -81,22 +83,24 @@ Widget _mealOfTheDayContainer({
         SizedBox(
           width: width10 * 2.8,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              mealOfTheDay.type.capitalizeFirst ?? mealOfTheDay.type,
-              style: textLg.copyWith(
-                fontWeight: FontWeight.w700,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                mealOfTheDay.type.capitalizeFirst ?? mealOfTheDay.type,
+                style: textLg.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            ),
-            Text(
-              mealOfTheDay.description,
-              style: textSm.copyWith(
-                fontWeight: FontWeight.w500,
+              Text(
+                mealOfTheDay.description,
+                style: textSm.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     ),

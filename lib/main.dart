@@ -65,6 +65,10 @@ class MyApp extends StatelessWidget {
       if (!getKidStatus) {
         return false;
       }
+      final getMissionList = await missionController.getMissionList();
+      if (!getMissionList) {
+        return false;
+      }
       final getHappeningNow = await homeController.getHappeningNowList();
       if (!getHappeningNow) {
         return false;

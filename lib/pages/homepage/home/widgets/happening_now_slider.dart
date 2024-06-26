@@ -7,6 +7,7 @@ import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/happening_now.dart';
+import 'package:kindertown_parent_app/pages/homepage/navigation_bar_page/notice/detail_notice_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HappeningNowSlider extends StatefulWidget {
@@ -80,7 +81,15 @@ class _HappeningNowSliderState extends State<HappeningNowSlider> {
 
               return Padding(
                 padding: EdgeInsets.symmetric(horizontal: width10 * 4),
-                child: happeningNowContainer(happeningNow),
+                child: happeningNowContainer(
+                    onTapSeeMore: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailNoticePage(
+                                  happeningNow: happeningNow)));
+                    },
+                    happeningNow: happeningNow),
               );
             },
           ),
@@ -108,8 +117,10 @@ class _HappeningNowSliderState extends State<HappeningNowSlider> {
   }
 }
 
-Widget happeningNowContainer(HappeningNow happeningNow) {
+Widget happeningNowContainer(
+    {void Function()? onTapSeeMore, required HappeningNow happeningNow}) {
   return Container(
+    clipBehavior: Clip.none,
     decoration: ShapeDecoration(
       color: Colors.white,
       shape: RoundedRectangleBorder(
@@ -118,84 +129,95 @@ Widget happeningNowContainer(HappeningNow happeningNow) {
       ),
     ),
     child: Stack(
+      clipBehavior: Clip.none,
       alignment: Alignment.center,
       children: [
         Align(
           alignment: Alignment.topCenter,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: width100 * 3.85,
-                height: height100 * 1.3,
-                decoration: ShapeDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(happeningNow.image),
-                    fit: BoxFit.cover,
-                  ),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
+          child: Container(
+            width: width100 * 3.85,
+            height: height100 * 1.3,
+            decoration: ShapeDecoration(
+              image: DecorationImage(
+                image: AssetImage(happeningNow.image),
+                fit: BoxFit.cover,
+              ),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: height24 / 2, horizontal: width30),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
+            ),
+          ),
+        ),
+        DottedBorder(
+          stackFit: StackFit.expand,
+          borderPadding: const EdgeInsets.all(4),
+          color: redPrimary,
+          strokeWidth: 3,
+          borderType: BorderType.RRect,
+          radius: const Radius.circular(20),
+          dashPattern: const [6, 6],
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                vertical: height24 / 2, horizontal: width30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: width10 * 6.6,
-                          height: height24,
-                          decoration: ShapeDecoration(
-                            color: yellowPrimary,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              DateFormat('dd/MM')
-                                  .format(happeningNow.startDate),
-                              style: textXS.copyWith(
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
+                    Container(
+                      width: width10 * 6.6,
+                      height: height24,
+                      decoration: ShapeDecoration(
+                        color: yellowPrimary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        Text(
-                          DateFormat('H:mma').format(happeningNow.startDate),
-                          textAlign: TextAlign.right,
+                      ),
+                      child: Center(
+                        child: Text(
+                          DateFormat('dd/MM').format(happeningNow.startDate),
                           style: textXS.copyWith(
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                    SizedBox(height: height24 / 2),
                     Text(
-                      happeningNow.title,
-                      style: textLg.copyWith(
+                      DateFormat('H:mma').format(happeningNow.startDate),
+                      textAlign: TextAlign.right,
+                      style: textXS.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(height: height10),
-                    Text(
-                      happeningNow.description,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: textSm.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    SizedBox(height: height08),
-                    Row(
+                  ],
+                ),
+                SizedBox(height: height24 / 2),
+                Text(
+                  happeningNow.title,
+                  style: textLg.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(height: height10),
+                Text(
+                  happeningNow.description,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: textSm.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(height: height08),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: GestureDetector(
+                    onTap: onTapSeeMore,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
@@ -213,20 +235,11 @@ Widget happeningNowContainer(HappeningNow happeningNow) {
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        DottedBorder(
-          borderPadding: const EdgeInsets.all(4),
-          color: redPrimary,
-          strokeWidth: 3,
-          borderType: BorderType.RRect,
-          radius: const Radius.circular(20),
-          dashPattern: const [6, 6],
-          child: Container(),
         ),
       ],
     ),

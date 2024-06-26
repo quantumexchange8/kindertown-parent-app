@@ -71,32 +71,32 @@ class _AppLayoutState extends State<AppLayout> {
             style: textLg.copyWith(fontWeight: FontWeight.w700),
           ),
           actions: [
-            // actionAppBar[currentIndex] ??
-            //     Stack(
-            //       children: [
-            //         Padding(
-            //           padding: const EdgeInsets.only(top: 2),
-            //           child: Container(
-            //               color: purplePrimary,
-            //               child: Icon(
-            //                 Icons.mail_outline,
-            //                 color: Colors.transparent,
-            //                 size: height24,
-            //               )),
-            //         ),
-            //         Align(
-            //           alignment: Alignment.topRight,
-            //           child: Container(
-            //             height: height08 / 2,
-            //             width: height08 / 2,
-            //             decoration: const BoxDecoration(
-            //               shape: BoxShape.circle,
-            //               color: redPrimary,
-            //             ),
-            //           ),
-            //         )
-            //       ],
-            //     )
+            SizedBox(
+              height: height24,
+              width: height24,
+              child: actionAppBar[currentIndex] ??
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Icon(
+                        Icons.mail,
+                        color: purplePrimary,
+                        size: height24,
+                      ),
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Container(
+                          height: height24 / 4,
+                          width: height24 / 4,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: redPrimary,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+            )
           ]),
       body: FadeIndexedStack(index: currentIndex, children: pages),
       bottomNavigationBar:

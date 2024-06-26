@@ -14,17 +14,10 @@ class MissionProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final BubbleShape dialogShape = BubbleShape(
-        position: BubblePosition.Right,
-        arrowPositionPercent: 1,
-        borderRadius: 20,
-        arrowHeight: 10,
-        arrowWidth: 4);
-
     String starDialog;
     if (value == 1) {
       starDialog = 'Yay! Mission Completed!';
-    } else if (value < 1) {
+    } else if (value < 1 && value >= 0.5) {
       starDialog = 'You’re almost there!';
     } else if (value < 0.5) {
       starDialog = 'Good job! Keep it up!';
@@ -46,13 +39,14 @@ class MissionProgressBar extends StatelessWidget {
                   color: Color(0xFF918D86))
             ]),
             child: ProgressBar(
-              value: value,
+              value: 1,
               backgroundColor: const Color(0xFFD9D9D9),
               width: width100 * 3.66,
               height: height20,
-              gradient: const LinearGradient(
+              gradient: LinearGradient(
                 tileMode: TileMode.repeated,
-                transform: GradientRotation(300),
+                begin: Alignment(0, 0),
+                end: Alignment(6, 0),
                 colors: [yellowPrimary, Color(0xFFFDD660)],
               ),
             ),
@@ -67,25 +61,27 @@ class MissionProgressBar extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: width100),
               child: ClipRect(
-                child: Container(
-                  decoration:
-                      BoxDecoration(border: Border.all(color: yellowPrimary)),
-                  child: ShapeOfView(
-                    height: height31,
-                    width: width100 * 2.1,
-                    shape: BubbleShape(
-                        position: BubblePosition.Right,
-                        arrowPositionPercent: 1,
-                        borderRadius: 20,
-                        arrowHeight: 10,
-                        arrowWidth: 4),
+                child: ShapeOfView(
+                  height: height31,
+                  width: width100 * 2.1,
+                  shape: BubbleShape(
+                      position: BubblePosition.Right,
+                      arrowPositionPercent: 1,
+                      borderRadius: 20,
+                      arrowHeight: 10,
+                      arrowWidth: 4),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: yellowPrimary)),
                     child: DottedBorder(
-                      customPath: (p0) => dialogShape.generatePath(
-                          rect: Rect.fromCenter(
-                        center: Offset.zero,
-                        height: height31,
-                        width: width100 * 2.1,
-                      )),
+                      radius: const Radius.circular(20),
+                      // customPath: (p0) => dialogShape.generatePath(
+                      //     rect: Rect.fromCenter(
+                      //   center: Offset.zero,
+                      //   height: height31,
+                      //   width: width100 * 2.1,
+                      // )),
                       borderPadding: const EdgeInsets.all(2),
                       borderType: BorderType.RRect,
                       dashPattern: const [5, 5],

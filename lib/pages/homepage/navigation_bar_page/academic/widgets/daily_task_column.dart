@@ -1,30 +1,35 @@
+import 'package:collection/collection.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:kindertown_parent_app/component/content_column.dart';
 import 'package:kindertown_parent_app/component/primary_tickbox.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
+import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/academic/daily_task.dart';
 
 class DailyTaskColumn extends StatelessWidget {
+  final void Function(DailyTask dailyTask) onTick;
   final List<DailyTask> dailyTasks;
-  const DailyTaskColumn({super.key, required this.dailyTasks});
+  const DailyTaskColumn(
+      {super.key, required this.dailyTasks, required this.onTick});
 
   @override
   Widget build(BuildContext context) {
     return ContentColumn(
         iconAddress: 'assets/icons/missions/homework_icon.png',
         subtitle: 'Daily task',
-        content: _dailyTaskContainer(dailyTasks));
+        content: _dailyTaskContainer(onTick: onTick, dailyTasks: dailyTasks));
   }
 }
 
-Widget _dailyTaskContainer(List<DailyTask> dailyTasks) {
+Widget _dailyTaskContainer(
+    {required void Function(DailyTask task) onTick,
+    required List<DailyTask> dailyTasks}) {
   return Stack(
-    alignment: Alignment.center,
+    alignment: Alignment.topCenter,
     children: [
       Padding(
         padding: EdgeInsets.only(top: height10 * 5.4),
@@ -90,22 +95,32 @@ Widget _dailyTaskContainer(List<DailyTask> dailyTasks) {
                     ),
                   ),
                   SizedBox(height: height24),
-                  ...dailyTasks.map(
-                    (e) => Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        PrimaryTickbox(onTap: () {}, isCheck: e.done),
-                        SizedBox(width: width15),
-                        Expanded(
-                          child: Text(
-                            e.task,
-                            style: textMd.copyWith(
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 0.80,
+                  ...dailyTasks.mapIndexed(
+                    (i, e) => Padding(
+                      padding: EdgeInsets.only(
+                          bottom: isLast(i, dailyTasks.length)
+                              ? 0
+                              : height10 * 1.4),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          PrimaryTickbox(
+                              onTap: () {
+                                onTick(e);
+                              },
+                              isCheck: e.done),
+                          SizedBox(width: width15),
+                          Expanded(
+                            child: Text(
+                              e.task,
+                              style: textMd.copyWith(
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.80,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   )
                 ],
@@ -114,13 +129,10 @@ Widget _dailyTaskContainer(List<DailyTask> dailyTasks) {
           ),
         ),
       ),
-      Align(
-        alignment: Alignment.topCenter,
-        child: Image.asset(
-          'assets/images/academic/clipper.png',
-          width: width100 * 2.29,
-          fit: BoxFit.fitWidth,
-        ),
+      Image.asset(
+        'assets/images/academic/clipper.png',
+        width: width100 * 2.29,
+        fit: BoxFit.fitWidth,
       )
     ],
   );

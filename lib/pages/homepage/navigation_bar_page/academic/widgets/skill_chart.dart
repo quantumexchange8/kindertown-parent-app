@@ -21,20 +21,21 @@ class SkillChart extends StatelessWidget {
         initialChartData.add(
           CircularStackEntry(
             [
-              if (hasFirstValue)
+              if (hasThirdValue)
                 CircularSegmentEntry(
-                  skillAssessmentsSubs[i].percentage,
-                  const Color(0xFFF79009),
+                  skillAssessmentsSubs[i + 2].percentage,
+                  const Color(0xFF2E90FA),
                 ),
               CircularSegmentEntry(
-                (hasFirstValue
-                    ? 100 - skillAssessmentsSubs[i].percentage
+                (hasThirdValue
+                    ? 100 - skillAssessmentsSubs[i + 2].percentage
                     : 100),
-                const Color(0xFFFEF0C7),
+                const Color(0xFFD1E9FF),
               ),
             ],
           ),
         );
+
         initialChartData.add(
           CircularStackEntry(
             [
@@ -55,16 +56,16 @@ class SkillChart extends StatelessWidget {
         initialChartData.add(
           CircularStackEntry(
             [
-              if (hasThirdValue)
+              if (hasFirstValue)
                 CircularSegmentEntry(
-                  skillAssessmentsSubs[i + 2].percentage,
-                  const Color(0xFF2E90FA),
+                  skillAssessmentsSubs[i].percentage,
+                  const Color(0xFFF79009),
                 ),
               CircularSegmentEntry(
-                (hasThirdValue
-                    ? 100 - skillAssessmentsSubs[i + 2].percentage
+                (hasFirstValue
+                    ? 100 - skillAssessmentsSubs[i].percentage
                     : 100),
-                const Color(0xFFD1E9FF),
+                const Color(0xFFFEF0C7),
               ),
             ],
           ),

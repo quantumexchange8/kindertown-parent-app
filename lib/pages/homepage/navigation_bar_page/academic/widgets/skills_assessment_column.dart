@@ -1,10 +1,13 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:kindertown_parent_app/component/content_column.dart';
 import 'package:kindertown_parent_app/component/primary_container.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
+import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/academic/skill_assessment.dart';
+import 'package:kindertown_parent_app/pages/homepage/navigation_bar_page/academic/skill_assessment_page.dart';
 import 'package:kindertown_parent_app/pages/homepage/navigation_bar_page/academic/widgets/skill_chart.dart';
 
 class SkillsAssessmentColumn extends StatelessWidget {
@@ -16,13 +19,22 @@ class SkillsAssessmentColumn extends StatelessWidget {
     return ContentColumn(
         iconAddress: 'assets/images/academic/skill_development.png',
         subtitle: 'Skills assessment',
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: skillAssessmentList
-              .mapIndexed((i, e) => Padding(
-                  padding: EdgeInsets.only(bottom: height20),
-                  child: _skillContainer(e)))
-              .toList(),
+        content: InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => SkillAssessmentPage(
+                        skillAssessments: skillAssessmentList)));
+          },
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: skillAssessmentList
+                .mapIndexed((i, e) => Padding(
+                    padding: EdgeInsets.only(bottom: height20),
+                    child: _skillContainer(e)))
+                .toList(),
+          ),
         ));
   }
 }
@@ -58,25 +70,37 @@ Widget _skillContainer(SkillAssessment skillAssessment) {
     for (var i = 0; i < subs.length; i += 3) {
       if (i < subs.length) {
         skillsChildren.add(
-          _subsRow(
-            dotColor: const Color(0xFFF79009),
-            subtitle: subs[i].subtitle,
+          Padding(
+            padding:
+                EdgeInsets.only(bottom: isLast(i, subs.length) ? 0 : height08),
+            child: _subsRow(
+              dotColor: const Color(0xFFF79009),
+              subtitle: subs[i].subtitle,
+            ),
           ),
         );
       }
       if ((i + 1) < subs.length) {
         skillsChildren.add(
-          _subsRow(
-            dotColor: const Color(0xFFF04438),
-            subtitle: subs[i + 1].subtitle,
+          Padding(
+            padding: EdgeInsets.only(
+                bottom: isLast(i + 1, subs.length) ? 0 : height08),
+            child: _subsRow(
+              dotColor: const Color(0xFFF04438),
+              subtitle: subs[i + 1].subtitle,
+            ),
           ),
         );
       }
       if ((i + 2) < subs.length) {
         skillsChildren.add(
-          _subsRow(
-            dotColor: const Color(0xFF2E90FA),
-            subtitle: subs[i + 2].subtitle,
+          Padding(
+            padding: EdgeInsets.only(
+                bottom: isLast(i + 2, subs.length) ? 0 : height08),
+            child: _subsRow(
+              dotColor: const Color(0xFF2E90FA),
+              subtitle: subs[i + 2].subtitle,
+            ),
           ),
         );
       }
@@ -93,17 +117,20 @@ Widget _skillContainer(SkillAssessment skillAssessment) {
           size: Size(height100 * 1.25, height100 * 1.25),
         ),
         SizedBox(width: width20),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '${skillAssessment.skill} (${skillAssessment.percentage}%)',
-              style: textMd.copyWith(
-                  fontWeight: FontWeight.w700, letterSpacing: 0.80),
-            ),
-            ...skillsChildren,
-          ],
+        Expanded(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '${skillAssessment.skill} (${skillAssessment.percentage}%)',
+                style: textMd.copyWith(
+                    fontWeight: FontWeight.w700, letterSpacing: 0.80),
+              ),
+              SizedBox(height: height08),
+              ...skillsChildren,
+            ],
+          ),
         )
       ],
     ),

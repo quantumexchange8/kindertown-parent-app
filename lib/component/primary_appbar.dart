@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/component/back_button.dart';
-import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 
 PreferredSizeWidget primaryAppbar({
@@ -18,9 +17,9 @@ PreferredSizeWidget primaryAppbar({
           image: isTransparent
               ? null
               : const DecorationImage(
+                  alignment: Alignment.bottomCenter,
                   image: AssetImage('assets/images/header_background.png'),
-                  fit: BoxFit.fill),
-          color: isTransparent ? Colors.transparent : yellowPrimary,
+                  fit: BoxFit.cover),
           borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(25),
               bottomRight: Radius.circular(25))),
@@ -28,13 +27,17 @@ PreferredSizeWidget primaryAppbar({
           child: Row(
         children: [
           if (showBackButton)
-            leading ??
-                PrimaryBackButton(
-                  size: height24,
-                ),
-          if (title != null) Expanded(flex: 6, child: title),
+            Padding(
+              padding: EdgeInsets.only(left: width08 * 2),
+              child: leading ??
+                  PrimaryBackButton(
+                    size: height24,
+                  ),
+            ),
+          if (title != null) Expanded(flex: 8, child: title),
           Expanded(
               child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: actions,
           ))
         ],

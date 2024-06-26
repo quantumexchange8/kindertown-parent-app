@@ -91,14 +91,9 @@ Widget _rankContainer({
 
   return Container(
     width: width100 * 3.29,
-    height: height100 * 1.41,
+    height: height100 * 1.5,
     clipBehavior: Clip.antiAlias,
     decoration: ShapeDecoration(
-      gradient: const LinearGradient(
-        begin: Alignment(0.00, -1.00),
-        end: Alignment(0, 1),
-        colors: [Colors.white, Color(0xFFFF8300)],
-      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(29),
       ),
@@ -106,62 +101,6 @@ Widget _rankContainer({
     child: Stack(
       alignment: Alignment.center,
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (isNumberOne)
-                  Image.asset(
-                    'assets/images/academic/crown.png',
-                    height: height45,
-                    fit: BoxFit.fitHeight,
-                  ),
-                DecoratedGoogleFontText(
-                  rank.toString(),
-                  fontMethod: (
-                      {background,
-                      backgroundColor,
-                      color,
-                      decoration,
-                      decorationColor,
-                      decorationStyle,
-                      decorationThickness,
-                      fontFeatures,
-                      fontSize,
-                      fontStyle,
-                      fontWeight,
-                      foreground,
-                      height,
-                      letterSpacing,
-                      locale,
-                      shadows,
-                      textBaseline,
-                      textStyle,
-                      wordSpacing}) {
-                    return textXXL.copyWith(
-                      fontSize: height100 * 1.28,
-                      fontWeight: FontWeight.w700,
-                    );
-                  },
-                  fillColor: isNumberOne ? null : purplePrimary,
-                  fillGradient: isNumberOne
-                      ? const RadialGradient(
-                          colors: [Color(0xFFEC9C03), Color(0xFFFFDA92)])
-                      : null,
-                  shadows: const [Shadow(color: Color(0xFFffdc9a))],
-                ),
-              ],
-            ),
-            Text(
-              '/$totalRank',
-              style: textXL.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
-        ),
         Align(
           alignment: Alignment.bottomCenter,
           child: Image.asset(
@@ -170,6 +109,73 @@ Widget _rankContainer({
             fit: BoxFit.fitWidth,
           ),
         ),
+        Padding(
+          padding: EdgeInsets.only(bottom: height24),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: width20),
+                child: SizedBox(
+                  height: height100 * 1.28,
+                  child: DecoratedGoogleFontText(
+                    rank.toString(),
+                    fontMethod: (
+                        {background,
+                        backgroundColor,
+                        color,
+                        decoration,
+                        decorationColor,
+                        decorationStyle,
+                        decorationThickness,
+                        fontFeatures,
+                        fontSize,
+                        fontStyle,
+                        fontWeight,
+                        foreground,
+                        height,
+                        letterSpacing,
+                        locale,
+                        shadows,
+                        textBaseline,
+                        textStyle,
+                        wordSpacing}) {
+                      return textXXL.copyWith(
+                          fontSize: height100 * 1.28,
+                          fontWeight: FontWeight.w700,
+                          height: 0);
+                    },
+                    fillColor: isNumberOne ? null : purplePrimary,
+                    fillGradient: isNumberOne
+                        ? const RadialGradient(
+                            colors: [Color(0xFFEC9C03), Color(0xFFFFDA92)])
+                        : null,
+                    shadows: const [Shadow(color: Color(0xFFffdc9a))],
+                  ),
+                ),
+              ),
+              Text(
+                '/$totalRank',
+                style: textLg.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
+        ),
+        if (isNumberOne)
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: EdgeInsets.only(right: width30),
+              child: Image.asset(
+                'assets/images/academic/crown.png',
+                height: height45,
+                fit: BoxFit.fitHeight,
+              ),
+            ),
+          ),
       ],
     ),
   );

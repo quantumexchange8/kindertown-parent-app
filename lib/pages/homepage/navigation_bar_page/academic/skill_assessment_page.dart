@@ -1,6 +1,9 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:kindertown_parent_app/component/primary_appbar.dart';
 import 'package:kindertown_parent_app/component/primary_container.dart';
+import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
@@ -13,18 +16,30 @@ class SkillAssessmentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.symmetric(horizontal: width20, vertical: height30),
-      itemCount: skillAssessments.length,
-      itemBuilder: (context, index) {
-        final skillAssessment = skillAssessments[index];
-        return Padding(
-            padding: EdgeInsets.only(
-                bottom: isLast(index, skillAssessments.length)
-                    ? height100 * 1.47
-                    : height24),
-            child: _skillAssessmentContainer(skillAssessment));
-      },
+    return Scaffold(
+      appBar: primaryAppbar(
+          title: Text(
+        'Skill assessment',
+        textAlign: TextAlign.center,
+        style: textLg.copyWith(
+          fontWeight: FontWeight.w700,
+          height: 0,
+        ),
+      )),
+      backgroundColor: backgroundColor,
+      body: ListView.builder(
+        padding: EdgeInsets.symmetric(horizontal: width20, vertical: height30),
+        itemCount: skillAssessments.length,
+        itemBuilder: (context, index) {
+          final skillAssessment = skillAssessments[index];
+          return Padding(
+              padding: EdgeInsets.only(
+                  bottom: isLast(index, skillAssessments.length)
+                      ? height100 * 1.47
+                      : height24),
+              child: _skillAssessmentContainer(skillAssessment));
+        },
+      ),
     );
   }
 }
@@ -70,6 +85,7 @@ Widget _skillAssessmentContainer(SkillAssessment skillAssessment) {
   }
 
   return PrimaryContainer(
+    color: Colors.white,
     padding: EdgeInsets.symmetric(horizontal: width20, vertical: height30),
     child: Column(
       mainAxisSize: MainAxisSize.min,
@@ -99,28 +115,35 @@ Column _subsColumn(
     required SkillAssessmentSubs skillAssessmentSubs}) {
   return Column(
     mainAxisSize: MainAxisSize.min,
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Row(
-        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: height20,
-            height: height20,
-            decoration: BoxDecoration(
-              color: dotColor,
-              shape: BoxShape.circle,
+          Padding(
+            padding: EdgeInsets.only(top: height08 / 2),
+            child: Container(
+              width: height20,
+              height: height20,
+              decoration: BoxDecoration(
+                color: dotColor,
+                shape: BoxShape.circle,
+              ),
             ),
           ),
           SizedBox(width: width08),
-          Text(
-            '${skillAssessmentSubs.subtitle} (${skillAssessmentSubs.percentage.round()}%)',
-            style: textLg.copyWith(
-              fontWeight: FontWeight.w700,
-              letterSpacing: 1,
+          Expanded(
+            child: Text(
+              '${skillAssessmentSubs.subtitle} (${skillAssessmentSubs.percentage.round()}%)',
+              style: textLg.copyWith(
+                fontWeight: FontWeight.w700,
+                letterSpacing: 1,
+              ),
             ),
           ),
         ],
       ),
+      SizedBox(height: height10),
       ...skillAssessmentSubs.subs.entries.mapIndexed((i, e) => Padding(
             padding: EdgeInsets.only(
                 bottom: isLast(i, skillAssessmentSubs.subs.entries.length)

@@ -20,7 +20,7 @@ class TotalStarContainer extends StatelessWidget {
     return Transform.scale(
       scale: scale,
       child: SizedBox(
-        width: width100 * 1.24,
+        width: width100 * 1.4,
         height: height10 * 5.8,
         child: Stack(
           alignment: Alignment.center,
@@ -28,7 +28,7 @@ class TotalStarContainer extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: Container(
-                width: width100 * 1.05,
+                width: width100 * 1.15,
                 height: height10 * 5.7,
                 padding: const EdgeInsets.all(1),
                 decoration: ShapeDecoration(
