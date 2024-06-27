@@ -9,6 +9,7 @@ class PrimaryTextfield extends StatelessWidget {
   final FocusNode focusNode;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
+  final TextStyle? style;
   final String? hintText;
   final TextStyle? hintStyle;
   final String? prefixText;
@@ -35,7 +36,8 @@ class PrimaryTextfield extends StatelessWidget {
       this.readOnly = false,
       this.obscureText = false,
       this.maxLength,
-      this.inputFormatters});
+      this.inputFormatters,
+      this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +90,10 @@ class PrimaryTextfield extends StatelessWidget {
                   keyboardType: keyboardType,
                   cursorColor: purplePrimary,
                   controller: controller,
-                  style: textLg.copyWith(
-                      fontSize: height10 * 1.8, fontWeight: FontWeight.w500),
+                  style: style ??
+                      textLg.copyWith(
+                          fontSize: height10 * 1.8,
+                          fontWeight: FontWeight.w500),
                   inputFormatters: inputFormatters,
                   decoration: InputDecoration(
                       counterText: '',

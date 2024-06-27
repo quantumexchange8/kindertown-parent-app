@@ -7,12 +7,14 @@ import 'package:kindertown_parent_app/models/teacher.dart';
 class CheckoutStatus {
   int id;
   DateTime time;
+  String? reason;
   Teacher from;
   DateTime createdAt;
   StatusComment? comment;
   CheckoutStatus({
     required this.id,
     required this.time,
+    this.reason,
     required this.from,
     required this.createdAt,
     this.comment,
@@ -22,6 +24,7 @@ class CheckoutStatus {
     return <String, dynamic>{
       'id': id,
       'time': time.millisecondsSinceEpoch,
+      'reason': reason,
       'from': from.toMap(),
       'created_at': createdAt.millisecondsSinceEpoch,
       'comment': comment?.toMap(),
@@ -34,6 +37,7 @@ class CheckoutStatus {
     return CheckoutStatus(
       id: map['id'] as int,
       time: DateTime.parse(map['time'] as String),
+      reason: map['reason'],
       from: Teacher(
           id: from['id'],
           name: from['name'],

@@ -8,6 +8,7 @@ class PhotoStatus {
   int id;
   DateTime startTime;
   DateTime endTime;
+  String status;
   Teacher from;
   DateTime createdAt;
   StatusComment comment;
@@ -15,6 +16,7 @@ class PhotoStatus {
     required this.id,
     required this.startTime,
     required this.endTime,
+    required this.status,
     required this.from,
     required this.createdAt,
     required this.comment,
@@ -25,6 +27,7 @@ class PhotoStatus {
       'id': id,
       'start_time': startTime.millisecondsSinceEpoch,
       'end_time': endTime.millisecondsSinceEpoch,
+      'status': status,
       'from': from.toMap(),
       'created_at': createdAt.millisecondsSinceEpoch,
       'comment': comment.toMap(),
@@ -38,6 +41,7 @@ class PhotoStatus {
       id: map['id'] as int,
       startTime: DateTime.parse(map['start_time'] as String),
       endTime: DateTime.parse(map['end_time'] as String),
+      status: map['status'] as String,
       from: Teacher(
           id: from['id'],
           name: from['name'],

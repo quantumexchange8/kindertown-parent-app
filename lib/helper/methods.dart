@@ -57,3 +57,11 @@ Future<File?> loadFileFromAssets(String assetPath) async {
     return null;
   }
 }
+
+bool isWeekend(DateTime date) {
+  // Get the day of the week
+  int dayOfWeek = date.weekday;
+
+  // Check if it's Saturday (6) or Sunday (7)
+  return dayOfWeek == DateTime.saturday || dayOfWeek == DateTime.sunday;
+}

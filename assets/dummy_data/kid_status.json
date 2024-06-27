@@ -178,6 +178,7 @@
             "id":1,
             "start_time":"2024-01-08 15:30:00",
             "end_time":"2024-01-08 15:45:00",
+            "status":"feeling good",
             "from":{
                 "id":1,
                 "name":"Ms. Li",
@@ -194,6 +195,7 @@
             "id":2,
             "start_time":"2024-01-09 15:30:00",
             "end_time":"2024-01-09 15:45:00",
+            "status":"feeling frustrated",
             "from":{
                 "id":1,
                 "name":"Ms. Li",
@@ -210,6 +212,7 @@
             "id":3,
             "start_time":"2024-01-10 15:30:00",
             "end_time":"2024-01-10 15:45:00",
+            "status":"feeling happy",
             "from":{
                 "id":1,
                 "name":"Ms. Li",
@@ -227,6 +230,7 @@
         {
             "id":1,
             "time":"2024-01-08 16:02:00",
+            "reason":null,
             "from":{
                 "id":1,
                 "name":"Ms. Li",
@@ -242,6 +246,7 @@
         {
             "id":2,
             "time":"2024-01-09 16:02:00",
+            "reason":"Flu",
             "from":{
                 "id":1,
                 "name":"Ms. Li",
@@ -253,6 +258,7 @@
         {
             "id":3,
             "time":"2024-01-10 16:02:00",
+            "reason":"High Fever",
             "from":{
                 "id":1,
                 "name":"Ms. Li",
