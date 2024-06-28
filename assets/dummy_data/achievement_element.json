@@ -91,91 +91,91 @@
         "unlocked":false
     },
     {
-        "id":1,
+        "id":14,
         "name":"nurse",
         "pronounce":"nɜːrs",
         "description":"A trained healthcare professional responsible for providing medical care, assistance, and support to patients.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":15,
         "name":"owl",
         "pronounce":"aʊl",
         "description":"A nocturnal bird of prey known for its distinct facial features, often associated with wisdom.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":16,
         "name":"penguin",
         "pronounce":"ˈpɛŋɡwɪn",
         "description":"A flightless bird that is known for its distinctive black and white plumage and is often found in cold climates.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":17,
         "name":"queen",
         "pronounce":"kwiːn",
         "description":"A female ruler who holds a position of royalty and leadership.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":18,
         "name":"rainbow",
         "pronounce":"ˈreɪnboʊ",
         "description":" An optical and meteorological phenomenon characterized by a spectrum of light appearing in the sky after rainfall.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":19,
         "name":"shop",
         "pronounce":"ʃɒp",
         "description":"A \"shop\" is a commercial establishment or retail business where goods or services are offered for sale to consumers.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":20,
         "name":"tree",
         "pronounce":"triː",
         "description":"A perennial plant with a single main stem or trunk, supporting branches and leaves.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":21,
         "name":"uniform",
         "pronounce":"ˈjuːnɪfɔːm",
         "description":"Special clothing worn by members of a group or organization to identify and distinguish them.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":22,
         "name":"vegetable",
         "pronounce":"ˈvɛdʒtəbl̩",
         "description":"A plant or part of a plant consumed as food, typically savory and nutritious.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":23,
         "name":"water",
         "pronounce":"ˈwɔːtər",
         "description":" A clear, odorless, and tasteless liquid essential for life, widely used for hydration.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":24,
         "name":"xylophone",
         "pronounce":"ˈzaɪləfoʊn",
         "description":"A musical instrument consisting of a series of wooden bars struck by mallets to produce musical tones.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":25,
         "name":"yogurt",
         "pronounce":"ˈjoʊɡərt",
         "description":"A dairy product created by fermenting milk with bacteria, often served as a nutritious and delicious food.",
         "unlocked":false
     },
     {
-        "id":1,
+        "id":26,
         "name":"zoo",
         "pronounce":"zuː",
         "description":"A facility where live animals are exhibited, allowing visitors to observe and learn about various species.",

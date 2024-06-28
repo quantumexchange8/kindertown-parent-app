@@ -9,14 +9,14 @@ class PrimaryBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: onPressed ??
+    return InkWell(
+      onTap: onPressed ??
           () {
             Navigator.pop(context);
           },
       splashColor: purplePrimary.withOpacity(0.1),
-      constraints: const BoxConstraints(),
-      icon: Icon(
+      borderRadius: BorderRadius.circular(10),
+      child: Icon(
         Icons.arrow_back_rounded,
         color: purplePrimary,
         size: size ?? height10 * 4.1,

@@ -13,7 +13,15 @@ class YourArchievementColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final showElements = unlockedElements.sublist(0, 4);
+    List<AchievementElement> showElements = [];
+
+    if (unlockedElements.isNotEmpty) {
+      if (unlockedElements.length >= 4) {
+        showElements = unlockedElements.sublist(0, 4);
+      } else {
+        showElements = unlockedElements.sublist(0, unlockedElements.length);
+      }
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

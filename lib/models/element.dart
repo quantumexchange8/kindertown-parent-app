@@ -6,6 +6,10 @@ List<AchievementElement> listAchievementFromJson(String json) {
       data.map((e) => AchievementElement.fromMap(e)).toList());
 }
 
+String changeSpaceToUnderscore(String key) {
+  return key.replaceAll(RegExp(r' '), '_');
+}
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class AchievementElement {
   int id;
@@ -39,12 +43,13 @@ class AchievementElement {
 
   factory AchievementElement.fromMap(Map<String, dynamic> map) {
     String name = map['name'];
+    String addressName = changeSpaceToUnderscore(name);
 
     return AchievementElement(
       id: map['id'] as int,
       name: name,
-      imageAddress: 'assets/images/missions/$name.png',
-      silhoutteAddress: 'assets/images/missions/${name}_shadow.png',
+      imageAddress: 'assets/images/missions/$addressName.png',
+      silhoutteAddress: 'assets/images/missions/${addressName}_shadow.png',
       description: map['description'] as String,
       pronounce: map['pronounce'] as String,
       unlocked: map['unlocked'] as bool,

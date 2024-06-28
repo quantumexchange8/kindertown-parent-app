@@ -65,3 +65,16 @@ bool isWeekend(DateTime date) {
   // Check if it's Saturday (6) or Sunday (7)
   return dayOfWeek == DateTime.saturday || dayOfWeek == DateTime.sunday;
 }
+
+List<DateTime> getDateRange(DateTime startDate, DateTime endDate) {
+  List<DateTime> dateRange = [];
+  DateTime currentDate = startDate;
+
+  while (
+      currentDate.isBefore(endDate) || currentDate.isAtSameMomentAs(endDate)) {
+    dateRange.add(currentDate);
+    currentDate = currentDate.add(Duration(days: 1));
+  }
+
+  return dateRange;
+}

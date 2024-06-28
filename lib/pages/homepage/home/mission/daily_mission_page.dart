@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kindertown_parent_app/component/primary_appbar.dart';
 import 'package:kindertown_parent_app/component/secondary_page_background.dart';
 import 'package:kindertown_parent_app/controller/controller.dart';
+import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/mission.dart';
@@ -20,6 +21,7 @@ class DailyMissionPage extends StatelessWidget {
         missionList.where((element) => element.isCompleted).length;
 
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: primaryAppbar(
           title: Text(
         'Daily Mission',

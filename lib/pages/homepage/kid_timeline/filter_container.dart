@@ -8,11 +8,19 @@ import 'package:kindertown_parent_app/pages/homepage/kid_timeline/filter_contain
 import 'package:kindertown_parent_app/pages/homepage/kid_timeline/filter_container_widgets/select_date_column.dart';
 
 class FilterContainer extends StatefulWidget {
+  final List<String> selectedActivity;
+  final DateTime? startDate;
+  final DateTime? endDate;
   final void Function(
-      {List<String> selectedActivity,
-      DateTime? startDate,
-      DateTime? endDate}) onPressedApply;
-  const FilterContainer({super.key, required this.onPressedApply});
+      {required List<String> newSelectedActivity,
+      DateTime? newStartDate,
+      DateTime? newEndDate}) onPressedApply;
+  const FilterContainer(
+      {super.key,
+      required this.onPressedApply,
+      required this.selectedActivity,
+      this.startDate,
+      this.endDate});
 
   @override
   State<FilterContainer> createState() => _FilterContainerState();
@@ -24,6 +32,14 @@ class _FilterContainerState extends State<FilterContainer> {
   DateTime? endDate;
   final FocusNode fromFocus = FocusNode();
   final FocusNode toFocus = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    selectedActivity = widget.selectedActivity;
+    startDate = widget.startDate;
+    endDate = widget.endDate;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +58,9 @@ class _FilterContainerState extends State<FilterContainer> {
     void onPressedApply() {
       if (!isDisabled) {
         widget.onPressedApply(
-            selectedActivity: selectedActivity,
-            startDate: startDate,
-            endDate: endDate);
+            newSelectedActivity: selectedActivity,
+            newStartDate: startDate,
+            newEndDate: endDate);
       }
     }
 

@@ -34,20 +34,23 @@ class MissionProgressBar extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(boxShadow: [
               BoxShadow(
-                  offset: Offset(0, -3),
-                  blurRadius: 5,
-                  color: Color(0xFF918D86))
+                  offset: Offset(0, 3), blurRadius: 5, color: Color(0xFF918D86))
             ]),
             child: ProgressBar(
-              value: 1,
+              value: value,
               backgroundColor: const Color(0xFFD9D9D9),
               width: width100 * 3.66,
               height: height20,
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 tileMode: TileMode.repeated,
-                begin: Alignment(0, 0),
-                end: Alignment(6, 0),
-                colors: [yellowPrimary, Color(0xFFFDD660)],
+                colors: [
+                  yellowPrimary,
+                  Color(0xFFFDD660),
+                  yellowPrimary,
+                  Color(0xFFFDD660),
+                  yellowPrimary,
+                  Color(0xFFFDD660)
+                ],
               ),
             ),
           ),

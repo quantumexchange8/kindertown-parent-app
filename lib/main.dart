@@ -8,6 +8,7 @@ import 'package:kindertown_parent_app/controller/controller.dart';
 import 'package:kindertown_parent_app/controller/home_controller.dart';
 import 'package:kindertown_parent_app/controller/kindergarten_controller.dart';
 import 'package:kindertown_parent_app/controller/mission_controller.dart';
+import 'package:kindertown_parent_app/controller/payment_controller.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/pages/auth/login/login_page.dart';
 import 'package:kindertown_parent_app/pages/homepage/app_layout.dart';
@@ -26,6 +27,7 @@ void main() {
   Get.put(HomeController());
   Get.put(MissionController());
   Get.put(AcademicController());
+  Get.put(PaymentController());
 
   Future.delayed(const Duration(milliseconds: 200)).then((val) async {
     runApp(const MyApp());
@@ -92,6 +94,10 @@ class MyApp extends StatelessWidget {
       final getSkillsAssesment =
           await academicController.getSkillsAssesmentList();
       if (!getSkillsAssesment) {
+        return false;
+      }
+      final getBills = await paymentController.getBillList();
+      if (!getBills) {
         return false;
       }
       return true;

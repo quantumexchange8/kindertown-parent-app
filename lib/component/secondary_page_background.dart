@@ -8,14 +8,12 @@ class SecondaryPageBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(alignment: Alignment.center, fit: StackFit.expand, children: [
-      Align(
+      Image.asset(
+        'assets/images/bottom_background.png',
         alignment: Alignment.bottomCenter,
-        child: Image.asset(
-          'assets/images/bottom_background.png',
-          height: height100 * 4.43,
-          width: screenWidth,
-          fit: BoxFit.cover,
-        ),
+        height: height100 * 4.43,
+        width: screenWidth,
+        fit: BoxFit.contain,
       ),
       if (child != null) child!,
     ]);
