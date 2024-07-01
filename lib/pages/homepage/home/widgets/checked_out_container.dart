@@ -1,9 +1,11 @@
 import 'package:decorated_text/decorated_text.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
+import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 
 class CheckedOutContainer extends StatelessWidget {
@@ -53,16 +55,17 @@ class CheckedOutContainer extends StatelessWidget {
               ),
               child: DottedBorder(
                 color: yellowPrimary,
+                borderPadding: const EdgeInsets.all(4),
                 borderType: BorderType.RRect,
                 radius: const Radius.circular(21),
-                dashPattern: const [3, 3],
+                dashPattern: const [6, 6],
                 strokeWidth: 3,
                 child: Stack(
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Image.asset(
-                        'assets/images/kid/status/checked_out_background.png',
+                        'assets/images/kid_status/checked_out_background.png',
                         width: width100 * 1.96,
                         fit: BoxFit.fitWidth,
                       ),
@@ -72,7 +75,7 @@ class CheckedOutContainer extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(left: width20),
                         child: Image.asset(
-                          'assets/images/kid/status/checked_out_bubble.png',
+                          'assets/images/kid_status/checked_out_bubble.png',
                           width: width100 * 1.81,
                           fit: BoxFit.fitWidth,
                         ),
@@ -82,13 +85,10 @@ class CheckedOutContainer extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Row(
                             mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 DateFormat('dd/MM').format(checkedOutTime),
@@ -98,69 +98,70 @@ class CheckedOutContainer extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(width: width08),
-                              Container(
-                                width: width10 * 7.1,
-                                height: height10 * 2.1,
-                                decoration: ShapeDecoration(
-                                  color: const Color(0xFFFFF2E4),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
+                              Padding(
+                                padding: EdgeInsets.only(right: width24),
+                                child: Container(
+                                  decoration: ShapeDecoration(
+                                    color: const Color(0xFFFFF2E4),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    shadows: const [
+                                      BoxShadow(
+                                        color: Color(0x3F000000),
+                                        blurRadius: 2.10,
+                                        offset: Offset(0, 2),
+                                        spreadRadius: 0,
+                                      )
+                                    ],
                                   ),
-                                  shadows: const [
-                                    BoxShadow(
-                                      color: Color(0x3F000000),
-                                      blurRadius: 2.10,
-                                      offset: Offset(0, 2),
-                                      spreadRadius: 0,
-                                    )
-                                  ],
-                                ),
-                                child: Text(
-                                  status,
-                                  style: textSm.copyWith(
-                                    color: yellowPrimary,
-                                    fontWeight: FontWeight.w700,
+                                  child: Text(
+                                    status,
+                                    style: textSm.copyWith(
+                                      color: yellowPrimary,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                          DecoratedGoogleFontText(
-                            DateFormat('H:mma').format(checkedOutTime),
-                            borderColor: yellowPrimary,
-                            borderWidth: 3,
-                            fillColor: Colors.white,
-                            fontSize: height10 * 4.8,
-                            shadows: const [
-                              Shadow(
-                                color: Color(0xFFFFF2E4),
-                                blurRadius: 10,
-                              )
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              DecoratedGoogleFontText(
+                                formatAMPM(DateFormat('hh:mm ')
+                                    .format(checkedOutTime)),
+                                borderColor: yellowPrimary,
+                                borderWidth: 3,
+                                fillColor: Colors.white,
+                                fontSize: height10 * 4.8,
+                                shadows: const [
+                                  Shadow(
+                                      color: yellowPrimary,
+                                      blurRadius: 10,
+                                      offset: Offset(0, 0))
+                                ],
+                                fontWeight: FontWeight.w700,
+                                fontMethod: GoogleFonts.raleway,
+                              ),
+                              DecoratedGoogleFontText(
+                                formatAMPM(
+                                    DateFormat('a').format(checkedOutTime)),
+                                borderColor: yellowPrimary,
+                                borderWidth: 3,
+                                fillColor: Colors.white,
+                                fontSize: height10 * 2.4,
+                                // shadows: const [
+                                //   Shadow(
+                                //     color: Color(0xFFFFF2E4),
+                                //     blurRadius: 10,
+                                //   )
+                                // ],
+                                fontWeight: FontWeight.w700,
+                                fontMethod: GoogleFonts.raleway,
+                              ),
                             ],
-                            fontWeight: FontWeight.w700,
-                            fontMethod: (
-                                    {background,
-                                    backgroundColor,
-                                    color,
-                                    decoration,
-                                    decorationColor,
-                                    decorationStyle,
-                                    decorationThickness,
-                                    fontFeatures,
-                                    fontSize,
-                                    fontStyle,
-                                    fontWeight,
-                                    foreground,
-                                    height,
-                                    letterSpacing,
-                                    locale,
-                                    shadows,
-                                    textBaseline,
-                                    textStyle,
-                                    wordSpacing}) =>
-                                textXXL.copyWith(
-                              letterSpacing: 2.40,
-                            ),
                           ),
                         ],
                       ),
