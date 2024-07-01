@@ -1,15 +1,21 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:kindertown_parent_app/component/primary_textbutton.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
-import 'package:kindertown_parent_app/models/kindergarten.dart';
 
-class KindergartenBottomBar extends StatelessWidget {
-  final Kindergarten kindergarten;
-  const KindergartenBottomBar({super.key, required this.kindergarten});
+class SubscribeBottomBar extends StatelessWidget {
+  final double fee;
+  final void Function()? onPressedSubscribe;
+  final bool isDisabled;
+  final String buttonText;
+  const SubscribeBottomBar(
+      {super.key,
+      required this.fee,
+      this.isDisabled = false,
+      this.onPressedSubscribe,
+      required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +37,13 @@ class KindergartenBottomBar extends StatelessWidget {
                 SizedBox(
                   width: width10 * 2.2,
                 ),
-                _feeColumn(kindergarten.feePerMonth),
+                _feeColumn(fee),
                 SizedBox(width: width30),
                 Expanded(
-                  child: _reserveContainer(
-                      onPressed: () {},
-                      isFull:
-                          kindergarten.totalStudent == kindergarten.maxStudent),
+                  child: _subscribeContainer(
+                      onPressed: onPressedSubscribe,
+                      isDisabled: isDisabled,
+                      buttonText: buttonText),
                 ),
                 SizedBox(
                   width: width10,
@@ -51,15 +57,17 @@ class KindergartenBottomBar extends StatelessWidget {
   }
 }
 
-Widget _reserveContainer(
-    {required void Function()? onPressed, required bool isFull}) {
+Widget _subscribeContainer(
+    {required void Function()? onPressed,
+    required bool isDisabled,
+    required String buttonText}) {
   return PrimaryTextButton(
     height: height10 * 5.8,
-    onPressed: isFull ? null : onPressed,
-    isDisabled: isFull,
-    backgroundColor: orangePrimary,
-    dotColor: redPrimary,
-    buttonText: isFull ? 'Full Reservation' : 'Reserve Now',
+    onPressed: isDisabled ? null : onPressed,
+    isDisabled: isDisabled,
+    backgroundColor: isDisabled ? const Color(0xFFE0E0E0) : orangePrimary,
+    dotColor: isDisabled ? const Color(0xFFCFCFCF) : redPrimary,
+    buttonText: buttonText,
   );
 }
 

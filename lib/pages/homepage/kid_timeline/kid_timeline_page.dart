@@ -22,7 +22,7 @@ import 'package:kindertown_parent_app/pages/homepage/kid_timeline/widgets/meal_i
 import 'package:kindertown_parent_app/pages/homepage/kid_timeline/widgets/nap_row.dart';
 import 'package:kindertown_parent_app/pages/homepage/kid_timeline/widgets/photo_status_row.dart';
 import 'package:kindertown_parent_app/pages/homepage/kid_timeline/widgets/potty_row.dart';
-import 'package:kindertown_parent_app/pages/homepage/kid_timeline/widgets/profile_info_column.dart';
+import 'package:kindertown_parent_app/pages/homepage/widgets/profile_info_column.dart';
 
 class KidTimelinePage extends StatefulWidget {
   final KidStatus kidStatus;
@@ -224,6 +224,7 @@ class _KidTimelinePageState extends State<KidTimelinePage> {
                 Align(
                   alignment: Alignment.topCenter,
                   child: ProfileInfoColumn(
+                      gender: widget.kidStatus.gender,
                       name: widget.kidStatus.name,
                       kindergartenName: widget.kidStatus.kindergartenName),
                 )

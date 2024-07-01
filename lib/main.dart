@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kindertown_parent_app/controller/academic_controller.dart';
 import 'package:kindertown_parent_app/controller/controller.dart';
 import 'package:kindertown_parent_app/controller/home_controller.dart';
@@ -30,6 +31,7 @@ void main() {
   Get.put(PaymentController());
 
   Future.delayed(const Duration(milliseconds: 200)).then((val) async {
+    GoogleFonts.config.allowRuntimeFetching = false;
     runApp(const MyApp());
   }, onError: (error) {});
 }

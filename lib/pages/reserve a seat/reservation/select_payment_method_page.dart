@@ -8,6 +8,7 @@ import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/credit_card.dart';
+import 'package:kindertown_parent_app/pages/homepage/navigation_bar_page/payment/add_new_card_page.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/payment_status_page.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/payment_method_list_container.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/reservation/widgets/show_select_form_column.dart';
@@ -73,6 +74,38 @@ class _SelectPaymentMethodPageState extends State<SelectPaymentMethodPage> {
     final onlineBankingLength = onlineBankingList.length;
     final eWalletLength = ewalletList.length;
 
+    void onTapContainer(bool showContainer) {
+      setState(() {
+        showContainer = !showContainer;
+      });
+    }
+
+    void onTapCard(int index) {
+      setState(() {
+        selectedIndex = index;
+      });
+    }
+
+    void onTapOnlineBankingItem(int index) {
+      setState(() {
+        selectedIndex = creditCardLength + index;
+      });
+    }
+
+    void onTapEWalletItem(int index) {
+      setState(() {
+        selectedIndex = creditCardLength + onlineBankingLength + index;
+      });
+    }
+
+    void onTapNewCard() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AddNewCardPage(),
+          ));
+    }
+
     void onPressedPay() {
       Navigator.push(
           context,
@@ -94,30 +127,23 @@ class _SelectPaymentMethodPageState extends State<SelectPaymentMethodPage> {
           children: [
             ShowSelectFormColumn(
                 onTapContainer: () {
-                  setState(() {
-                    showCreditCardForm = !showCreditCardForm;
-                  });
+                  onTapContainer(showCreditCardForm);
                 },
                 onTick: () {},
                 isVisibleForm: showCreditCardForm,
                 subtitle: 'Credit / Debit card',
                 isTick: selectedIndex >= 0 && selectedIndex < creditCardLength,
                 formContainer: _creditCardListContainer(
+                  onTapNewCard: onTapNewCard,
                   selectedIndex: selectedIndex,
-                  onTapCard: (index) {
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                  },
+                  onTapCard: onTapCard,
                   creditCardList: creditCardList,
                 )),
             Padding(
               padding: EdgeInsets.symmetric(vertical: height31),
               child: ShowSelectFormColumn(
                   onTapContainer: () {
-                    setState(() {
-                      showOnlineBankingForm = !showOnlineBankingForm;
-                    });
+                    onTapContainer(showOnlineBankingForm);
                   },
                   onTick: () {},
                   isVisibleForm: showOnlineBankingForm,
@@ -127,18 +153,12 @@ class _SelectPaymentMethodPageState extends State<SelectPaymentMethodPage> {
                   formContainer: PaymentMethodListContainer(
                     selectedIndex: selectedIndex - creditCardLength,
                     datas: onlineBankingList,
-                    onTapData: (index) {
-                      setState(() {
-                        selectedIndex = creditCardLength + index;
-                      });
-                    },
+                    onTapData: onTapOnlineBankingItem,
                   )),
             ),
             ShowSelectFormColumn(
                 onTapContainer: () {
-                  setState(() {
-                    showEWalletForm = !showEWalletForm;
-                  });
+                  onTapContainer(showEWalletForm);
                 },
                 onTick: () {},
                 isVisibleForm: showEWalletForm,
@@ -151,12 +171,7 @@ class _SelectPaymentMethodPageState extends State<SelectPaymentMethodPage> {
                   selectedIndex:
                       selectedIndex - creditCardLength - onlineBankingLength,
                   datas: ewalletList,
-                  onTapData: (index) {
-                    setState(() {
-                      selectedIndex =
-                          creditCardLength + onlineBankingLength + index;
-                    });
-                  },
+                  onTapData: onTapEWalletItem,
                 )),
             SizedBox(
               height: height10 * 8,
@@ -172,7 +187,8 @@ class _SelectPaymentMethodPageState extends State<SelectPaymentMethodPage> {
 }
 
 Widget _creditCardListContainer(
-    {required void Function(int index) onTapCard,
+    {void Function()? onTapNewCard,
+    required void Function(int index) onTapCard,
     required int selectedIndex,
     required List<CreditCard> creditCardList}) {
   return PrimaryContainer(
@@ -182,6 +198,28 @@ Widget _creditCardListContainer(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if (creditCardList.isEmpty)
+          Container(
+            width: double.infinity,
+            height: height20 * 2,
+            decoration: ShapeDecoration(
+              color: const Color(0xFFEBEBEB),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            child: Center(
+              child: Text(
+                'You don’t have any cards.',
+                textAlign: TextAlign.center,
+                style: textMd.copyWith(
+                  color: const Color(0xFFBBBBBB),
+                  fontWeight: FontWeight.w700,
+                  height: 0,
+                ),
+              ),
+            ),
+          ),
         ...creditCardList.mapIndexed(
           (i, e) {
             String? creditCardTypeLogo;
@@ -238,22 +276,25 @@ Widget _creditCardListContainer(
         ),
         Padding(
           padding: EdgeInsets.all(height15),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/icons/plus_icon.png',
-                height: height20,
-              ),
-              SizedBox(width: width08 / 2),
-              Text(
-                'Add new card',
-                textAlign: TextAlign.center,
-                style: textMd.copyWith(
-                  fontWeight: FontWeight.w700,
+          child: InkWell(
+            onTap: onTapNewCard,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/icons/plus_icon.png',
+                  height: height20,
                 ),
-              ),
-            ],
+                SizedBox(width: width08 / 2),
+                Text(
+                  'Add new card',
+                  textAlign: TextAlign.center,
+                  style: textMd.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],

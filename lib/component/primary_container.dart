@@ -4,11 +4,15 @@ import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 
 class PrimaryContainer extends StatelessWidget {
-  final Widget child;
   final EdgeInsets padding;
   final Color? color;
-  const PrimaryContainer(
-      {super.key, required this.child, required this.padding, this.color});
+  final Widget child;
+  const PrimaryContainer({
+    super.key,
+    required this.padding,
+    this.color,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {

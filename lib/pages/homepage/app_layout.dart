@@ -7,6 +7,7 @@ import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/pages/homepage/home/home_page.dart';
 import 'package:kindertown_parent_app/pages/homepage/home/widgets/navigation_bottom_bar.dart';
+import 'package:kindertown_parent_app/pages/homepage/inbox/inbox_page.dart';
 import 'package:kindertown_parent_app/pages/homepage/navigation_bar_page/academic/academic_page.dart';
 import 'package:kindertown_parent_app/pages/homepage/navigation_bar_page/notice/notice_page.dart';
 import 'package:kindertown_parent_app/pages/homepage/navigation_bar_page/payment/payment_page.dart';
@@ -51,6 +52,14 @@ class _AppLayoutState extends State<AppLayout> {
       const ProfilePage()
     ];
 
+    void onTapInbox() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const InboxPage(),
+          ));
+    }
+
     void onTapItem(int indx) {
       setState(() {
         currentIndex = indx;
@@ -75,26 +84,32 @@ class _AppLayoutState extends State<AppLayout> {
               height: height24,
               width: height24,
               child: actionAppBar[currentIndex] ??
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Icon(
-                        Icons.mail,
-                        color: purplePrimary,
-                        size: height24,
-                      ),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: Container(
-                          height: height24 / 4,
-                          width: height24 / 4,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: redPrimary,
-                          ),
+                  InkWell(
+                    onTap: onTapInbox,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Icon(
+                          Icons.mail,
+                          color: purplePrimary,
+                          size: height24,
                         ),
-                      )
-                    ],
+                        if (homeController.mailList
+                            .where((p0) => !p0.read)
+                            .isNotEmpty)
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              height: height24 / 4,
+                              width: height24 / 4,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: redPrimary,
+                              ),
+                            ),
+                          )
+                      ],
+                    ),
                   ),
             )
           ]),

@@ -24,13 +24,20 @@ class PaymentDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: primaryAppbar(
           title: Text(
-        'View details',
-        textAlign: TextAlign.center,
-        style: textLg.copyWith(
-          fontWeight: FontWeight.w700,
-          height: 0,
-        ),
-      )),
+            'View details',
+            textAlign: TextAlign.center,
+            style: textLg.copyWith(
+              fontWeight: FontWeight.w700,
+              height: 0,
+            ),
+          ),
+          actions: [
+            Icon(
+              Icons.more_horiz_rounded,
+              color: purplePrimary,
+              size: height24,
+            )
+          ]),
       backgroundColor: backgroundColor,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width24),

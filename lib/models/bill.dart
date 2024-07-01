@@ -81,10 +81,12 @@ class AdditionalFee {
   }
 
   factory AdditionalFee.fromMap(Map<String, dynamic> map) {
+    num fee = map['fee'];
+
     return AdditionalFee(
       id: map['id'] as int,
       name: map['name'] as String,
-      fee: map['fee'] as double,
+      fee: fee.toDouble(),
     );
   }
 

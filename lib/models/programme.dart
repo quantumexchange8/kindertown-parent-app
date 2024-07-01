@@ -9,6 +9,7 @@ List<Programme> listProgrammeFromJson(String json) {
 class Programme {
   int id;
   String name;
+  double fee;
   String description;
   String teacherStudentRatio;
   String studentAgeRange;
@@ -20,6 +21,7 @@ class Programme {
   Programme({
     required this.id,
     required this.name,
+    required this.fee,
     required this.description,
     required this.teacherStudentRatio,
     required this.studentAgeRange,
@@ -34,6 +36,7 @@ class Programme {
     return <String, dynamic>{
       'id': id,
       'name': name,
+      'fee': fee,
       'description': description,
       'teacher_student_ratio': teacherStudentRatio,
       'student_age_range': studentAgeRange,
@@ -48,10 +51,12 @@ class Programme {
   factory Programme.fromMap(Map<String, dynamic> map) {
     Map availableBillingMode = map['available_billing_mode'];
     List classActivities = map['class_activities'];
+    num fee = map['fee'];
 
     return Programme(
       id: map['id'] as int,
       name: map['name'] as String,
+      fee: fee.toDouble(),
       description: map['description'] as String,
       teacherStudentRatio: map['teacher_student_ratio'] as String,
       studentAgeRange: map['student_age_range'] as String,

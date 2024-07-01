@@ -2,6 +2,7 @@
     {
         "id":1,
         "name":"Full-day programme",
+        "fee":180,
         "description":"The full-day kindergarten program is designed to offer young learners an extended and immersive educational experience. Throughout the day, children engage in a variety of age-appropriate activities that foster cognitive, social, emotional, and physical development. The curriculum often includes structured lessons in literacy, numeracy, and other core subjects, as well as opportunities for creative expression through art, music, and play. With a longer schedule, there is more time for educators to address individual learning needs, provide additional support, and offer a well-rounded educational foundation. Socialization skills are emphasized through group activities, teamwork, and cooperative play. The extended hours also allow for the incorporation of rest periods, snacks, and meals, promoting healthy habits and overall well-being. In a full-day kindergarten program, educators aim to create a nurturing and stimulating environment where children can explore, discover, and develop a love for learning. Parental involvement is often encouraged, and regular communication between teachers and parents helps ensure a seamless transition between school and home. Ultimately, a full-day kindergarten program strives to prepare young children for future academic success while fostering a positive and enjoyable early learning experience.",
         "teacher_student_ratio":"2:15",
         "student_age_range":"3 - 6",
@@ -26,6 +27,7 @@
     {
         "id":2,
         "name":"Culture Talent programme",
+        "fee":180,
         "description":"The full-day kindergarten program is designed to offer young learners an extended and immersive educational experience. Throughout the day, children engage in a variety of age-appropriate activities that foster cognitive, social, emotional, and physical development. The curriculum often includes structured lessons in literacy, numeracy, and other core subjects, as well as opportunities for creative expression through art, music, and play. With a longer schedule, there is more time for educators to address individual learning needs, provide additional support, and offer a well-rounded educational foundation. Socialization skills are emphasized through group activities, teamwork, and cooperative play. The extended hours also allow for the incorporation of rest periods, snacks, and meals, promoting healthy habits and overall well-being. In a full-day kindergarten program, educators aim to create a nurturing and stimulating environment where children can explore, discover, and develop a love for learning. Parental involvement is often encouraged, and regular communication between teachers and parents helps ensure a seamless transition between school and home. Ultimately, a full-day kindergarten program strives to prepare young children for future academic success while fostering a positive and enjoyable early learning experience.",
         "teacher_student_ratio":"2:15",
         "student_age_range":"3 - 6",
@@ -50,6 +52,7 @@
     {
         "id":3,
         "name":"Enrichment programme",
+        "fee":180,
         "description":"The full-day kindergarten program is designed to offer young learners an extended and immersive educational experience. Throughout the day, children engage in a variety of age-appropriate activities that foster cognitive, social, emotional, and physical development. The curriculum often includes structured lessons in literacy, numeracy, and other core subjects, as well as opportunities for creative expression through art, music, and play. With a longer schedule, there is more time for educators to address individual learning needs, provide additional support, and offer a well-rounded educational foundation. Socialization skills are emphasized through group activities, teamwork, and cooperative play. The extended hours also allow for the incorporation of rest periods, snacks, and meals, promoting healthy habits and overall well-being. In a full-day kindergarten program, educators aim to create a nurturing and stimulating environment where children can explore, discover, and develop a love for learning. Parental involvement is often encouraged, and regular communication between teachers and parents helps ensure a seamless transition between school and home. Ultimately, a full-day kindergarten program strives to prepare young children for future academic success while fostering a positive and enjoyable early learning experience.",
         "teacher_student_ratio":"2:15",
         "student_age_range":"3 - 6",

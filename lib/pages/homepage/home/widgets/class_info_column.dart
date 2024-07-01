@@ -13,17 +13,18 @@ class ClassInfoColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget statusWidget;
+    final today =
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+    final tommorow =
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day)
+            .add(const Duration(days: 1));
     final checkInToday = kidStatus.checkIn
         .where((element) =>
-            element.time ==
-            DateTime(
-                DateTime.now().year, DateTime.now().month, DateTime.now().day))
+            element.time.isAfter(today) && element.time.isBefore(tommorow))
         .toList();
     final checkOutToday = kidStatus.checkOut
         .where((element) =>
-            element.time ==
-            DateTime(
-                DateTime.now().year, DateTime.now().month, DateTime.now().day))
+            element.time.isAfter(today) && element.time.isBefore(tommorow))
         .toList();
 
     if (checkInToday.isNotEmpty || checkOutToday.isNotEmpty) {
@@ -67,7 +68,7 @@ Container _dateContainer() {
       borderRadius: BorderRadius.circular(100),
     ),
     child: Text(
-      '${DateFormat('dd/mm').format(DateTime.now())} (${DateFormat('EEE').format(DateTime.now())})',
+      '${DateFormat('dd/MM').format(DateTime.now())} (${DateFormat('EEE').format(DateTime.now())})',
       style: textMd.copyWith(
         fontWeight: FontWeight.w800,
       ),

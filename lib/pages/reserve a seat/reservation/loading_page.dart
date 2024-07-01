@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:kindertown_parent_app/component/loading_animation.dart';
 import 'package:kindertown_parent_app/component/primary_page_background.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
-import 'package:kindertown_parent_app/helper/text_styles.dart';
 
-class LoadingPage extends StatelessWidget {
-  const LoadingPage({super.key});
+class LoadingPage extends StatefulWidget {
+  final VoidCallback onStartLoading;
+  const LoadingPage({super.key, required this.onStartLoading});
+
+  @override
+  State<LoadingPage> createState() => _LoadingPageState();
+}
+
+class _LoadingPageState extends State<LoadingPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    widget.onStartLoading();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,12 +26,7 @@ class LoadingPage extends StatelessWidget {
         child: Center(
           child: Padding(
             padding: EdgeInsets.only(top: height100),
-            child: Text(
-              'Loading',
-              style: textLg.copyWith(
-                fontWeight: FontWeight.w900,
-              ),
-            ),
+            child: const PrimaryLoadingAnimation(),
           ),
         ),
       ),

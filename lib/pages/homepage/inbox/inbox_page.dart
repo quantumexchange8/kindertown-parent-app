@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:kindertown_parent_app/component/primary_appbar.dart';
+import 'package:kindertown_parent_app/component/secondary_page_background.dart';
 import 'package:kindertown_parent_app/controller/controller.dart';
 import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
@@ -25,12 +28,17 @@ class _InboxPageState extends State<InboxPage> {
   Widget build(BuildContext context) {
     void onTapSort() async {
       await showModalBottomSheet(
+        enableDrag: true,
         context: context,
         builder: (context) => MailSortByBottomsheet(filter: filter),
       ).then((value) {
         if (value != null) {
           setState(() {
-            filter = value;
+            if (value.isEmpty) {
+              filter = null;
+            } else {
+              filter = value;
+            }
           });
         }
       });
@@ -65,59 +73,64 @@ class _InboxPageState extends State<InboxPage> {
             fontWeight: FontWeight.w700,
           ),
         )),
-        body: Stack(
-          alignment: Alignment.center,
-          fit: StackFit.expand,
-          children: [
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Image.asset(
-                'assets/images/bottom_background.png',
-                height: height100 * 4.43,
-                width: screenWidth,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Column(
+        backgroundColor: backgroundColor,
+        body: SecondaryPageBackground(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width20),
+            child: Column(
               children: [
-                InkWell(
-                  onTap: onTapSort,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(
-                        height: height20,
-                        width: height20,
-                        child: Stack(
-                          children: [
-                            Icon(
-                              Icons.filter_alt_sharp,
-                              size: height20,
-                              color: purplePrimary,
-                            ),
-                            if (filter != null)
+                SizedBox(height: height24),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: InkWell(
+                    onTap: onTapSort,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SizedBox(
+                          height: height10 * 3.5,
+                          width: height10 * 3.5,
+                          child: Stack(
+                            children: [
                               Align(
-                                alignment: Alignment.bottomRight,
+                                alignment: Alignment.center,
                                 child: Icon(
-                                  Icons.check_circle,
-                                  color: orangePrimary,
-                                  size: height08,
+                                  Icons.filter_alt_sharp,
+                                  size: height30,
+                                  color: purplePrimary,
                                 ),
-                              )
-                          ],
+                              ),
+                              if (filter != null)
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(
+                                        bottom: height08 / 2,
+                                        right: width08 / 2),
+                                    child: Icon(
+                                      Icons.check_circle,
+                                      color: orangePrimary,
+                                      size: height24 / 2,
+                                    ),
+                                  ),
+                                )
+                            ],
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Sort',
-                        style: textXL.copyWith(
-                          fontWeight: FontWeight.w700,
+                        Text(
+                          'Sort',
+                          style: textLg.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ListView.builder(
+                    padding: EdgeInsets.symmetric(vertical: height15),
                     itemCount: mailList.length,
                     itemBuilder: (context, index) {
                       final mail = mailList[index];
@@ -136,7 +149,7 @@ class _InboxPageState extends State<InboxPage> {
                 )
               ],
             ),
-          ],
+          ),
         ),
       );
     });
@@ -159,8 +172,6 @@ Container _mailContainer(
   }
 
   return Container(
-    width: width100 * 3.89,
-    height: height100 * 1.95,
     decoration: ShapeDecoration(
       color: backgroundColor,
       shape: RoundedRectangleBorder(
@@ -197,13 +208,19 @@ Container _mailContainer(
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Text(
-                'from ${mail.from}',
-                style: textSm.copyWith(
-                  color: orangePrimary,
-                  fontWeight: FontWeight.w700,
+              SizedBox(height: height05),
+              if (mail.from != 'system')
+                Padding(
+                  padding: EdgeInsets.only(bottom: height08),
+                  child: Text(
+                    'from ${mail.from}',
+                    style: textSm.copyWith(
+                      color:
+                          mail.read ? const Color(0xFFAFAFAF) : orangePrimary,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ),
-              ),
               Text(
                 mail.title,
                 style: textMd.copyWith(
@@ -216,6 +233,7 @@ Container _mailContainer(
                 height: height10 * 4,
                 child: Text(
                   mail.body,
+                  maxLines: 2,
                   style: textXS.copyWith(
                     color: const Color(0xFF898A8D),
                     fontWeight: FontWeight.w500,
@@ -223,20 +241,24 @@ Container _mailContainer(
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              TextButton(
-                onPressed: onPressedViewMore,
-                child: Text(
-                  'view more >>',
-                  textAlign: TextAlign.right,
-                  style: textXS.copyWith(
-                    color: themeColor,
-                    fontWeight: FontWeight.w700,
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: onPressedViewMore,
+                  child: Text(
+                    'view more >>',
+                    textAlign: TextAlign.right,
+                    style: textXS.copyWith(
+                      color: themeColor,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
               ),
             ],
           ),
         ),
+        SizedBox(width: width08 * 2)
       ],
     ),
   );

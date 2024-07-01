@@ -78,3 +78,7 @@ List<DateTime> getDateRange(DateTime startDate, DateTime endDate) {
 
   return dateRange;
 }
+
+String formatAMPM(String ampm) {
+  return ampm.replaceAll('AM', 'a.m.').replaceAll('PM', 'p.m.');
+}

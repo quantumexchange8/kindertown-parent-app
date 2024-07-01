@@ -1,116 +1,109 @@
 import 'package:flutter/material.dart';
+import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
+import 'package:kindertown_parent_app/helper/text_styles.dart';
 
 class PdfPopup extends StatelessWidget {
-  const PdfPopup({super.key});
+  final void Function()? onTapViewFullPDF;
+  final void Function()? onTapSharePDF;
+  const PdfPopup({super.key, this.onTapViewFullPDF, this.onTapSharePDF});
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
       color: Colors.transparent,
+      elevation: 3,
+      constraints: const BoxConstraints(),
+      surfaceTintColor: Colors.transparent,
+      position: PopupMenuPosition.under,
       itemBuilder: (context) {
         return [
           PopupMenuItem(
+              height: 0,
               child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 190,
-                height: 47.42,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: Container(
-                        width: 190,
-                        height: 47.42,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFFFF8EC),
-                          shape: RoundedRectangleBorder(
-                            side:
-                                BorderSide(width: 1, color: Color(0x7FF67F00)),
-                            borderRadius: BorderRadius.circular(10),
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      if (onTapViewFullPDF != null) {
+                        onTapViewFullPDF!();
+                      }
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: width100 * 1.9,
+                      height: height10 * 4.7,
+                      decoration: ShapeDecoration(
+                        color: backgroundColor,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                              width: 1, color: Color(0x7FF67F00)),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/icons/payment/eye_icon.png',
+                            height: height10 * 2.8,
+                            fit: BoxFit.fitHeight,
                           ),
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: height10 * 2.8,
-                              height: height10 * 2.8,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(),
+                          SizedBox(width: width24 / 2),
+                          Text(
+                            'View full PDF',
+                            textAlign: TextAlign.center,
+                            style: textMd.copyWith(
+                              fontWeight: FontWeight.w700,
+                              height: 0,
                             ),
-                            Text(
-                              'View full PDF',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF3C0048),
-                                fontSize: 16,
-                                fontFamily: 'Raleway',
-                                fontWeight: FontWeight.w700,
-                                height: 0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 5),
-              Container(
-                width: 190,
-                height: 47.42,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      left: 0,
-                      top: 0,
-                      child: Container(
-                        width: 190,
-                        height: 47.42,
-                        decoration: ShapeDecoration(
-                          color: Color(0xFFFFF8EC),
-                          shape: RoundedRectangleBorder(
-                            side:
-                                BorderSide(width: 1, color: Color(0x7FF67F00)),
-                            borderRadius: BorderRadius.circular(10),
                           ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: height05),
+                  InkWell(
+                    onTap: () {
+                      if (onTapSharePDF != null) {
+                        onTapSharePDF!();
+                      }
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: width100 * 1.9,
+                      height: height10 * 4.7,
+                      decoration: ShapeDecoration(
+                        color: backgroundColor,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                              width: 1, color: Color(0x7FF67F00)),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      left: 77,
-                      top: 14,
-                      child: Text(
-                        'Share PDF',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF3C0048),
-                          fontSize: 16,
-                          fontFamily: 'Raleway',
-                          fontWeight: FontWeight.w700,
-                          height: 0,
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.share,
+                            color: purplePrimary,
+                            size: height10 * 2.8,
+                          ),
+                          SizedBox(width: width24 / 2),
+                          Text(
+                            'Share PDF',
+                            textAlign: TextAlign.center,
+                            style: textMd.copyWith(
+                              fontWeight: FontWeight.w700,
+                              height: 0,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Positioned(
-                      left: 34,
-                      top: 10,
-                      child: Container(
-                        width: 28,
-                        height: 28,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ))
+                  ),
+                ],
+              ))
         ];
       },
     );

@@ -6,7 +6,7 @@ import 'package:kindertown_parent_app/component/textlabel_with_textfield_column.
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/helper/validator.dart';
-import 'package:kindertown_parent_app/pages/auth/verify_phone_number_page.dart';
+import 'package:kindertown_parent_app/pages/verify_phone_number_page.dart';
 import 'package:kindertown_parent_app/pages/auth/widgets/title_column.dart';
 
 class CreateAccountPage extends StatefulWidget {

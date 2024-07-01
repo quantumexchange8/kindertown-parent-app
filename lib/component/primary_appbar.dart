@@ -19,28 +19,31 @@ PreferredSizeWidget primaryAppbar({
               : const DecorationImage(
                   alignment: Alignment.bottomCenter,
                   image: AssetImage('assets/images/header_background.png'),
-                  fit: BoxFit.cover),
+                  fit: BoxFit.fitWidth),
           borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(25),
               bottomRight: Radius.circular(25))),
       child: SafeArea(
-          child: Row(
-        children: [
-          if (showBackButton)
-            Padding(
-              padding: EdgeInsets.only(left: width08 * 2),
-              child: leading ??
-                  PrimaryBackButton(
-                    size: height24,
-                  ),
-            ),
-          if (title != null) Expanded(flex: 8, child: title),
-          Expanded(
-              child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: actions,
-          ))
-        ],
+          child: SizedBox(
+        height: height10 * 5,
+        child: Row(
+          children: [
+            if (showBackButton)
+              Padding(
+                padding: EdgeInsets.only(left: width08 * 2),
+                child: leading ??
+                    PrimaryBackButton(
+                      size: height24,
+                    ),
+              ),
+            if (title != null) Expanded(flex: 8, child: title),
+            Expanded(
+                child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: actions,
+            ))
+          ],
+        ),
       )),
     ),
   );

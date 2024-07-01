@@ -7,7 +7,7 @@ import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/overview_listview.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/programmes_listview.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/header_row.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/kindergarten_bottom_bar.dart';
+import 'package:kindertown_parent_app/pages/widgets/subscribe_bottom_bar.dart';
 import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/widgets/tab_row.dart';
 
 class KindergartenPage extends StatefulWidget {
@@ -38,11 +38,15 @@ class _KindergartenPageState extends State<KindergartenPage> {
       EventsListview(eventList: widget.eventList)
     ];
 
+    bool canSubscribe = kindergarten.totalStudent == kindergarten.maxStudent;
+
     void onTabTap(int tabIndex) {
       setState(() {
         activeTabIndex = tabIndex;
       });
     }
+
+    void onPressedSubscribe() {}
 
     return Scaffold(
       extendBody: true,
@@ -105,7 +109,12 @@ class _KindergartenPageState extends State<KindergartenPage> {
           )
         ],
       ),
-      bottomNavigationBar: KindergartenBottomBar(kindergarten: kindergarten),
+      bottomNavigationBar: SubscribeBottomBar(
+        onPressedSubscribe: onPressedSubscribe,
+        fee: kindergarten.feePerMonth,
+        isDisabled: canSubscribe,
+        buttonText: canSubscribe ? 'Full Reservation' : 'Reserve Now',
+      ),
     );
   }
 }

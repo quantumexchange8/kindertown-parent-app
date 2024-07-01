@@ -1,11 +1,11 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:kindertown_parent_app/helper/color_pallete.dart';
 import 'package:kindertown_parent_app/helper/dimensions.dart';
 import 'package:kindertown_parent_app/helper/methods.dart';
 import 'package:kindertown_parent_app/helper/text_styles.dart';
 import 'package:kindertown_parent_app/models/programme.dart';
-import 'package:kindertown_parent_app/pages/reserve%20a%20seat/kindergarten_main/programme_page.dart';
+import 'package:kindertown_parent_app/pages/programme_page.dart';
+import 'package:kindertown_parent_app/pages/widgets/programme_container.dart';
 
 const List<Map<String, dynamic>> programmeListConst = [
   {
@@ -45,7 +45,7 @@ class ProgrammesListview extends StatelessWidget {
                             e['title'].toLowerCase())),
                   ));
             },
-            child: _programmeContainer(
+            child: ProgrammeContainer(
               iconAddress: e['icon_address'],
               title: e['title'],
             ),
@@ -63,50 +63,6 @@ class ProgrammesListview extends StatelessWidget {
       children: children,
     );
   }
-}
-
-Container _programmeContainer({
-  required String iconAddress,
-  required String title,
-}) {
-  return Container(
-    padding:
-        EdgeInsets.symmetric(horizontal: width24, vertical: height10 * 1.8),
-    decoration: ShapeDecoration(
-      color: Colors.white.withOpacity(0.85),
-      shape: RoundedRectangleBorder(
-        side: const BorderSide(width: 1, color: Color(0xFFF67F00)),
-        borderRadius: BorderRadius.circular(24),
-      ),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              iconAddress,
-              height: height10 * 2.8,
-              fit: BoxFit.fitHeight,
-            ),
-            SizedBox(width: width08 * 2),
-            Text(
-              title,
-              style: textMd.copyWith(
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
-        ),
-        Icon(
-          Icons.arrow_forward_ios_rounded,
-          color: orangePrimary,
-          size: height24,
-        ),
-      ],
-    ),
-  );
 }
 
 Column _moreInformationColumn({void Function()? onTapLink}) {
